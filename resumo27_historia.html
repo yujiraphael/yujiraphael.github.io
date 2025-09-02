@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>História: Era Vargas - Raphael Fugiwara</title>
+    <title>História: A Era Vargas - Raphael Fugiwara</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @keyframes aurora {
             0% { background-position: 0% 50%; }
@@ -19,10 +20,10 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.08), transparent 40%),
-                        radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.08), transparent 40%);
+            background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(217, 119, 6, 0.1), transparent 40%);
             background-size: 300% 300%;
-            animation: aurora 20s ease infinite;
+            animation: aurora 15s ease infinite;
             z-index: -1;
         }
         body {
@@ -61,96 +62,162 @@
 
         <header class="text-center pt-16 pb-20">
             <p class="text-lg font-semibold text-amber-400 scroll-reveal">História</p>
-            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Análise da Era Vargas (1930-1945)</h1>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">A Era Vargas (1930-1945)</h1>
             <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
-                Uma imersão nas três fases do governo Vargas, explorando suas contradições, o impacto econômico e a construção do Brasil moderno.
+                Uma análise aprofundada de um dos períodos mais transformadores do Brasil: do Governo Provisório à ditadura do Estado Novo.
             </p>
         </header>
 
         <main>
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-amber-900">Linha do Tempo da Era Vargas</h2>
-                <div class="content-card rounded-lg p-8">
-                    <div class="relative wrap overflow-hidden p-10 h-full">
-                        <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
-                        <!-- Bloco Governo Provisório -->
-                        <div class="mb-8 flex justify-between items-center w-full right-timeline">
-                            <div class="order-1 w-5/12"></div>
-                            <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                                <h1 class="mx-auto font-semibold text-sm text-amber-400">1</h1>
-                            </div>
-                            <div class="order-1 bg-gray-800/50 border border-amber-400/20 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                                <h3 class="font-bold text-amber-400 text-lg">Governo Provisório (1930-1934)</h3>
-                                <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100 mt-2">Centralização do poder e resposta à crise econômica.</p>
-                                <p class="text-xs text-gray-400 mt-3 font-semibold">EVENTO-CHAVE: Revolução de 1930, Queima do Café (1931).</p>
-                            </div>
-                        </div>
-                        <!-- Bloco Governo Constitucional -->
-                        <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-                            <div class="order-1 w-5/12"></div>
-                            <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                                <h1 class="mx-auto text-amber-400 font-semibold text-sm">2</h1>
-                            </div>
-                            <div class="order-1 bg-gray-800/50 border border-amber-400/20 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                                <h3 class="font-bold text-amber-400 text-lg">Governo Constitucional (1934-1937)</h3>
-                                <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100 mt-2">Período de legalidade formal, mas com intensa polarização ideológica.</p>
-                                <p class="text-xs text-gray-400 mt-3 font-semibold">EVENTO-CHAVE: Constituição de 1934 (voto feminino), Intentona Comunista (1935).</p>
-                            </div>
-                        </div>
-                        <!-- Bloco Estado Novo -->
-                        <div class="mb-8 flex justify-between items-center w-full right-timeline">
-                            <div class="order-1 w-5/12"></div>
-                            <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                                <h1 class="mx-auto font-semibold text-sm text-amber-400">3</h1>
-                            </div>
-                            <div class="order-1 bg-gray-800/50 border border-amber-400/20 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                                <h3 class="font-bold text-amber-400 text-lg">Estado Novo (1937-1945)</h3>
-                                <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100 mt-2">Ditadura inspirada em modelos fascistas europeus.</p>
-                                <p class="text-xs text-gray-400 mt-3 font-semibold">EVENTO-CHAVE: Golpe de 1937 (Plano Cohen), Constituição "Polaca", criação do DIP e da CLT.</p>
-                            </div>
-                        </div>
-                    </div>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-amber-900">Incidência nos Vestibulares</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                     <p class="text-gray-400 mb-6 text-center">Estimativa do número de questões sobre a Era Vargas (1930-1945) nos últimos 10 anos.</p>
+                    <canvas id="historiaChart"></canvas>
                 </div>
             </section>
             
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-amber-900">Conceitos-Chave da Era Vargas</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-amber-400 mb-3">Populismo e Trabalhismo</h3>
-                        <p class="text-gray-400">Vargas cultivou a imagem de "pai dos pobres" ao conceder direitos (CLT, salário mínimo). Em troca, atrelou os sindicatos ao Estado, controlando a classe trabalhadora e esvaziando sua autonomia real. É a dualidade: benefício em troca de controle.</p>
-                    </div>
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-amber-400 mb-3">Nacional-Desenvolvimentismo</h3>
-                        <p class="text-gray-400">Com a crise do café, Vargas promoveu uma forte intervenção estatal para industrializar o Brasil (indústria de base). A criação de estatais como a CSN (siderurgia) e a Vale do Rio Doce (mineração) são símbolos dessa política.</p>
-                    </div>
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-amber-400 mb-3">Autoritarismo e Propaganda</h3>
-                        <p class="text-gray-400">O Estado Novo foi uma ditadura. O pretexto foi o falso Plano Cohen, que forjava uma ameaça comunista. O DIP (Departamento de Imprensa e Propaganda) foi a máquina do regime para censurar a oposição e exaltar a figura do líder.</p>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-amber-900">Estratégias para cada Prova</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-amber-400 mb-2">ENEM</h3>
+                            <p class="text-gray-400">Foca no aspecto social e ideológico. O ENEM ama questões sobre o trabalhismo, o populismo e a propaganda do DIP (Departamento de Imprensa e Propaganda). É crucial entender a construção da imagem de Vargas como "pai dos pobres" e a relação de controle e concessão de direitos aos trabalhadores (CLT). Análise de charges, cartazes e textos da época é muito comum.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-6">
+                             <h3 class="text-xl font-bold text-amber-400 mb-2">FUVEST & UNICAMP</h3>
+                             <p class="text-gray-400">Cobram o processo político e econômico em detalhes. É preciso dominar as fases (Provisório, Constitucional, Estado Novo), as Constituições (1934 e 1937), os conflitos (Revolução de 32, Intentona Comunista) e a política econômica (intervencionismo, industrialização por substituição de importações, queima do café).</p>
+                        </div>
+                         <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-amber-400 mb-2">PUC-Rio & UERJ</h3>
+                            <p class="text-gray-400">Gostam de focar nas tensões ideológicas e nos projetos de nação. A polarização entre a AIB (integralistas) e a ANL (comunistas) é um tema recorrente. A UERJ, em particular, pode explorar as contradições do governo, como a aproximação com os Aliados na Segunda Guerra enquanto mantinha um regime de inspiração fascista internamente.</p>
+                        </div>
                     </div>
                 </div>
             </section>
-            
+
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-amber-900">Foco nos Vestibulares</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-amber-400 mb-2">ENEM</h3>
-                        <p class="text-gray-400"><strong>Foco:</strong> Trabalhismo e Propaganda. O ENEM adora questões que exploram a relação de Vargas com os trabalhadores e o uso da propaganda (como as charges) para construir sua imagem e a identidade nacional.</p>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-amber-900">Resolução Comentada (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: Charge "Isso não é comnosco"</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                            <span class="text-gray-500">Análise de Charge</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A charge critica a frustração com os rumos do governo Vargas. O cantor popular (o povo) canta para a mulher "1930" (a Revolução) que ela parecia "sincera, mas não era". Isso simboliza a decepção com as promessas de mudança que não se concretizaram como esperado. Vargas, ao lado da "Revolução", minimiza a crítica, tratando-a como uma mera "cantiga de carnaval", demonstrando o descaso do poder com a insatisfação popular.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-amber-500/20">
+                            <p class="font-bold text-amber-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Em charges, identifique os símbolos! Personagens, datas e falas representam ideias ou grupos sociais. A chave é decodificar essa simbologia para entender a crítica.</p>
+                        </div>
                     </div>
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-amber-400 mb-2">Vestibulares Tradicionais</h3>
-                         <p class="text-gray-400"><strong>Foco:</strong> Processos Políticos e Econômicos. Fuvest e Unicamp cobram o entendimento das fases do governo, as características da Constituição de 1937, a polarização ideológica (Integralismo vs. Comunismo) e as políticas econômicas de industrialização.</p>
+                    
+                    <!-- Questão 02 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: A política trabalhista de Vargas</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-red-500/10 px-2 py-1 font-medium text-red-400">
+                                <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>
+                                ❗️ Conceito-Chave
+                            </span>
+                             <span class="text-gray-500">Populismo e Corporativismo</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A política trabalhista de Vargas era uma faca de dois gumes. Por um lado, concedia direitos (a "primeira metade"). Por outro, controlava e reprimia. A alternativa (b) descreve a "outra metade": os sindicatos foram atrelados ao Estado, tornando-se órgãos de colaboração e perdendo sua autonomia de luta. O direito de greve foi severamente restringido. Era uma política de concessão de benefícios em troca de controle político.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-amber-500/20">
+                            <p class="font-bold text-amber-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Trabalhismo Varguista = "Mão que afaga é a mesma que controla". Ele deu direitos com uma mão (CLT) e tirou a autonomia dos sindicatos com a outra.</p>
+                        </div>
                     </div>
+
+                    <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: Depoimento sobre os direitos do trabalhador</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O depoimento é um exemplo perfeito da eficácia da propaganda varguista. A pessoa relata uma injustiça resolvida "na época da entrada de Getúlio" e atribui a ele todos os direitos trabalhistas: "tudo nós devemos a Getúlio Vargas". Essa visão de Vargas como um líder benevolente que "deu" os direitos ao povo é a representação exata do populismo e da imagem do chefe de Estado como patrocinador e protetor dos trabalhadores.</p>
+                    </div>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: Queima de café em 1931</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                🎯 Foco FUVEST
+                            </span>
+                             <span class="text-gray-500">Política Econômica</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A queima do café foi uma política de valorização implementada por Vargas para lidar com a crise de superprodução agravada pela Quebra da Bolsa de 1929, que contraiu drasticamente o mercado consumidor internacional. Ao destruir os estoques excedentes, o governo buscava diminuir a oferta e forçar uma alta nos preços internacionais do principal produto de exportação do Brasil, evitando a falência completa dos cafeicultores.</p>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b]</span> Embora Vargas buscasse diminuir o poder das oligarquias paulistas, o objetivo principal da queima era econômico (salvar o setor cafeeiro como um todo), não uma retaliação política.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c,d]</span> A queima do café mostra justamente o contrário: uma forte subvenção e intervenção do Estado para proteger o setor agrário exportador.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Questão 05 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: A Marcha para o Oeste</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A "Marcha para o Oeste" foi um projeto do Estado Novo que visava promover a ocupação e a integração econômica das regiões Centro-Oeste e Norte do país ao restante do território nacional. A ideia era criar colônias agrícolas e explorar os recursos naturais dessas áreas, vistas como um "vazio demográfico", para diminuir a dependência externa e fortalecer a economia e a unidade do país.</p>
+                    </div>
+                    
+                    <!-- Questão 06 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: A Constituição de 1937</h4>
+                         <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                         <p class="text-gray-400"><strong>Comentário:</strong> A Constituição de 1937, apelidada de "Polaca" por sua inspiração fascista, foi a base jurídica da ditadura do Estado Novo. Ela se caracterizou por ser extremamente autoritária: concentrou poderes no Executivo (Vargas), extinguiu os partidos políticos, aboliu as liberdades individuais e de imprensa (impondo a censura prévia) e suspendeu as eleições diretas.</p>
+                    </div>
+                    
+                    <!-- Questão 07 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: Retirantes de Portinari</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A obra de Portinari retrata a dura realidade da seca e da miséria no Nordeste, que força a migração. Durante a Era Vargas, esse fluxo migratório em direção ao Sudeste foi intensificado pelo processo de industrialização concentrado nessa região. As novas indústrias demandavam grande quantidade de mão de obra não qualificada, atraindo milhares de nordestinos em busca de melhores condições de vida.</p>
+                    </div>
+
+                    <!-- Questão 08 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: Discurso de Vargas em 1945</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O discurso sintetiza a ideologia varguista: 1) a consolidação da legislação trabalhista ("o trabalhador brasileiro possui hoje o seu código de direitos"); 2) a defesa da harmonia social, pedindo para "evitar dissídios, sobrepondo os interesses da coletividade às rivalidades de classes"; e 3) o nacionalismo, ao falar em "engrandecimento comum as forças criadoras da nacionalidade".</p>
+                    </div>
+
+                    <!-- Questão 09 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: O uso da propaganda</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A propaganda na Era Vargas, desde o início e intensificada no Estado Novo com o DIP, tinha como objetivo principal construir uma imagem positiva do líder e do governo. Usando o rádio e a imprensa, Vargas buscou criar um consenso em torno de sua figura, apresentando-se como o modernizador do Brasil e o protetor dos trabalhadores, a fim de conquistar apoio popular e legitimar seu poder, que havia sido tomado por meio de um golpe.</p>
+                    </div>
+
+                    <!-- Questão 10 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: Ação Integralista Brasileira (AIB)</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A AIB, liderada por Plínio Salgado, foi um movimento de extrema-direita que surgiu no Brasil na década de 1930. Sua ideologia, organização e estética eram diretamente inspiradas no fascismo italiano de Mussolini. Características como o nacionalismo exacerbado, o autoritarismo, o anticomunismo, o líder messiânico (o "Chefe Nacional"), os uniformes ("camisas-verdes") e a saudação ("Anauê!") são paralelos diretos ao fascismo europeu.</p>
+                    </div>
+
                 </div>
             </section>
         </main>
         
-        <footer class="mt-20 pt-8 border-t border-gray-700 text-center text-gray-400">
-            <div class="flex justify-center items-center space-x-6 mb-4">
-                 <a href="index.html" class="hover:text-white transition-colors">Página Inicial</a>
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
             </div>
-            <p class="text-sm">&copy; 2025 Raphael Fugiwara. Todos os direitos reservados.</p>
         </footer>
 
     </div>
@@ -176,8 +243,43 @@
                 header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-amber-900/10');
             }
         });
+        
+        const ctx = document.getElementById('historiaChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['ENEM', 'UERJ', 'FUVEST', 'UNICAMP'],
+                    datasets: [{
+                        label: 'Nº de Questões (Estimativa 10 anos)',
+                        data: [28, 26, 24, 20],
+                        backgroundColor: 'rgba(245, 158, 11, 0.7)',
+                        borderColor: '#F59E0B',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" }}
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
     });
     </script>
 </body>
 </html>
-

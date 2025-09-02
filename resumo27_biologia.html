@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @keyframes aurora {
             0% { background-position: 0% 50%; }
@@ -19,8 +20,8 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.1), transparent 40%),
-                        radial-gradient(circle at bottom right, rgba(10, 132, 119, 0.1), transparent 40%);
+            background: radial-gradient(circle at top left, rgba(159, 122, 234, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(122, 255, 198, 0.1), transparent 40%);
             background-size: 300% 300%;
             animation: aurora 15s ease infinite;
             z-index: -1;
@@ -33,7 +34,7 @@
         .content-card {
             background-color: rgba(17, 24, 39, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(159, 122, 234, 0.1);
         }
         .scroll-reveal {
             opacity: 0;
@@ -60,137 +61,273 @@
     <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
 
         <header class="text-center pt-16 pb-20">
-            <p class="text-lg font-semibold text-emerald-400 scroll-reveal">Biologia</p>
+            <p class="text-lg font-semibold text-violet-400 scroll-reveal">Biologia</p>
             <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Ciclos Virais e Reino Plantae</h1>
             <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
-                Uma jornada visual pela replicação dos vírus e a espetacular evolução das plantas, dos musgos às árvores frutíferas.
+                Uma análise da replicação dos vírus e da espetacular evolução das plantas, dos musgos às árvores frutíferas.
             </p>
         </header>
 
         <main>
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-emerald-900">Ciclos de Replicação Viral</h2>
-                <div class="content-card rounded-lg p-8">
-                    <p class="text-gray-400 mb-8">As questões 1 e 2 da lista focam nos dois principais mecanismos de replicação viral em bactérias: o ciclo que destrói a célula (lítico) e o ciclo que permanece latente (lisogênico).</p>
-                    <div class="w-full bg-gray-900/50 p-4 rounded-lg border border-white/10">
-                        <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
-                            <style>.txt{font-family:Inter,sans-serif;font-size:6px;fill:#cce3ff;}.txt-sm{font-size:5px;fill:#9ca3af;}.cap{font-size:4px;fill:#6b7280;}</style>
-                            <!-- Títulos -->
-                            <text x="50" y="10" class="txt" font-weight="bold">Ciclo Lítico</text>
-                            <text x="165" y="10" class="txt" font-weight="bold">Ciclo Lisogênico</text>
-                            <line x1="125" y1="5" x2="125" y2="145" stroke="#374151" stroke-width="0.5"/>
-                            
-                            <!-- Célula Inicial -->
-                            <ellipse cx="25" cy="30" rx="20" ry="10" fill="#1f2937" stroke="#34d399" stroke-width="0.5"/>
-                            <text x="5" y="20" class="txt-sm">1. Adsorção e Penetração</text>
-                            
-                            <!-- Ciclo Lítico -->
-                            <ellipse cx="50" cy="70" rx="20" ry="10" fill="#1f2937" stroke="#f87171" stroke-width="0.5"/>
-                            <text x="25" y="60" class="txt-sm">2. Biossíntese e Maturação</text>
-                            
-                            <path d="M40 120 L35 115 L42 113 L45 122 L50 114 L55 121 L58 113 L65 117 Z" fill="#f87171" opacity="0.7"/>
-                            <text x="40" y="110" class="txt-sm">3. Liberação (Lise)</text>
-
-                            <!-- Ciclo Lisogênico -->
-                            <ellipse cx="175" cy="50" rx="20" ry="10" fill="#1f2937" stroke="#34d399" stroke-width="0.5"/>
-                            <path d="M172.5 50 a 5 2 0 1 0 0.01 0" stroke="#d1d5db" stroke-width="0.3" fill="none" stroke-dasharray="2 1"/>
-                            <path d="M176.5 50.5 a 5 2 0 0 1 -3 0" stroke="#f87171" stroke-width="0.5" fill="none"/>
-                            <text x="145" y="40" class="txt-sm">2. Integração (Profago)</text>
-
-                            <ellipse cx="165" cy="100" rx="20" ry="10" fill="#1f2937" stroke="#34d399" stroke-width="0.5"/>
-                            <ellipse cx="185" cy="100" rx="20" ry="10" fill="#1f2937" stroke="#34d399" stroke-width="0.5"/>
-                            <path d="M162.5 100.5 a 5 2 0 0 1 -3 0" stroke="#f87171" stroke-width="0.5" fill="none"/>
-                            <path d="M182.5 100.5 a 5 2 0 0 1 -3 0" stroke="#f87171" stroke-width="0.5" fill="none"/>
-                            <text x="155" y="90" class="txt-sm">3. Divisão Celular</text>
-
-                            <!-- Setas -->
-                            <path d="M25 41 V 55" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow-sm)"/>
-                            <path d="M50 81 V 100" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow-sm)"/>
-                            <path d="M175 61 V 85" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow-sm)"/>
-                            <path d="M46 30 C 85 20, 140 30, 154 42" stroke="#9ca3af" stroke-width="0.5" fill="none" marker-end="url(#arrow-sm)" stroke-dasharray="2"/>
-
-                            <defs><marker id="arrow-sm" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af"/></marker></defs>
-                        </svg>
-                    </div>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-violet-900">Incidência nos Vestibulares</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                     <p class="text-gray-400 mb-6 text-center">Estimativa do número de questões sobre Botânica e Virologia nos últimos 10 anos.</p>
+                    <canvas id="biologiaChart"></canvas>
                 </div>
             </section>
             
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-emerald-900">A Escalada Evolutiva das Plantas</h2>
-                <div class="content-card rounded-lg p-8">
-                    <p class="text-gray-400 mb-6">As questões 3 a 10 se baseiam na compreensão da linha evolutiva do Reino Plantae. Este cladograma simplificado mostra os principais grupos e as inovações que os definem.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center"><div class="w-16 h-px bg-emerald-700"></div><div class="ml-4"><p class="text-sm text-gray-400">Ancestral Comum</p></div></div>
-                        <div class="flex items-start">
-                            <div class="w-16 flex justify-end"><div class="border-l border-b border-emerald-700 w-4 h-16 rounded-bl-lg"></div></div>
-                            <div class="w-4 h-px mt-16 bg-emerald-700"></div>
-                            <div class="pl-4">
-                                <p class="text-xs font-semibold text-white bg-emerald-600 inline-block px-2 py-0.5 rounded-full -translate-x-6 -translate-y-2">SURGIMENTO DE EMBRIÕES</p>
-                                <h3 class="text-xl font-bold text-emerald-400">Briófitas (avasculares)</h3>
-                                <p class="text-gray-400">Ex: Musgos. Fase dominante: gametófito (n).</p>
-                            </div>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-violet-900">Estratégias para cada Prova</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-violet-400 mb-2">ENEM</h3>
+                            <p class="text-gray-400">O mais contextual. Botânica aparece ligada à ecologia (biomas, sucessão ecológica) e agronegócio (transgênicos, polinização). Virologia é sinônimo de saúde pública (vacinas, epidemias, saneamento básico). A prova exige leitura de gráficos, tabelas e a habilidade de aplicar o conhecimento a um problema prático.</p>
                         </div>
-                        <div class="flex items-start">
-                             <div class="w-16 flex justify-end"><div class="border-l border-emerald-700 w-4 h-24"></div></div>
-                             <div class="pl-4 -translate-y-12">
-                                <div class="flex items-start">
-                                    <div class="w-4 h-px mt-16 bg-emerald-700"></div>
-                                    <div class="pl-4">
-                                        <p class="text-xs font-semibold text-white bg-emerald-600 inline-block px-2 py-0.5 rounded-full -translate-x-6 -translate-y-2">VASOS CONDUTORES</p>
-                                        <h3 class="text-xl font-bold text-emerald-400">Pteridófitas</h3>
-                                        <p class="text-gray-400">Ex: Samambaias. Fase dominante: esporófito (2n).</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                     <div class="border-l border-emerald-700 w-4 h-24 -translate-x-4"></div>
-                                      <div class="pl-4 -translate-y-12">
-                                        <div class="flex items-start">
-                                            <div class="w-4 h-px mt-16 bg-emerald-700"></div>
-                                            <div class="pl-4">
-                                                <p class="text-xs font-semibold text-white bg-emerald-600 inline-block px-2 py-0.5 rounded-full -translate-x-6 -translate-y-2">SEMENTES E PÓLEN</p>
-                                                <h3 class="text-xl font-bold text-emerald-400">Gimnospermas</h3>
-                                                <p class="text-gray-400">Ex: Pinheiros. Independência da água para fecundação.</p>
-                                            </div>
-                                        </div>
-                                         <div class="flex items-start">
-                                             <div class="border-l border-emerald-700 w-4 h-16 -translate-x-4"></div>
-                                              <div class="pl-4 -translate-y-12">
-                                                <div class="w-4 h-px mt-16 bg-emerald-700"></div>
-                                                 <div class="pl-4">
-                                                    <p class="text-xs font-semibold text-white bg-emerald-600 inline-block px-2 py-0.5 rounded-full -translate-x-6 -translate-y-2">FLORES E FRUTOS</p>
-                                                    <h3 class="text-xl font-bold text-emerald-400">Angiospermas</h3>
-                                                    <p class="text-gray-400">Ex: Ipês, Gramíneas. O grupo mais diverso e dominante.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="border-t border-white/10 pt-6">
+                             <h3 class="text-xl font-bold text-violet-400 mb-2">FUVEST</h3>
+                             <p class="text-gray-400">Extremamente conteudista. Exige memorização das características evolutivas dos grupos vegetais (Briófitas > Pteridófitas > Gimnospermas > Angiospermas). Cladogramas são comuns. Espere questões detalhadas sobre fisiologia vegetal e os ciclos de vida. Em Virologia, além dos ciclos lítico e lisogênico, é importante conhecer as principais doenças virais e o mecanismo de ação dos retrovírus (HIV).</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-violet-400 mb-2">UNICAMP</h3>
+                            <p class="text-gray-400">A prova da conexão. As questões, dissertativas, pedem para relacionar conceitos. Por exemplo: como a ausência de vasos condutores limita o tamanho das briófitas? Qual a importância da semente para a conquista do ambiente terrestre? Como o ciclo lisogênico pode ser explorado em terapia gênica? É preciso entender o "porquê" das coisas, não apenas o "o quê".</p>
+                        </div>
+                         <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-violet-400 mb-2">PUC-Rio</h3>
+                            <p class="text-gray-400">Mais direta e conceitual. Foca na identificação de estruturas (soros em samambaias, estróbilos em pinheiros) e na diferenciação clara entre os grupos de plantas e os ciclos virais. É a prova que mais se assemelha a uma avaliação escolar de alto nível, testando o domínio dos conceitos fundamentais.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-emerald-900">Foco nos Vestibulares</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-emerald-400 mb-2">ENEM</h3>
-                        <p class="text-gray-400"><strong>Foco:</strong> Evolução e Adaptação. O ENEM cobra o entendimento das "inovações" de cada grupo e como elas permitiram a conquista de novos ambientes. Questões de polinização (Questão 9) e relações ecológicas são comuns.</p>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-violet-900">Resolução Comentada (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: Ciclos reprodutivos virais</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-red-500/10 px-2 py-1 font-medium text-red-400">
+                                <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>
+                                ❗️ Conceito-Chave
+                            </span>
+                            <span class="text-gray-500">Diferença entre Lítico vs. Lisogênico</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A alternativa (b) define a essência do ciclo lítico: a produção (replicação) de novas partículas virais, que leva à destruição (lise) da célula hospedeira para sua liberação. É o ciclo "destrutivo".</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Associe **Lítico** com **Lise** (quebra, destruição). Se o vírus destrói a célula rapidamente, é o ciclo lítico.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[a]</span> Conjugação é um processo bacteriano de troca de material genético, não viral.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c]</span> Bipartição é divisão celular de bactérias; no ciclo lisogênico o vírus "pega carona" nessa divisão.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[d]</span> Brotamento é um tipo de reprodução assexuada de leveduras ou de alguns animais, e também um modo de saída de certos vírus (como o HIV), mas não define o ciclo lisogênico.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[e]</span> Vírus não fazem reprodução sexuada com fecundação.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-emerald-400 mb-2">Vestibulares Tradicionais</h3>
-                         <p class="text-gray-400"><strong>Foco:</strong> Ciclos de Vida e Estruturas. Provas como UERJ e FUVEST aprofundam na alternância de gerações (gametófito vs. esporófito) e pedem o reconhecimento de estruturas específicas, como o soro das samambaias (Questão 8).</p>
+                    
+                    <!-- Questão 02 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: Análise dos ciclos virais (V ou F)</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-500/10 px-2 py-1 font-medium text-yellow-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                                Atenção aos Detalhes
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A questão exige a análise cuidadosa de cada etapa. O erro na quarta afirmativa é a "pegadinha": a incorporação do DNA viral ao DNA da célula hospedeira ocorre no ciclo LISOGÊNICO, e não no lítico. No ciclo lítico, o material genético viral fica livre no citoplasma e comanda a maquinaria celular para produzir novos vírus.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Em questões de V ou F, leia cada afirmativa como se fosse uma pergunta separada. Uma única palavra errada (como "lítico" no lugar de "lisogênico") invalida toda a sentença.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise da Afirmativa Falsa:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[4ª]</span> O erro está em atribuir a incorporação do DNA viral ao ciclo lítico. Essa integração, formando o que se chama de "profago", é a marca registrada do ciclo lisogênico.</li>
+                            </ul>
+                        </div>
                     </div>
+
+                    <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: Plantas avasculares</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-sky-500/10 px-2 py-1 font-medium text-sky-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 16c1.255 0 2.443-.29 3.5-.804V4.804zM14.5 4c1.255 0 2.443.29 3.5.804v10A7.969 7.969 0 0114.5 16c-1.255 0-2.443-.29-3.5-.804V4.804A7.968 7.968 0 0114.5 4z" /></svg>
+                                Decoreba Essencial
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Esta é uma questão de classificação pura. "Avascular" significa "sem vasos condutores". Este é o traço definidor do grupo das Briófitas, que engloba musgos, hepáticas e antóceros. Todos os outros filos mencionados (Pterophyta, Lycophyta, Coniferophyta) pertencem a grupos de plantas vasculares (traqueófitas).</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Lembre-se da escada evolutiva: **B**riófitas (base, simples, avasculares) -> **P**teridófitas (primeiros vasos) -> **G**imnospermas (primeiras sementes) -> **A**ngiospermas (flores e frutos). O "B" vem primeiro no alfabeto e na evolução das plantas terrestres.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b,c,d,e]</span> Todas as outras alternativas misturam filos de briófitas com filos de plantas vasculares, tornando-as incorretas.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: Diferenças entre os grupos vegetais</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                <svg class="h-1.5 w-1.5 fill-blue-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>
+                                🎯 Foco FUVEST
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A alternativa (d) é a única que apresenta um conjunto de informações corretas. As briófitas são avasculares (limitando seu tamanho), dependem da água para fecundação (gameta masculino flagelado nada até o feminino) e sua fase de vida dominante (a planta verde que vemos) é o gametófito (haploide).</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">Questões de comparação entre grupos exigem atenção aos detalhes. Crie uma tabela comparativa com as "novidades evolutivas": vasos condutores, sementes, pólen, flores e frutos. Isso organiza o raciocínio e evita confusões.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[a]</span> Inverte as características de nervuras e raízes entre monocotiledôneas e dicotiledôneas. Dica: Monocotiledôneas = nervuras **PARALELAS** e raízes **FASCICULADAS** (cabeleira).</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b]</span> A árvore (angiosperma) é o **ESPORÓFITO (2n)**, a fase dominante. O gametófito é microscópico e contido na flor.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c]</span> Erro clássico: Pteridófitas (samambaias) têm vasos, mas **NÃO** têm sementes. As sementes surgem nas Gimnospermas.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[e]</span> Outro erro comum: Gimnospermas (pinheiros) **NÃO** têm frutos. A pinha é um estróbilo, a estrutura que contém as sementes ("pinhão"). Frutos são ovários desenvolvidos, exclusivos das Angiospermas.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Questão 05 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: Características de briófitas e pteridófitas</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-gray-500/10 px-2 py-1 font-medium text-gray-400">
+                                🧠 Simples e Direto
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Uma questão de associação direta. (1) Ausência de vasos limita o tamanho, característica das briófitas. (2) Samambaias são o exemplo mais famoso de pteridófitas. (1) Musgos são os principais representantes das briófitas. (2) Pteridófitas foram o primeiro grupo a apresentar vasos condutores.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Se a questão dá exemplos, use-os! Pensou em "samambaia", pensou em "pteridófita". Pensou em "musgo", pensou em "briófita".</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Questão 06 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: Comparando Briófitas (B) e Gimnospermas (G)</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                <svg class="h-1.5 w-1.5 fill-blue-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>
+                                🎯 Foco UNICAMP
+                            </span>
+                             <span class="text-gray-500">Raciocínio Comparativo</span>
+                        </div>
+                         <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                         <p class="text-gray-400"><strong>Comentário:</strong> A questão pede para agrupar as características. Para Briófitas (B): I (gametófito dominante), III (dependência de água), VI (gameta flagelado). Para Gimnospermas (G): II (tubo polínico, que elimina a dependência da água), IV (semente), V (vasos condutores).</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">A principal "virada de chave" na evolução das plantas foi a independência da água para a fecundação. Isso só foi possível com o surgimento do grão de pólen e do tubo polínico nas Gimnospermas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Questão 07 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: Evolução das plantas terrestres (V ou F)</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-500/10 px-2 py-1 font-medium text-yellow-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                                Atenção aos Detalhes
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O erro está na terceira afirmativa. Briófitas e Pteridófitas, por possuírem gametas masculinos flagelados (anterozoides), DEPENDEM da presença de água em estado líquido para que ocorra a fecundação. Esta é uma característica primitiva que as restringe a ambientes mais úmidos.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">"Dependência de água para fecundação" = Briófitas e Pteridófitas. "Independência de água para fecundação" = Gimnospermas e Angiospermas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 08 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: Estrutura "soro" nas Pteridófitas</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-sky-500/10 px-2 py-1 font-medium text-sky-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 16c1.255 0 2.443-.29 3.5-.804V4.804zM14.5 4c1.255 0 2.443.29 3.5.804v10A7.969 7.969 0 0114.5 16c-1.255 0-2.443-.29-3.5-.804V4.804A7.968 7.968 0 0114.5 4z" /></svg>
+                                Decoreba Essencial
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A samambaia que vemos é o esporófito (2n). Os soros contêm esporângios. Dentro deles, ocorre meiose, produzindo esporos (n). O esporo germina e forma o gametófito (n), chamado de prótalo. Portanto, o soro é o local de produção de esporos por meiose.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">Não confunda esporo com gameta! Esporo (n) dá origem ao gametófito (n). Gameta (n) se funde com outro gameta para formar o zigoto (2n), que dará origem ao esporófito (2n).</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 09 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: Adaptação de gramíneas (polinização pelo vento)</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                             <span class="text-gray-500">Adaptação e Eficiência</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A questão descreve a polinização pelo vento (anemofilia) como "pouco eficiente". O ENEM adora esse tipo de raciocínio: se um processo é pouco eficiente, qual adaptação compensa isso? A resposta é a grande quantidade. Como a chance de um grão de pólen chegar ao alvo é baixa, a planta produz uma quantidade enorme para aumentar a probabilidade estatística de sucesso.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Plantas polinizadas por animais têm flores vistosas, com cheiro, néctar. Plantas polinizadas pelo vento têm flores discretas, sem atrativos, mas produzem muito pólen leve.</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 10 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: Análise das imagens (Ipê, Pinha, Bromélia)</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-500/10 px-2 py-1 font-medium text-yellow-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                                Atenção aos Detalhes
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A alternativa (a) descreve corretamente a bromélia (3) como uma planta epífita, que usa outra como suporte para obter mais luz, sem prejudicá-la (é uma relação de inquilinismo).</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-violet-500/20">
+                            <p class="font-bold text-violet-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">Epifitismo não é parasitismo! A bromélia não rouba nutrientes da árvore, apenas se apoia nela.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b]</span> A araucária (2) é gimnosperma, não possui flores nem frutos.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c]</span> Gimnospermas, por terem grão de pólen, NÃO dependem da água para reprodução.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[d]</span> O Ipê (1) e a Araucária (2) são fanerógamas (possuem estruturas de reprodução visíveis - flor e estróbilo), não criptógamas.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[e]</span> Em todos esses exemplos (vasculares), a fase de vida dominante é o esporófito (2n). A única exceção na escada evolutiva são as briófitas (gametófito dominante).</li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </main>
         
-        <footer class="mt-20 pt-8 border-t border-gray-700 text-center text-gray-400">
-            <div class="flex justify-center items-center space-x-6 mb-4">
-                 <a href="index.html" class="hover:text-white transition-colors">Página Inicial</a>
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
             </div>
-            <p class="text-sm">&copy; 2025 Raphael Fugiwara. Todos os direitos reservados.</p>
         </footer>
 
     </div>
@@ -211,11 +348,48 @@
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-emerald-900/10');
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-violet-900/10');
             } else {
-                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-emerald-900/10');
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-violet-900/10');
             }
         });
+        
+        // Chart.js Logic for Biology
+        const ctx = document.getElementById('biologiaChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['ENEM', 'FUVEST', 'UNICAMP', 'PUC-Rio'],
+                    datasets: [{
+                        label: 'Nº de Questões (Estimativa 10 anos)',
+                        data: [15, 12, 10, 8],
+                        backgroundColor: 'rgba(159, 122, 234, 0.7)',
+                        borderColor: '#9F7AEA',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" }}
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
     });
     </script>
 </body>

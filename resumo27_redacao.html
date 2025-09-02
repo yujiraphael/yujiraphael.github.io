@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redação: Análise Textual e Estrutura - Raphael Fugiwara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(100, 116, 139, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(71, 85, 105, 0.1), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 15s ease infinite;
+            z-index: -1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1120;
+            color: #d1d5db;
+        }
+        .content-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 116, 139, 0.1);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        #main-header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-[#cce3ff]">Raphael Fugiwara</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#painel" class="text-gray-300 hover:text-white transition-colors">Painel</a>
+                <a href="index.html#materias" class="text-gray-300 hover:text-white transition-colors">Matérias</a>
+                <a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
+
+        <header class="text-center pt-16 pb-20">
+            <p class="text-lg font-semibold text-slate-400 scroll-reveal">Redação</p>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Análise Textual e Estrutura da Redação</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
+                Um guia visual para dominar a interpretação de textos, a estrutura dissertativa-argumentativa e as competências da redação do ENEM.
+            </p>
+        </header>
+
+        <main>
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-slate-700">Decifrando as 5 Competências do ENEM</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="content-card rounded-lg p-6"><h3 class="font-bold text-lg text-white mb-2">C1: Domínio da Norma Padrão</h3><p class="text-gray-400">Avalia desvios gramaticais (acentuação, crase, concordância) e de convenções da escrita.</p></div>
+                    <div class="content-card rounded-lg p-6"><h3 class="font-bold text-lg text-white mb-2">C2: Compreensão do Tema</h3><p class="text-gray-400">Verifica se você entendeu o tema, aplicou repertório sociocultural e respeitou a estrutura dissertativa.</p></div>
+                    <div class="content-card rounded-lg p-6"><h3 class="font-bold text-lg text-white mb-2">C3: Argumentação</h3><p class="text-gray-400">Analisa a seleção, relação e organização de informações e argumentos em defesa de um ponto de vista.</p></div>
+                    <div class="content-card rounded-lg p-6"><h3 class="font-bold text-lg text-white mb-2">C4: Coesão Textual</h3><p class="text-gray-400">Observa o uso de conectivos (conjunções, pronomes) para articular as partes do texto de forma fluida.</p></div>
+                    <div class="content-card rounded-lg p-6"><h3 class="font-bold text-lg text-white mb-2">C5: Proposta de Intervenção</h3><p class="text-gray-400">Exige uma solução detalhada para o problema, com Agente, Ação, Meio, Finalidade e Detalhamento.</p></div>
+                     <div class="content-card rounded-lg p-6 bg-slate-800 border-slate-600"><h3 class="font-bold text-lg text-white mb-2">O Objetivo Final</h3><p class="text-gray-400">Dominar as 5 competências é o caminho para a nota 1000, demonstrando maturidade intelectual e cidadania.</p></div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-slate-700">A Estrutura do Texto Perfeito</h2>
+                <div class="content-card rounded-lg p-8">
+                    <div class="space-y-4">
+                         <!-- Introdução -->
+                        <div class="flex items-start"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center font-black text-xl text-slate-300">1</div><div class="ml-4"><h3 class="font-bold text-lg text-white">Introdução (~5 linhas)</h3><p class="text-gray-400">Apresente o tema, contextualize com um repertório e exponha sua tese de forma clara, antecipando os dois argumentos que serão desenvolvidos.</p></div></div>
+                        <!-- Desenvolvimento 1 -->
+                        <div class="flex items-start"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center font-black text-xl text-slate-300">2</div><div class="ml-4"><h3 class="font-bold text-lg text-white">Desenvolvimento 1 (~7 linhas)</h3><p class="text-gray-400">Aprofunde o primeiro argumento. Use o Tópico Frasal, apresente repertório, análise crítica e conclua o parágrafo reforçando a ideia.</p></div></div>
+                        <!-- Desenvolvimento 2 -->
+                        <div class="flex items-start"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center font-black text-xl text-slate-300">3</div><div class="ml-4"><h3 class="font-bold text-lg text-white">Desenvolvimento 2 (~7 linhas)</h3><p class="text-gray-400">Aprofunde o segundo argumento, seguindo a mesma estrutura do parágrafo anterior e conectando-o ao primeiro.</p></div></div>
+                        <!-- Conclusão -->
+                        <div class="flex items-start"><div class="flex-shrink-0 w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center font-black text-xl text-slate-300">4</div><div class="ml-4"><h3 class="font-bold text-lg text-white">Conclusão (~8-10 linhas)</h3><p class="text-gray-400">Retome a tese e apresente a Proposta de Intervenção completa (5 elementos), solucionando os problemas discutidos nos desenvolvimentos.</p></div></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-slate-700">Análise da Proposta de Redação (pH 27)</h2>
+                 <div class="content-card rounded-lg p-8">
+                     <h3 class="text-xl font-bold text-slate-300 mb-2">Tema: Obstáculos à cidadania plena da população LGBTQIA+ no Brasil</h3>
+                     <p class="text-gray-400 mb-6">Um tema social relevante que exige uma análise crítica sobre preconceito estrutural, violência e a falta de políticas públicas eficazes.</p>
+                     <div class="space-y-4">
+                         <div><h4 class="font-semibold text-white">Leitura da Frase Temática:</h4><p class="text-gray-400 text-sm">"Obstáculos" (dificuldades, barreiras), "cidadania plena" (acesso a todos os direitos: civis, sociais, políticos), "população LGBTQIA+" (o grupo social em foco) e "no Brasil" (recorte espacial).</p></div>
+                         <div><h4 class="font-semibold text-white">Possíveis Teses e Argumentos:</h4><p class="text-gray-400 text-sm">Você pode argumentar que a cidadania plena é impedida pela <span class="text-slate-300">violência motivada pelo preconceito (Argumento 1)</span> e pela <span class="text-slate-300">insuficiência de políticas públicas e representatividade (Argumento 2)</span>.</p></div>
+                         <div><h4 class="font-semibold text-white">Sugestões de Repertório (da lista):</h4><p class="text-gray-400 text-sm">Judith Butler para questionar normas de gênero; dados da ANTRA sobre violência; decisão do STF que criminaliza a homofobia; artistas como Pabllo Vittar e Linn da Quebrada para falar de representatividade.</p></div>
+                     </div>
+                 </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-slate-700">Resolução Comentada das Questões (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: Tirinha da Laerte</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-red-500/10 px-2 py-1 font-medium text-red-400"><svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>❗️ Conceito-Chave</span>
+                            <span class="text-gray-500">Intertextualidade</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O recurso expressivo fundamental é a intertextualidade. O humor e o sentido da tirinha dependem do conhecimento prévio do leitor sobre a música "Argumento" ("[...]Leva esse samba pra outro lugar... Se um dia...") de Paulinho da Viola. A personagem ouve a canção vindo do avião, estabelecendo um diálogo entre a tirinha e a obra musical.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-slate-500/20">
+                            <p class="font-bold text-slate-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Em tirinhas e charges, o humor muitas vezes nasce da quebra de expectativa ou do conhecimento prévio do leitor. Procure por referências externas (intertextualidade) ou jogos de palavras.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Questão 02 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: A tela "A Carioca"</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto mostra que a recusa da obra não foi por uma falha técnica, mas por ela não se encaixar no que o Império considerava "aceitável" como representação da nudez nacional. A aceitação da arte, nesse caso, estava condicionada a um projeto estético e ideológico mais amplo, que privilegiava a figura indígena romantizada em detrimento de uma sensualidade mais realista e "exótica".</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-slate-500/20">
+                            <p class="font-bold text-slate-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">A aceitação de uma obra de arte nunca é neutra. Sempre se pergunte: 'Quais eram os valores e as expectativas da sociedade e do poder na época em que foi criada?'</p>
+                        </div>
+                    </div>
+                    
+                     <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: O "internetês"</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A pergunta "O jeito eh tc e esperar pra ver?" no final do texto serve para exemplificar concretamente o fenômeno discutido. O autor usa a própria linguagem da internet ("eh", "tc") para ilustrar como essa forma de escrita, que se aproxima da oralidade, pode ser o futuro da comunicação e potencialmente simplificar a ortografia.</p>
+                    </div>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: Além da Revolução da Informação</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O autor afirma que a "força motriz" da revolução da informação é "algo que praticamente ninguém previu [...] o comércio eletrônico — aparecimento explosivo da internet como um canal importante, talvez principal, de distribuição mundial". Ele enfatiza que este é o elemento mais impactante e surpreendente do processo.</p>
+                    </div>
+
+                    <!-- Questão 05 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: O reggae no Maranhão</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto descreve São Luís como a "capital brasileira do reggae", um estilo de origem jamaicana, ao mesmo tempo em que menciona suas fortes tradições locais, como o Bumba meu boi. Isso demonstra a coexistência de referenciais culturais díspares (um global e um local) na construção da identidade cultural e musical da região.</p>
+                    </div>
+
+                    <!-- Questão 06 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: Campanha "Criança não namora"</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A campanha utiliza a imagem de duas crianças em uma cena contemplativa e inocente (olhando para o céu estrelado) para criar um contraste com o texto verbal "CRIANÇA NÃO NAMORA". A imagem representa a infância em seu estado natural, que a campanha visa proteger da sexualização precoce. A foto em si evoca uma relação de amizade e descoberta, não de namoro.</p>
+                    </div>
+
+                    <!-- Questão 07 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: Tirinha "Proibido"</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Nos três primeiros quadros, a palavra "PROIBIDO" funciona como um adjetivo na placa, indicando que algo (não especificado) é proibido naquele local. No último quadro, a placa de cima ("VOCÊ ESTÁ ENTRANDO EM") ressignifica a placa de baixo. "PROIBIDO" deixa de ser um adjetivo e passa a ser o nome do lugar, um substantivo próprio. Essa quebra de expectativa gramatical e semântica gera o humor.</p>
+                    </div>
+
+                    <!-- Questão 08 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: Carta da Terra</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto tem a estrutura de um manifesto ou declaração de princípios. Ele usa verbos no imperativo ("Respeitar", "proteger") e uma linguagem formal para propor regras e responsabilidades para "os povos da Terra". Essa característica de estabelecer normas de conduta para um coletivo insere o texto na esfera institucional.</p>
+                    </div>
+
+                    <!-- Questão 09 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: Texto sobre Isaac Newton</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto narra os principais eventos da vida de Isaac Newton em ordem cronológica: nascimento, estudos, descobertas e publicações. A forma de composição, o tema (a vida de uma pessoa) e o estilo de linguagem (descritivo e narrativo) são característicos do gênero textual biográfico.</p>
+                    </div>
+
+                    <!-- Questão 10 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: "Fico assim sem você"</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A música, originária do funk e popularizada por Claudinho e Buchecha, foi regravada por Adriana Calcanhotto e passou a ser ouvida por um público infantil de famílias que consomem MPB. Esse trânsito entre diferentes nichos culturais mostra como a interpretação de um artista já consagrado em um determinado meio (MPB) pode legitimar e introduzir uma obra de origem popular a novos públicos.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-slate-900/10');
+            } else {
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-slate-900/10');
+            }
+        });
+        
+        const ctx = document.getElementById('redacaoChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['ENEM', 'FUVEST', 'UNICAMP', 'UERJ'],
+                    datasets: [{
+                        label: 'Peso da Redação na Nota Final (%)',
+                        data: [33, 25, 20, 20], // Estimated weight
+                        backgroundColor: 'rgba(100, 116, 139, 0.7)',
+                        borderColor: '#64748B',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { 
+                        legend: { display: false },
+                         tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'Peso Aprox: ' + context.parsed.y + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 40,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" },
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                             }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+

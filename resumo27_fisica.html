@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Física: Ondulatória - Raphael Fugiwara</title>
+    <title>Física: Introdução à Ondulatória - Raphael Fugiwara</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @keyframes aurora {
             0% { background-position: 0% 50%; }
@@ -19,8 +20,8 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle at top left, rgba(0, 114, 232, 0.15), transparent 40%),
-                        radial-gradient(circle at bottom right, rgba(0, 68, 158, 0.15), transparent 40%);
+            background: radial-gradient(circle at top left, rgba(251, 146, 60, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.1), transparent 40%);
             background-size: 300% 300%;
             animation: aurora 15s ease infinite;
             z-index: -1;
@@ -33,7 +34,7 @@
         .content-card {
             background-color: rgba(17, 24, 39, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(134, 193, 255, 0.1);
+            border: 1px solid rgba(251, 146, 60, 0.1);
         }
         .scroll-reveal {
             opacity: 0;
@@ -59,114 +60,195 @@
 
     <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
 
-        <!-- HERO SECTION -->
         <header class="text-center pt-16 pb-20">
-            <p class="text-lg font-semibold text-[#86C1FF] scroll-reveal">Física</p>
-            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Dominando a Ondulatória</h1>
+            <p class="text-lg font-semibold text-orange-400 scroll-reveal">Física</p>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Introdução à Ondulatória</h1>
             <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
-                Um guia focado nos conceitos essenciais para resolver as questões de ondulatória dos principais vestibulares do país.
+                Uma análise das ondas, desde a sua natureza fundamental até a equação que rege sua velocidade, frequência e comprimento.
             </p>
         </header>
 
         <main>
-            <!-- FORMULÁRIO RÁPIDO -->
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Formulário Rápido</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="content-card rounded-lg p-6 text-center">
-                        <h3 class="font-semibold text-lg text-[#86C1FF]">Equação Fundamental</h3>
-                        <p class="text-2xl font-mono mt-2 text-white">v = λ ⋅ f</p>
-                    </div>
-                    <div class="content-card rounded-lg p-6 text-center">
-                        <h3 class="font-semibold text-lg text-[#86C1FF]">Frequência</h3>
-                        <p class="text-2xl font-mono mt-2 text-white">f = 1 / T</p>
-                    </div>
-                    <div class="content-card rounded-lg p-6 text-center">
-                        <h3 class="font-semibold text-lg text-[#86C1FF]">Período</h3>
-                        <p class="text-2xl font-mono mt-2 text-white">T = 1 / f</p>
-                    </div>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-orange-900">Incidência nos Vestibulares</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                     <p class="text-gray-400 mb-6 text-center">Estimativa do número de questões sobre Ondulatória (fundamentos, fenômenos e acústica) nos últimos 10 anos.</p>
+                    <canvas id="fisicaChart"></canvas>
                 </div>
             </section>
             
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Natureza das Ondas</h2>
-                <div class="content-card rounded-lg p-8">
-                     <p class="text-gray-400 mb-8">A primeira distinção crucial em ondulatória é entre ondas mecânicas e eletromagnéticas. Entender isso resolve as questões 1 e 10 da sua lista.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-orange-900">Estratégias para cada Prova</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                    <div class="space-y-6">
                         <div>
-                            <h3 class="font-bold text-xl text-[#86C1FF] mb-3">Ondas Mecânicas</h3>
-                            <p class="text-gray-300">Precisam de um **meio material** para se propagar (sólido, líquido ou gás). Elas são vibrações da matéria.</p>
-                            <p class="text-gray-400 mt-4 text-sm"><strong>Exemplos:</strong> Som, ondas em cordas, ondas na água.</p>
-                            <p class="font-bold text-red-400 mt-2">NÃO se propagam no vácuo!</p>
+                            <h3 class="text-xl font-bold text-orange-400 mb-2">ENEM</h3>
+                            <p class="text-gray-400">Totalmente focado em aplicações cotidianas. As questões envolvem tecnologias (Wi-Fi, rádio, micro-ondas), instrumentos musicais e o espectro eletromagnético. O ENEM testa sua habilidade de ler um texto de apoio, identificar o fenômeno ondulatório em questão e aplicar a equação fundamental ($v = \lambda \cdot f$). Saber a ordem das ondas no espectro eletromagnético (rádio -> micro-ondas -> infravermelho -> visível -> UV -> X -> gama) é crucial.</p>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-[#86C1FF] mb-3">Ondas Eletromagnéticas</h3>
-                            <p class="text-gray-300">São perturbações em campos elétricos e magnéticos. **Não precisam de meio material**.</p>
-                             <p class="text-gray-400 mt-4 text-sm"><strong>Exemplos:</strong> Luz, ondas de rádio, raios gama.</p>
-                            <p class="font-bold text-green-400 mt-2">Propagam-se no vácuo com a velocidade da luz.</p>
+                        <div class="border-t border-white/10 pt-6">
+                             <h3 class="text-xl font-bold text-orange-400 mb-2">FUVEST & UNICAMP</h3>
+                             <p class="text-gray-400">Exigem uma base matemática mais sólida. Espere questões que envolvam a análise de gráficos de ondas (senoides), cálculos com a equação fundamental em cenários mais complexos e a compreensão profunda dos fenômenos (refração, difração, interferência, polarização). A Unicamp pode apresentar situações-problema que exigem a montagem de um raciocínio em etapas.</p>
+                        </div>
+                         <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-orange-400 mb-2">PUC-Rio & UERJ</h3>
+                            <p class="text-gray-400">São mais conceituais e diretas. O foco é garantir que você domina as definições: o que é uma onda mecânica vs. eletromagnética, longitudinal vs. transversal. Questões de cálculo são geralmente mais simples e diretas, testando a aplicação correta das fórmulas de frequência, período e velocidade.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section class="mb-20 scroll-reveal">
-                 <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">O Espectro Eletromagnético</h2>
-                 <div class="content-card rounded-lg p-8">
-                    <p class="text-gray-400 mb-6">As questões 5, 6 e 7 exploram o espectro. Todas as ondas aqui viajam à mesma velocidade no vácuo. O que as diferencia é a frequência e o comprimento de onda.</p>
-                    <div class="w-full bg-gray-900/50 p-4 rounded-lg border border-white/10">
-                         <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
-                            <defs>
-                                <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="red"/><stop offset="16.6%" stop-color="orange"/><stop offset="33.3%" stop-color="yellow"/><stop offset="50%" stop-color="green"/><stop offset="66.6%" stop-color="blue"/><stop offset="83.3%" stop-color="indigo"/><stop offset="100%" stop-color="violet"/>
-                                </linearGradient>
-                            </defs>
-                            <text x="10" y="20" font-family="sans-serif" font-size="12" fill="#d1d5db">Baixa Frequência / λ Longo</text>
-                            <text x="620" y="20" font-family="sans-serif" font-size="12" fill="#d1d5db">Alta Frequência / λ Curto</text>
-                            <rect x="10" y="30" width="780" height="40" fill="#1f2937" stroke="#374151" stroke-width="1"/>
-                            <rect x="350" y="30" width="100" height="40" fill="url(#rainbow)"/>
-                            <text x="15" y="60" font-family="sans-serif" font-size="11" fill="#9ca3af">Rádio</text>
-                            <text x="120" y="60" font-family="sans-serif" font-size="11" fill="#9ca3af">Micro-ondas</text>
-                            <text x="240" y="60" font-family="sans-serif" font-size="11" fill="#9ca3af">Infravermelho</text>
-                            <text x="375" y="60" font-family="sans-serif" font-size="11" fill="white" style="text-shadow: 1px 1px 2px black;">Visível</text>
-                            <text x="480" y="60" font-family="sans-serif" font-size="11" fill="#9ca3af">Ultravioleta</text>
-                            <text x="590" y="60" font-family="sans-serif" font-size="11" fill="#9ca3af">Raio-X</text>
-                            <text x="690" y="60" font-family="sans-serif" font-size="11" fill="#9ca3af">Raio Gama</text>
-                            <path d="M 10 80 H 790" stroke="#d1d5db" stroke-width="1.5" marker-end="url(#arrow)"/>
-                            <text x="350" y="95" font-family="sans-serif" font-size="12" fill="#d1d5db">Aumento de Energia →</text>
-                            <defs>
-                                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d1d5db"/></marker>
-                            </defs>
-                        </svg>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-orange-900">Resolução Comentada (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: Telefone de lata no espaço</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-red-500/10 px-2 py-1 font-medium text-red-400">
+                                <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>
+                                ❗️ Conceito-Chave
+                            </span>
+                            <span class="text-gray-500">Natureza das Ondas</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A voz produz uma onda sonora, que é uma onda mecânica. Ondas mecânicas precisam de um meio material para se propagar (elas não se propagam no vácuo do espaço). No experimento, a vibração da lata é transmitida pelo barbante (meio material) até a outra lata, permitindo a comunicação.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-orange-500/20">
+                            <p class="font-bold text-orange-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Lembre-se: **Som = Mecânica** (precisa de meio). **Luz = Eletromagnética** (não precisa de meio). No espaço, você vê a explosão, mas não ouve o "boom".</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[a,c]</span> O barbante e a lata transmitem ondas mecânicas, não eletromagnéticas.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b,d]</span> O vácuo impede a propagação de ondas mecânicas, tornando a comunicação impossível sem o barbante.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="list-disc list-inside text-gray-400 space-y-2 mt-6">
-                        <li><span class="text-white font-semibold">Alta Frequência (f)</span> = Alta Energia = <span class="text-white font-semibold">Pequeno Comprimento de Onda (λ)</span>.</li>
-                        <li>Na luz visível, a maior frequência (e menor λ) é a <span class="text-white font-semibold">violeta</span>, ideal para armazenar mais dados (questão 5).</li>
-                    </ul>
-                </div>
-            </section>
+                    
+                    <!-- Questão 02 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: Oscilação do barco</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-gray-500/10 px-2 py-1 font-medium text-gray-400">
+                                🧠 Simples e Direto
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A frequência (f) é definida como o número de oscilações (n) dividido pelo intervalo de tempo ($\Delta t$). A questão fornece os dados diretamente: $n = 14$ oscilações e $\Delta t = 20$ segundos. Portanto, $f = n / \Delta t = 14 / 20 = 0,70$ Hz.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-orange-500/20">
+                            <p class="font-bold text-orange-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">A unidade Hertz (Hz) significa "por segundo". Se a questão pede a frequência em Hz, basta dividir o número de eventos pelo tempo em segundos.</p>
+                        </div>
+                    </div>
 
-            <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Foco nos Vestibulares</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">ENEM</h3>
-                        <p class="text-gray-400"><strong>Foco:</strong> Conceitos e interpretação. O Enem adora questões sobre o espectro eletromagnético (questões 5, 6, 7), pedindo que você relacione frequência com energia. Cálculos simples de frequência a partir de dados do cotidiano também são comuns (questão 2).</p>
+                    <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: Pulsos da Estimulação Elétrica (TENS)</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-500/10 px-2 py-1 font-medium text-yellow-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                                Atenção às Unidades
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A frequência é de 2000 Hz, o que significa 2000 pulsos por segundo. A duração de cada grupo é de 10 ms (milisegundos). Primeiro, converta o tempo para segundos: $10 \text{ ms} = 10 \times 10^{-3} \text{ s} = 0,01 \text{ s}$. Agora, use uma regra de três simples: se são 2000 pulsos em 1 segundo, em 0,01 segundo teremos $x$ pulsos. $x = 2000 \times 0,01 = 20$ pulsos.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-orange-500/20">
+                            <p class="font-bold text-orange-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">A "pegadinha" aqui é a mistura de unidades (Hz e ms). Sempre converta tudo para o Sistema Internacional (segundos, metros, etc.) antes de fazer o cálculo para não errar.</p>
+                        </div>
                     </div>
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Vestibulares Tradicionais</h3>
-                         <p class="text-gray-400"><strong>Foco:</strong> Aplicação da Equação Fundamental. Espere problemas que exigem o uso direto de <code class="font-mono bg-gray-900 p-1 rounded">v = λ ⋅ f</code> (questão 8). A distinção entre ondas mecânicas/eletromagnéticas e o que acontece na mudança de meio também são temas recorrentes.</p>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: Unidade FLOPS</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A unidade FLOPS (Floating-point Operations Per Second) mede a quantidade de operações (eventos) que ocorrem por segundo. Essa definição - número de eventos por unidade de tempo - é exatamente a definição da grandeza física frequência, cuja unidade no SI é o Hertz (Hz).</p>
                     </div>
+
+                    <!-- Questão 05 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: Gravação em discos ópticos (CD/DVD)</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                             <span class="text-gray-500">Tecnologia e Conceitos</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto explica que para armazenar mais dados, as cavidades no disco precisam ser menores. O limite para ler essas cavidades é a difração, que ocorre quando a luz tem um comprimento de onda ($\lambda$) da mesma ordem de grandeza do obstáculo. Portanto, para ler cavidades menores, é necessário usar um laser com menor comprimento de onda. No espectro da luz visível (Vermelho, Laranja, Amarelo, Verde, Azul, Anil, Violeta), o violeta é a cor com o menor comprimento de onda.</p>
+                    </div>
+                    
+                    <!-- Questão 06 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: Frequência das notas de piano</h4>
+                         <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                         <p class="text-gray-400"><strong>Comentário:</strong> Analisando a tabela, percebe-se que a cada aumento de uma oitava (n aumenta em 1), a frequência dobra (110 -> 220 -> 440 -> 880...). Uma relação onde a variável dobra a cada passo constante é uma função exponencial de base 2. O gráfico confirma essa curva de crescimento exponencial, não linear.</p>
+                    </div>
+                    
+                    <!-- Questão 07 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: Raios gama vs. Luz visível</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Tanto os raios gama quanto a luz visível são ondas eletromagnéticas. A propriedade fundamental de TODAS as ondas eletromagnéticas é que elas se propagam no vácuo com a mesma velocidade, a velocidade da luz (c). Elas se diferenciam pela frequência e pelo comprimento de onda (raios gama têm altíssima frequência e baixíssimo comprimento de onda).</p>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[a]</span> Ondas eletromagnéticas também se propagam em meios materiais (como a luz na água), não apenas no vácuo.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b]</span> Raios gama têm comprimentos de onda MENORES e são extremamente energéticos e perigosos.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c]</span> Raios gama têm frequências MAIORES.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[d]</span> Como viajam à mesma velocidade no vácuo, chegam ao mesmo tempo.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Questão 08 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: Ondas de rádio</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> As ondas de rádio e as micro-ondas são tipos de ondas eletromagnéticas, fazendo parte do mesmo espectro que a luz visível, apenas em faixas de frequência diferentes.</p>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[a]</span> O cálculo do período (T = 1/f) para 60 MHz estaria correto, mas o do comprimento de onda ($\lambda = c/f$) seria $\lambda = (3 \times 10^8) / (60 \times 10^6) = 5$ m, não 1,6 m.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b]</span> AM significa Amplitude Modulada e FM Frequência Modulada, não são ondas "médias".</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c]</span> Ondas eletromagnéticas são transversais, não longitudinais.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[d]</span> A unidade de pressão no SI é o Pascal (Pa), não o bar.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Questão 09 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: Propriedades das ondas eletromagnéticas</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O arco-íris é o fenômeno da dispersão. A luz branca do Sol, ao entrar nas gotas de água, tem sua velocidade alterada. Como cada cor (cada frequência) sofre uma pequena variação de velocidade diferente dentro da água, elas se refratam com ângulos diferentes, separando-se e formando o espectro de cores que vemos.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-orange-500/20">
+                            <p class="font-bold text-orange-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">Ao mudar de meio, a **frequência** de uma onda NUNCA muda. O que muda é a sua **velocidade** e, consequentemente, seu **comprimento de onda** ($v = \lambda \cdot f$).</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 10 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: SONAR do submarino</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> SONAR (Sound Navigation and Ranging) utiliza ondas sonoras. O som é uma onda mecânica, pois precisa de um meio material (no caso, a água) para se propagar. Ele funciona emitindo um pulso sonoro e medindo o tempo que o eco (reflexão) leva para retornar, calculando assim a distância do objeto.</p>
+                    </div>
+
                 </div>
             </section>
         </main>
         
-        <footer class="mt-20 pt-8 border-t border-gray-700 text-center text-gray-400">
-            <div class="flex justify-center items-center space-x-6 mb-4">
-                <a href="../" class="hover:text-white transition-colors">Voltar</a>
-                <span class="text-gray-600">|</span>
-                <a href="index.html" class="hover:text-white transition-colors">Página Inicial</a>
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
             </div>
-            <p class="text-sm">&copy; 2025 Raphael Fugiwara. Todos os direitos reservados.</p>
         </footer>
 
     </div>
@@ -187,13 +269,48 @@
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-orange-900/10');
             } else {
-                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-orange-900/10');
             }
         });
+        
+        const ctx = document.getElementById('fisicaChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['ENEM', 'FUVEST', 'UNICAMP', 'UERJ'],
+                    datasets: [{
+                        label: 'Nº de Questões (Estimativa 10 anos)',
+                        data: [22, 18, 15, 12],
+                        backgroundColor: 'rgba(251, 146, 60, 0.7)',
+                        borderColor: '#FB923C',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" }}
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
     });
     </script>
 </body>
 </html>
-

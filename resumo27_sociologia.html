@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociologia: Violência, Desigualdade e Capitais - Raphael Fugiwara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.1), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 15s ease infinite;
+            z-index: -1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1120;
+            color: #d1d5db;
+        }
+        .content-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        #main-header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-[#cce3ff]">Raphael Fugiwara</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#painel" class="text-gray-300 hover:text-white transition-colors">Painel</a>
+                <a href="index.html#materias" class="text-gray-300 hover:text-white transition-colors">Matérias</a>
+                <a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
+
+        <header class="text-center pt-16 pb-20">
+            <p class="text-lg font-semibold text-purple-400 scroll-reveal">Sociologia</p>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Violência, Desigualdade e Capitais</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
+                Uma análise crítica das estruturas de poder, do racismo estrutural e das diversas formas de capital que moldam a sociedade brasileira.
+            </p>
+        </header>
+
+        <main>
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-purple-900">Decifrando Conceitos-Chave</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Bourdieu -->
+                    <div class="content-card rounded-lg p-8">
+                        <h3 class="text-xl font-bold text-purple-400 mb-4">Os Tipos de Capital (Pierre Bourdieu)</h3>
+                        <p class="text-gray-400 mb-6">Para Bourdieu, a posição social não depende só de dinheiro. Ela é uma soma de diferentes "capitais".</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center"><div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-900 flex items-center justify-center font-bold text-purple-300">$</div><div class="ml-3"><h4 class="font-semibold text-white">Capital Econômico</h4><p class="text-sm text-gray-400">Renda, bens, patrimônio. O mais óbvio.</p></div></div>
+                            <div class="flex items-center"><div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-900 flex items-center justify-center font-bold text-purple-300"><strong>C</strong></div><div class="ml-3"><h4 class="font-semibold text-white">Capital Cultural</h4><p class="text-sm text-gray-400">Conhecimento, diplomas, "bom gosto", erudição.</p></div></div>
+                            <div class="flex items-center"><div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-900 flex items-center justify-center font-bold text-purple-300"><strong>S</strong></div><div class="ml-3"><h4 class="font-semibold text-white">Capital Social</h4><p class="text-sm text-gray-400">Rede de contatos, "networking", influência.</p></div></div>
+                        </div>
+                    </div>
+                    <!-- Silvio Almeida -->
+                    <div class="content-card rounded-lg p-8">
+                         <h3 class="text-xl font-bold text-purple-400 mb-4">Racismo Estrutural (Silvio Almeida)</h3>
+                         <p class="text-gray-400 mb-6">O racismo não é apenas um ato de um indivíduo, mas um sistema que organiza a sociedade.</p>
+                         <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" class="w-full"><style>.txt{font-size:5px;font-family:Inter,sans-serif;fill:#cce3ff;}.sub{font-size:4px;fill:#a78bfa;}</style><path d="M50 10 V 20 L 30 30 V 40 L 50 50 L 70 40 V 30 L 50 20" stroke="#4c1d95" fill="rgba(167, 139, 250, 0.1)"/><text x="45" y="8" class="txt">Instituições</text><text x="25" y="28" class="txt">Estado</text><text x="65" y="28" class="txt">Direito</text><text x="23" y="48" class="txt">Mercado</text><text x="64" y="48" class="txt">Escola</text><text x="40" y="58" class="sub">Normalizam a desigualdade racial</text></svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-purple-900">Incidência nos Vestibulares</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                     <p class="text-gray-400 mb-6 text-center">Estimativa do número de questões sobre Desigualdades, Violência e Movimentos Sociais nos últimos 10 anos.</p>
+                    <canvas id="sociologiaChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-purple-900">Estratégias para cada Prova</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">ENEM</h3>
+                            <p class="text-gray-400">É a prova mais socialmente engajada. Os temas da sua lista (violência de gênero, racismo, intolerância religiosa) são a cara do ENEM. A prova exige a leitura de textos-fonte, charges e dados estatísticos para que você identifique o problema social e suas causas estruturais. Conceitos como racismo estrutural e violência simbólica são ferramentas de análise poderosas aqui.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-6">
+                             <h3 class="text-xl font-bold text-purple-400 mb-2">FUVEST & UNICAMP</h3>
+                             <p class="text-gray-400">Cobram uma base teórica mais sólida dos clássicos e contemporâneos. É importante dominar os conceitos de Bourdieu (habitus, campo, capital) e saber aplicá-los em análises de caso. A Unicamp pode apresentar uma situação social complexa e pedir que você a analise a partir de uma perspectiva sociológica específica.</p>
+                        </div>
+                         <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">PUC-Rio & UERJ</h3>
+                            <p class="text-gray-400">Focam em questões brasileiras e na aplicação de conceitos a problemas atuais. A UERJ, em particular, tem um forte viés em direitos humanos, movimentos sociais e desigualdades. Conhecer a legislação pertinente (Lei Maria da Penha, Lei do Feminicídio) e os dados sobre a realidade social brasileira é um grande diferencial.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-purple-900">Resolução Comentada (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: Condutas previstas na Lei Maria da Penha</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto descreve atos como "negar dinheiro", "comprar bens usando o nome da pessoa", "ameaçar corte de recursos" e "destruir pertences". Todas essas ações se referem ao controle e à destruição do patrimônio e dos recursos financeiros da mulher, configurando o que a Lei Maria da Penha classifica como violência patrimonial.</p>
+                    </div>
+                    
+                    <!-- Questão 02 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: Sociologia da arte</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                🎯 Foco FUVEST
+                            </span>
+                             <span class="text-gray-500">Bourdieu e Habitus</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A questão exige a análise das afirmativas. (I) está correta, definindo o conceito de habitus de Bourdieu. (II) está correta, diferenciando a arte clássica da moderna. (III) está correta, apresentando a crítica da Escola de Frankfurt (Adorno) à indústria cultural. (IV) está incorreta; o Museu Nacional foi fundado na época do Império, não da República.</p>
+                    </div>
+
+                    <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: Imagem de Iemanjá depredada</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                             <span class="text-gray-500">Interseccionalidade</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A depredação de um símbolo de uma religião de matriz africana é um ato de **intolerância religiosa**. Além disso, como essas religiões são historicamente associadas à população negra, esse ato também reflete o **racismo estrutural**, que marginaliza e ataca as manifestações culturais e religiosas afro-brasileiras.</p>
+                    </div>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: Participação política das mulheres no Brasil</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Os dados mostram um paradoxo: as mulheres são a maioria do eleitorado (52%), mas uma minoria significativa das candidaturas (33%) e uma minoria ainda menor das eleitas (15%). Isso indica que a participação não é equânime (I e III estão erradas) e que elas são sub-representadas (II está correta), refletindo uma sociedade desigual onde ocupam menos postos de poder (IV está correta).</p>
+                    </div>
+
+                    <!-- Questão 05 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: Religião e Estado Laico</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O fanatismo religioso, por definição, é a adesão cega e intolerante a uma única crença, desrespeitando e, muitas vezes, atacando as demais. Portanto, ele representa um risco direto à tolerância e ao respeito pela diversidade religiosa, que são pilares de uma sociedade plural e de um Estado Laico.</p>
+                    </div>
+
+                    <!-- Questão 06 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: Florestan Fernandes e a mudança social</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A pergunta de Florestan, "a quem beneficia a mudança social?", é retórica. Sua análise crítica da história do Brasil aponta que os grandes processos de modernização (Independência, Abolição, República) foram conduzidos "pelo alto", pelas elites, que se adaptaram para manter o poder e os privilégios. Assim, a mudança beneficiou os grupos que já detinham capacidade econômica e política para absorver e controlar os seus efeitos.</p>
+                    </div>
+
+                    <!-- Questão 07 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: O significado social de ser negro</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto demonstra que a "raça" não é um dado biológico, mas uma construção social. O significado de ser negro mudou do século XIX (associado à condição de escravizado) para o século XXI (associado a desigualdades em um sistema formalmente livre). Isso prova que os referenciais que constroem a desigualdade são históricos e se alteram com o tempo.</p>
+                    </div>
+
+                    <!-- Questão 08 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: Mulheres em profissões masculinas</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O estranhamento e o preconceito relatados pela caminhoneira não derivam de sua capacidade técnica, mas do fato de sua presença em um espaço culturalmente definido como masculino. A falta de banheiros femininos e os "olhares" são sintomas de uma estrutura que não prevê a presença de mulheres ali, tratando-a como um desvio do padrão de comportamento esperado para o seu gênero.</p>
+                    </div>
+
+                    <!-- Questão 09 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: A Lei do Feminicídio</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Ao tipificar o feminicídio como um crime motivado por "menosprezo ou discriminação à condição de mulher", a lei reconhece que esses assassinatos não são casos isolados, mas a expressão máxima de uma violência de gênero que se baseia em uma hierarquização de papéis sociais, na qual o masculino é visto como superior e controlador do feminino.</p>
+                    </div>
+
+                    <!-- Questão 10 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: Racismo Estrutural e Instituições</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto de Silvio Almeida explica que as instituições (Estado, mercado, etc.) criam as "regras do jogo" social. Em uma sociedade historicamente racista, essas regras foram criadas de forma a privilegiar um grupo racial em detrimento de outro. Assim, as instituições acabam por normalizar e reproduzir as práticas e ideais racistas, tornando o racismo parte da estrutura e do funcionamento "normal" da sociedade.</p>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-purple-900/10');
+            } else {
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-purple-900/10');
+            }
+        });
+        
+        const ctx = document.getElementById('sociologiaChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['ENEM', 'UERJ', 'FUVEST', 'UNICAMP'],
+                    datasets: [{
+                        label: 'Nº de Questões (Estimativa 10 anos)',
+                        data: [35, 28, 22, 20],
+                        backgroundColor: 'rgba(168, 85, 247, 0.7)',
+                        borderColor: '#A855F7',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" }}
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+

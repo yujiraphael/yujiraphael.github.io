@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linguagens: Análise Sintática - O Sujeito - Raphael Fugiwara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(20, 184, 166, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.1), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 15s ease infinite;
+            z-index: -1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1120;
+            color: #d1d5db;
+        }
+        .content-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(20, 184, 166, 0.1);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        #main-header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-[#cce3ff]">Raphael Fugiwara</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#painel" class="text-gray-300 hover:text-white transition-colors">Painel</a>
+                <a href="index.html#materias" class="text-gray-300 hover:text-white transition-colors">Matérias</a>
+                <a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
+
+        <header class="text-center pt-16 pb-20">
+            <p class="text-lg font-semibold text-teal-400 scroll-reveal">Linguagens</p>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Análise Sintática: O Sujeito</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
+                Uma análise aprofundada sobre a identificação e classificação do sujeito, a base para a concordância verbal e a correta estruturação do pensamento.
+            </p>
+        </header>
+
+        <main>
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-teal-900">Incidência nos Vestibulares</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                     <p class="text-gray-400 mb-6 text-center">Estimativa da frequência de questões que abordam Análise Sintática (com foco em Sujeito e Concordância) nos últimos 10 anos.</p>
+                    <canvas id="linguagensChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-teal-900">Estratégias para cada Prova</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-teal-400 mb-2">ENEM</h3>
+                            <p class="text-gray-400">A abordagem é indireta. O ENEM não costuma pedir para "classificar o sujeito", mas testa sua compreensão da concordância verbal como um mecanismo de coesão textual. A habilidade de identificar o sujeito é crucial para entender a quem uma ação se refere e como as ideias se conectam em um parágrafo. É uma questão de lógica e estrutura textual, mais do que de nomenclatura.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-6">
+                             <h3 class="text-xl font-bold text-teal-400 mb-2">FUVEST & UNICAMP</h3>
+                             <p class="text-gray-400">Aqui a gramática é explícita. FUVEST e UNICAMP exigem o domínio da nomenclatura (sujeito simples, composto, oculto, indeterminado, oração sem sujeito). Fique atento ao sujeito posposto (depois do verbo) e ao sujeito oracional, que são as "pegadinhas" mais comuns. A habilidade de reescrever frases alterando a concordância também é frequentemente testada.</p>
+                        </div>
+                         <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-teal-400 mb-2">PUC-Rio & UERJ</h3>
+                            <p class="text-gray-400">Focam na relação entre sintaxe e sentido. As questões podem pedir para você identificar o referente de um pronome que atua como sujeito ou analisar como a posição do sujeito na frase altera a ênfase da informação. É uma prova que exige um bom entendimento da norma culta e de suas nuances expressivas.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-teal-900">Resolução Comentada (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: O sujeito em "em que vivem"</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Na oração "...em que vivem", o verbo "vivem" está na 3ª pessoa do plural. Para achar o sujeito, perguntamos ao verbo: "Quem vive?". A resposta não está explícita, mas pode ser recuperada pelo contexto anterior: "...ajuda os indivíduos a compreender...". O sujeito oculto de "vivem" é "eles", que se refere a "indivíduos". Esse mesmo referente é o do pronome "os" em "fazê-los ver", que também retoma "indivíduos".</p>
+                    </div>
+                    
+                    <!-- Questão 02 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: Sujeito posposto</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                🎯 Foco FUVEST
+                            </span>
+                             <span class="text-gray-500">Ordem Inversa</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A maneira mais fácil de achar o sujeito é colocar a frase em ordem direta. Em (a), a locução verbal "foram identificadas, coletadas e analisadas" concorda com o núcleo do sujeito que vem depois: "69.907 manchetes". Como o sujeito ("manchetes") aparece depois do verbo, ele é classificado como posposto.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-teal-500/20">
+                            <p class="font-bold text-teal-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Sempre que o verbo vier no início da frase, desconfie do sujeito posposto. Pergunte "O que?" ou "Quem?" ao verbo. "O que foi identificado, coletado e analisado?" -> "69.907 manchetes".</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: Tese do texto</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                             <span class="text-gray-500">Compreensão Global</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A tese é a ideia principal que o autor defende. O texto se baseia em uma pesquisa que mostra que "o sucesso de uma notícia [...] está fortemente vinculado a esses 'sentimentos'" e que "as manchetes negativas, todavia, são aquelas que atraem maior interesse dos leitores". O autor usa essa pesquisa para explicar a predominância de notícias ruins na mídia. Portanto, a tese é que a mídia privilegia o negativo porque isso atrai mais público.</p>
+                    </div>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: Neologismo "mediavalesco"</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O autor cria a palavra "mediavalesco" juntando "mídia" com "medievalesco" (relativo à Idade Média). A Idade Média é popularmente conhecida como "Idade das Trevas". Ao associar a mídia a esse período, e ao falar em "vale de lágrimas", o autor quer ressaltar o caráter sombrio, pessimista e trágico do jornalismo que ele critica.</p>
+                    </div>
+
+                    <!-- Questão 05 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: Relação sujeito-verbo</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A questão pede uma relação "diferente" de concordância. Em todas as alternativas, o verbo concorda com seu sujeito. No entanto, em (d), o verbo "situam-se" está na voz passiva sintética (verbo + pronome "se"), e seu sujeito paciente é "as greves inesperadas...", que vem depois (posposto). As outras alternativas apresentam sujeitos em ordem direta (antes do verbo) ou pronomes relativos como sujeito.</p>
+                    </div>
+                    
+                    <!-- Questão 06 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: "intempestivas, fora do calendário"</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                         <p class="text-gray-400"><strong>Comentário:</strong> "Intempestivo" já significa "fora do tempo adequado". "Fora do calendário" reforça essa mesma ideia. Usar duas expressões com o mesmo sentido para dar ênfase é a definição de pleonasmo. Como é um recurso usado para fins estilísticos (reforçar a crítica), é um pleonasmo literário.</p>
+                    </div>
+                    
+                    <!-- Questão 07 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: Contraste entre Internet e Idade Média</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O autor cria um paradoxo: a comunidade tem acesso à internet (símbolo de modernidade, avanço, comunicação global), mas comete um ato de linchamento (símbolo de barbárie, associado à Idade Média). A inferência é que, embora a tecnologia avance, as ações humanas podem representar um retrocesso civilizatório.</p>
+                    </div>
+
+                    <!-- Questão 08 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: Sujeito comum a vários verbos</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A questão pede para identificar os verbos que compartilham o mesmo sujeito. No trecho "O senso comum tem escassa percepção [...], demoniza a variação [...] e tende a interpretar...", quem "tem", "demoniza" e "tende" é o mesmo termo: "O senso comum".</p>
+                    </div>
+
+                    <!-- Questão 09 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: Afirmação correta sobre o texto</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto defende que, para combater a discriminação linguística, a escola precisa promover uma cultura de respeito à diversidade. Isso, segundo o autor, "pressupõe uma adequada compreensão da heterogeneidade linguística do país". Essa é a condição fundamental para a mudança pedagógica proposta.</p>
+                    </div>
+
+                    <!-- Questão 10 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: O sujeito de "Parece"</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                🎯 Foco FUVEST
+                            </span>
+                             <span class="text-gray-500">Sujeito Oracional</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Na frase "Parece claro hoje que o domínio dessas variedades caminha junto...", podemos perguntar ao verbo: "O que parece claro?". A resposta é "que o domínio dessas variedades caminha junto...". Como a resposta é uma oração inteira (introduzida pelo "que"), temos um caso de sujeito oracional. O verbo "parecer" fica no singular porque concorda com "isso" ("isso parece claro").</p>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-teal-900/10');
+            } else {
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-teal-900/10');
+            }
+        });
+        
+        const ctx = document.getElementById('linguagensChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['FUVEST', 'UERJ', 'UNICAMP', 'ENEM'],
+                    datasets: [{
+                        label: 'Nº de Questões (Estimativa 10 anos)',
+                        data: [30, 25, 22, 18],
+                        backgroundColor: 'rgba(20, 184, 166, 0.7)',
+                        borderColor: '#14B8A6',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" }}
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>

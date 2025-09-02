@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofia: Fenomenologia e o Corpo - Raphael Fugiwara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.1), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 15s ease infinite;
+            z-index: -1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1120;
+            color: #d1d5db;
+        }
+        .content-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        #main-header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-[#cce3ff]">Raphael Fugiwara</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#painel" class="text-gray-300 hover:text-white transition-colors">Painel</a>
+                <a href="index.html#materias" class="text-gray-300 hover:text-white transition-colors">Matérias</a>
+                <a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
+
+        <header class="text-center pt-16 pb-20">
+            <p class="text-lg font-semibold text-blue-400 scroll-reveal">Filosofia</p>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Fenomenologia e a Filosofia do Corpo</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
+                Uma exploração sobre como a percepção e a corporalidade moldam nossa experiência do mundo, segundo o pensamento de Merleau-Ponty.
+            </p>
+        </header>
+
+        <main>
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-blue-900">Incidência nos Vestibulares</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                     <p class="text-gray-400 mb-6 text-center">Estimativa do número de questões sobre Fenomenologia e Filosofia Contemporânea nos últimos 10 anos.</p>
+                    <canvas id="filosofiaChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-blue-900">Estratégias para cada Prova</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-400 mb-2">ENEM</h3>
+                            <p class="text-gray-400">Foca na interpretação de textos-fonte. O ENEM quer saber se você consegue extrair a ideia central de um trecho de filósofo e aplicá-la a um contexto. Para Merleau-Ponty, a chave é entender a crítica à separação radical entre mente e corpo (dualismo cartesiano) e a ideia de que a percepção é a nossa forma primordial de estar no mundo.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-6">
+                             <h3 class="text-xl font-bold text-blue-400 mb-2">FUVEST & UNICAMP</h3>
+                             <p class="text-gray-400">Exigem domínio conceitual. Podem pedir para você diferenciar a Fenomenologia de outras correntes, como o Empirismo ou o Racionalismo. A Unicamp, em especial, pode solicitar que você explique conceitos como "corpo próprio" ou "esquema corporal" e sua relação com a percepção do outro e do mundo.</p>
+                        </div>
+                         <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-blue-400 mb-2">PUC-Rio & UERJ</h3>
+                            <p class="text-gray-400">Questões mais diretas sobre as teses centrais do autor. É crucial saber que Merleau-Ponty é o "filósofo do corpo" e que sua filosofia se opõe ao intelectualismo e ao empirismo clássicos, propondo uma via intermediária baseada na experiência vivida (percepção).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-blue-900">Resolução Comentada (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: O corpo no mundo</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                            <span class="text-gray-500">Interpretação de Texto-Fonte</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O trecho é claro ao afirmar que "meu corpo está no mundo" e que toda percepção se dá no "duplo horizonte do espaço exterior e do espaço corporal". Isso estabelece a relação fundamental da filosofia de Merleau-Ponty: a inseparabilidade entre o corpo (sujeito que percebe) e o mundo exterior (aquilo que é percebido).</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-blue-500/20">
+                            <p class="font-bold text-blue-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Para Merleau-Ponty, não existe um "eu" puro e desencarnado que pensa o mundo. O "eu" é sempre um "eu-corporal" que vive e sente o mundo. A percepção não é um ato do intelecto, mas do corpo.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[a]</span> O "eu cartesiano" é justamente o que Merleau-Ponty critica: a mente separada do corpo.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b]</span> A "tábula rasa" é um conceito empirista (Locke) que o filósofo também rejeita.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[d]</span> A oposição entre "ideias" e "cópias sensíveis" é platônica, distante da fenomenologia.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[e]</span> A relação Deus/mundo é uma questão teológica, não o foco da fenomenologia da percepção.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Questão 02 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: Apreender e comunicar um sentido</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-red-500/10 px-2 py-1 font-medium text-red-400">
+                                <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>
+                                ❗️ Conceito-Chave
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto fala em "apreender e comunicar um sentido", transcendendo em direção "ao outro" ou ao "próprio pensamento". Essa comunicação de sentido, que nos tira de nós mesmos e nos conecta com os outros, se dá fundamentalmente através da linguagem, expressa pelo "corpo e sua fala".</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-blue-500/20">
+                            <p class="font-bold text-blue-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">A linguagem, para Merleau-Ponty, não é um mero código. É um gesto corporal, uma forma de o nosso corpo habitar o mundo e se relacionar com os outros.</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: Identificação da filosofia de Merleau-Ponty</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-gray-500/10 px-2 py-1 font-medium text-gray-400">
+                                🧠 Simples e Direto
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Esta é uma questão de reconhecimento. Toda a obra de Merleau-Ponty, especialmente a "Fenomenologia da Percepção", é uma tentativa de superar o dualismo mente-corpo, colocando o corpo como o centro da experiência. Por isso, ele é conhecido como o principal expoente da "filosofia do corpo".</p>
+                    </div>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: A ambiguidade do toque</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                🎯 Foco UNICAMP
+                            </span>
+                             <span class="text-gray-500">Análise de Exemplo</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O exemplo da mão que toca e é tocada ao mesmo tempo serve para ilustrar a "ambiguidade essencial" do corpo. O corpo não é um simples objeto (coisa tocada), nem um puro sujeito (coisa que toca). Ele é ambos ao mesmo tempo. Essa ambiguidade desafia o "pensamento objetivo" que exige uma separação clara entre sujeito e objeto, evidenciando os problemas em se compreender a corporalidade de forma simplista.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-blue-500/20">
+                            <p class="font-bold text-blue-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">O corpo, para Merleau-Ponty, é o ponto zero, a perspectiva a partir da qual o mundo se organiza para nós. Mas ele próprio é parte desse mundo. Essa dupla condição é a fonte de sua ambiguidade fundamental.</p>
+                        </div>
+                    </div>
+
+                    <!-- Questão 05 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: O pensamento comum</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto afirma que "O pensamento objetivo é o pensamento comum, pensamento que sempre implica o outro" e que há uma "integralidade do sistema 'eu-outro'". Portanto, o pensamento comum, em sua essência, é orientado pela relação fundamental entre o eu e o outro, que se dá através dos corpos.</p>
+                    </div>
+                    
+                    <!-- Questão 06 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: A percepção e o mundo</h4>
+                         <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                         <p class="text-gray-400"><strong>Comentário:</strong> Ao dizer que o mundo não é um objeto ou coleção de objetos, Merleau-Ponty critica a visão do empirismo clássico, que via a percepção como a recepção passiva de dados sensoriais de objetos exteriores. Ele também critica o materialismo simplista que reduz tudo a matéria objetiva. Sua proposta é que o mundo é o "fundo" ou "meio" onde nossa percepção e pensamentos acontecem, inseparável da nossa experiência.</p>
+                    </div>
+                    
+                    <!-- Questão 07 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: O eu e o mundo coligados</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A ideia de que "eu" e "mundo" são formados juntos no ato de perceber é uma rejeição direta ao "eu cartesiano". Para Descartes, o "eu" era uma substância pensante (res cogitans), pura, separada do corpo e do mundo, que duvidava de tudo exceto de sua própria existência como pensamento. Merleau-Ponty argumenta que não há "eu" antes da percepção do mundo.</p>
+                    </div>
+
+                    <!-- Questão 08 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: O elemento a priori</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O texto afirma que a percepção "é o fundo sobre o qual todos os atos se destacam e ela é pressuposta por eles". "A priori" significa aquilo que vem antes da experiência. No contexto da fenomenologia de Merleau-Ponty, a percepção não é um ato entre outros, mas a condição de possibilidade para qualquer ato ou pensamento. É a nossa abertura original ao mundo, anterior a qualquer reflexão.</p>
+                    </div>
+
+                    <!-- Questão 09 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: O mundo como...</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A resposta está explícita no texto: "ele é o meio natural e o campo de todos os meus pensamentos e de todas as minhas percepções explícitas". O mundo não é um objeto a ser analisado de fora, mas o "habitat" da nossa consciência encarnada.</p>
+                    </div>
+
+                    <!-- Questão 10 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: A crítica ao intelectualismo</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Merleau-Ponty critica o "intelectualismo" (uma forma de racionalismo) por reduzir o fenômeno da percepção a um mero processo de raciocínio ou julgamento. Para o intelectualismo, o que percebemos não é o mundo real, mas uma reconstrução feita pela nossa mente a partir de dados brutos. O erro, segundo Merleau-Ponty, é entender a realidade como um produto exclusivo da consciência imaterial, ignorando o papel fundamental do corpo e da percepção vivida.</p>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+            } else {
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+            }
+        });
+        
+        const ctx = document.getElementById('filosofiaChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['ENEM', 'UNICAMP', 'FUVEST', 'UERJ'],
+                    datasets: [{
+                        label: 'Nº de Questões (Estimativa 10 anos)',
+                        data: [11, 8, 7, 5],
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                        borderColor: '#3B82F6',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" }}
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>

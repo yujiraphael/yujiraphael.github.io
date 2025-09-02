@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artes e Literatura: Modernismo no Brasil - Raphael Fugiwara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(219, 39, 119, 0.1), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 15s ease infinite;
+            z-index: -1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1120;
+            color: #d1d5db;
+        }
+        .content-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(236, 72, 153, 0.1);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        #main-header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-[#cce3ff]">Raphael Fugiwara</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#painel" class="text-gray-300 hover:text-white transition-colors">Painel</a>
+                <a href="index.html#materias" class="text-gray-300 hover:text-white transition-colors">Matérias</a>
+                <a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
+
+        <header class="text-center pt-16 pb-20">
+            <p class="text-lg font-semibold text-pink-400 scroll-reveal">Artes e Literatura</p>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Modernismo: A Semana de 22 e a Geração Heroica</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
+                Uma análise da ruptura, da busca pela identidade nacional e da genialidade irreverente de Oswald, Mário de Andrade e Manuel Bandeira.
+            </p>
+        </header>
+
+        <main>
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-pink-900">Incidência nos Vestibulares</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                     <p class="text-gray-400 mb-6 text-center">Estimativa do número de questões sobre a 1ª Fase do Modernismo nos últimos 10 anos.</p>
+                    <canvas id="artesChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-pink-900">Estratégias para cada Prova</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-pink-400 mb-2">ENEM</h3>
+                            <p class="text-gray-400">Foca na função social da arte. Espera que você entenda o Modernismo como um projeto de (re)construção da identidade nacional. As questões geralmente usam poemas ou imagens para testar sua capacidade de identificar críticas ao Parnasianismo, a valorização da linguagem coloquial (Questão 1) e a busca por uma cultura genuinamente brasileira.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-6">
+                             <h3 class="text-xl font-bold text-pink-400 mb-2">FUVEST & UNICAMP</h3>
+                             <p class="text-gray-400">Exigem profundidade. Você precisa dominar os manifestos (Pau-Brasil, Antropófago), as obras-chave (Macunaíma, Pau-Brasil) e as particularidades de cada autor. A FUVEST adora comparar poemas modernistas com os de outros períodos. A UNICAMP pode pedir para você explicar, com suas palavras, um conceito como a "deglutição" cultural proposta por Oswald de Andrade.</p>
+                        </div>
+                         <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-pink-400 mb-2">PUC-Rio & UERJ</h3>
+                            <p class="text-gray-400">São mais diretas, focando na identificação das características do movimento em trechos de poemas ou textos. A UERJ, em particular, gosta de explorar o lirismo e os temas existenciais de Manuel Bandeira, como a efemeridade da vida e a melancolia (Questão 3).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-pink-900">Resolução Comentada (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: Vício na fala (Oswald de Andrade)</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                            <span class="text-gray-500">Variação Linguística</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O poema de Oswald é um manifesto modernista. Ao mostrar como o povo fala ("mio", "mió"), ele não critica, mas sim valoriza a linguagem coloquial, o "erro" gramatical como expressão da identidade brasileira. O verso final, "E vão fazendo telhados", mostra que a comunicação é eficaz e a vida continua, independentemente da norma culta. É a celebração da variação linguística.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-pink-500/20">
+                            <p class="font-bold text-pink-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Modernismo = Anti-academicismo. Se um poema modernista fala da língua do povo, a chance de ser uma crítica negativa é quase zero. A intenção é quase sempre valorizar o que é genuinamente brasileiro.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b,d]</span> Atribuem um juízo de valor negativo (crítica, preconceito) ao poeta, o que vai contra todo o projeto modernista. O título "Vício na fala" é irônico.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c]</span> O poema afirma o exato oposto: a comunicação acontece ("vão fazendo telhados").</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[e]</span> Não há elementos para afirmar que os falantes não compreendem a norma padrão, apenas que eles usam uma variedade diferente no seu dia a dia.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Questão 02 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: Anita Malfatti e os modernistas</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-red-500/10 px-2 py-1 font-medium text-red-400">
+                                <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>
+                                ❗️ Conceito-Chave
+                            </span>
+                            <span class="text-gray-500">Ruptura com o Academicismo</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A exposição de Anita Malfatti em 1917 é o estopim do movimento modernista. A crítica de Monteiro Lobato ("Paranoia ou Mistificação?") foi exatamente contra a liberdade no uso das cores e formas, que fugiam do realismo acadêmico. A proposta modernista era justamente essa: romper com a arte "certinha" e "importada" da Europa para criar uma arte com temas, cores e formas que expressassem o Brasil.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-pink-500/20">
+                            <p class="font-bold text-pink-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">A arte acadêmica (parnasiana na literatura) buscava a perfeição formal e a cópia fiel da realidade. O Modernismo buscava a liberdade, a expressão e a originalidade.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b]</span> Eles defendiam o uso irrestrito da cor, não a limitação.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c,d]</span> "Copiar fielmente a natureza" e "tradição acadêmica" são exatamente os conceitos que os modernistas combatiam.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[e]</span> Eles buscavam liberdade total, sem "respeitar limites de temas".</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: Estrada (Manuel Bandeira)</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                🎯 Foco UERJ
+                            </span>
+                             <span class="text-gray-500">Lirismo do Cotidiano</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Manuel Bandeira é mestre em extrair reflexões profundas de cenas simples. No poema, ele contrasta a uniformidade da cidade ("Todo mundo é igual") com a singularidade do campo ("Cada criatura é única"). É observando essa vida rural, com seu ritmo próprio ("Enterro a pé", "carrocinha de leite"), que ele chega à grande reflexão existencial, simbolizada pelo "murmúrio da água": "Que a vida passa! que a vida passa!".</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-pink-500/20">
+                            <p class="font-bold text-pink-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">A obra de Bandeira é marcada pela consciência da morte e da passagem do tempo (ele teve tuberculose muito jovem). Procure por essa "tensão da finitude" em seus poemas, mesmo nos mais simples.</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[a]</span> Ele critica a cidade, não sente nostalgia dela.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c]</span> A meditação não é sobre a juventude em si, mas sobre o fim dela e da vida.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[d,e]</span> O poema tem um tom melancólico e reflexivo, não de "insegurança" ou "medo". É uma constatação serena da efemeridade.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: Canção do vento e da minha vida (Manuel Bandeira)</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-500/10 px-2 py-1 font-medium text-yellow-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                                Atenção à Estrutura
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O poema é construído sobre um forte paralelismo sintático. A estrutura "O vento varria..." se repete sistematicamente no início das estrofes, criando um ritmo hipnótico. Além disso, a repetição da frase "E a minha vida ficava / Cada vez mais cheia" e do som da palavra "vento" reforça a musicalidade e a ideia central do poema.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-pink-500/20">
+                            <p class="font-bold text-pink-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Quando um poema tem uma estrutura muito marcada, com versos que se repetem ou começam da mesma forma, procure por alternativas que falem de "paralelismo", "repetição" ou "recorrência de construções".</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-semibold text-gray-300 mb-2">Análise das Incorretas:</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[a]</span> A oposição semântica (varrer vs. encher) está presente, mas o que mais se destaca e estrutura o texto é a repetição formal.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[b]</span> A linguagem é poética e subjetiva, não objetiva.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[c]</span> O eufemismo não é a figura de linguagem principal aqui.</li>
+                                <li class="flex"><span class="font-mono text-red-400 mr-2">[e]</span> A ordem sintática é predominantemente direta, não invertida.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Questão 05 a 10 (Estrutura similar) -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: Capa de Pau-Brasil (Oswald de Andrade)</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                             <span class="text-gray-500">Identidade Nacional</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A capa do livro, com o nome "Pau Brasil" sobre uma estilização da bandeira, é emblemática. O projeto modernista buscava "redescobrir o Brasil", mas de forma crítica. Eles queriam superar a visão idealizada e exótica da natureza do Romantismo, propondo uma arte que fosse "de exportação" (como o Pau-Brasil), primitiva e moderna ao mesmo tempo, criticando a submissão cultural.</p>
+                         <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-pink-500/20">
+                            <p class="font-bold text-pink-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">A revisão da identidade nacional no Modernismo não é uma negação do Brasil, mas uma negação da visão "oficial" e importada do que era ser brasileiro. É uma busca por raízes, mas de forma crítica e inovadora.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: O trovador (Mário de Andrade)</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                🎯 Foco FUVEST
+                            </span>
+                             <span class="text-gray-500">Síntese Cultural</span>
+                        </div>
+                         <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                         <p class="text-gray-400"><strong>Comentário:</strong> O verso final, "Sou um tupi tangendo um alaúde!", é a síntese perfeita do poema e do projeto de Mário de Andrade. Ele junta o "tupi" (o elemento primitivo, indígena, a raiz brasileira) com o "alaúde" (instrumento musical erudito, europeu, a herança cultural colonizadora). Essa fusão de elementos aparentemente opostos para criar algo novo e brasileiro é o cerne da proposta modernista, que seria mais tarde teorizada no Manifesto Antropófago de Oswald.</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-pink-500/20">
+                            <p class="font-bold text-pink-300">💡 Dica Rápida</p>
+                            <p class="text-gray-400 text-sm mt-1">Mário e Oswald buscavam a "brasilidade" na mistura. Sempre que vir elementos indígenas/africanos em contraste com elementos europeus em seus textos, pense em "síntese", "fusão" ou "antropofagia".</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: Brasilidade em construção (Oswald de Andrade)</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-green-500/10 px-2 py-1 font-medium text-green-400">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                🧠 Pense como ENEM
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A imagem mostra um poema de Oswald e, ao lado, anotações que funcionam como uma "desconstrução" ou um guia de leitura. Elas apontam para a polissemia dos versos ("Cette = 77 / Não! Clube francês!"), a estrutura poética ("Números como versos") e o contexto ("Vitórias do Clube Paulistano"). Essas anotações não são parte do poema original, mas um exercício de análise que direciona o leitor a uma interpretação crítica dos elementos histórico-culturais presentes no texto.</p>
+                    </div>
+
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: As Quatro Gares (Oswald de Andrade)</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-red-500/10 px-2 py-1 font-medium text-red-400">
+                                <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" /></svg>
+                                ❗️ Conceito-Chave
+                            </span>
+                            <span class="text-gray-500">Poema-pílula / Fragmentação</span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Este é um exemplo clássico do "poema-pílula" de Oswald. A característica mais marcante é a fragmentação. Não há versos longos, rimas, métrica regular ou conectivos lógicos ("e", "mas", "porque"). São apenas flashes, palavras soltas que evocam imagens da infância. Essa ausência de exatidão formal é uma das principais bandeiras da fase heroica e destrutiva do Modernismo.</p>
+                    </div>
+
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: Macunaíma (Mário de Andrade)</h4>
+                         <div class="flex items-center gap-x-4 text-xs mb-4">
+                            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-500/10 px-2 py-1 font-medium text-blue-400">
+                                🎯 Foco UNICAMP
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A questão pede uma característica da primeira fase do Modernismo. A alternativa (a) é a que melhor a define: uma estética transgressora (quebra de regras), que busca romper com o tradicional (anti-academicismo), valorizando a liberdade formal (verso livre) e o cotidiano (temas banais, linguagem coloquial).</p>
+                        <div class="mt-4 rounded-md bg-gray-800/50 p-4 border border-pink-500/20">
+                            <p class="font-bold text-pink-300">❗️ Fique Esperto!</p>
+                            <p class="text-gray-400 text-sm mt-1">As outras alternativas descrevem outros movimentos: (b) Parnasianismo, (c) Realismo, (d) 2ª Fase do Modernismo (Romance de 30), (e) Realismo/Naturalismo.</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: fim e começo (Oswald de Andrade)</h4>
+                        <div class="flex items-center gap-x-4 text-xs mb-4">
+                             <span class="inline-flex items-center gap-x-1.5 rounded-full bg-gray-500/10 px-2 py-1 font-medium text-gray-400">
+                                🧠 Simples e Direto
+                            </span>
+                        </div>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A principal marca do poema é o humor e a irreverência, traços típicos de Oswald. A ideia de que a noite precisa de "licença da Câmara" para cair é uma quebra de expectativa cômica e uma crítica sutil à burocracia. O verso seguinte, "Se a noite não caísse / Que seriam dos lampiões?", continua o tom leve e bem-humorado.</p>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-pink-900/10');
+            } else {
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-pink-900/10');
+            }
+        });
+        
+        const ctx = document.getElementById('artesChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['FUVEST', 'UNICAMP', 'ENEM', 'PUC-Rio'],
+                    datasets: [{
+                        label: 'Nº de Questões (Estimativa 10 anos)',
+                        data: [18, 16, 14, 10],
+                        backgroundColor: 'rgba(236, 72, 153, 0.7)',
+                        borderColor: '#EC4899',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" }}
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+

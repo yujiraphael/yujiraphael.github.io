@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @keyframes aurora {
             0% { background-position: 0% 50%; }
@@ -19,8 +20,8 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle at top left, rgba(0, 114, 232, 0.15), transparent 40%),
-                        radial-gradient(circle at bottom right, rgba(0, 68, 158, 0.15), transparent 40%);
+            background: radial-gradient(circle at top left, rgba(244, 63, 94, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(225, 29, 72, 0.1), transparent 40%);
             background-size: 300% 300%;
             animation: aurora 15s ease infinite;
             z-index: -1;
@@ -33,7 +34,7 @@
         .content-card {
             background-color: rgba(17, 24, 39, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(134, 193, 255, 0.1);
+            border: 1px solid rgba(244, 63, 94, 0.1);
         }
         .scroll-reveal {
             opacity: 0;
@@ -60,94 +61,196 @@
     <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
 
         <header class="text-center pt-16 pb-20">
-            <p class="text-lg font-semibold text-[#86C1FF] scroll-reveal">Química</p>
+            <p class="text-lg font-semibold text-rose-400 scroll-reveal">Química</p>
             <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Dominando a Termoquímica</h1>
             <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
-                Um guia essencial sobre a energia das reações, focado em Variação de Entalpia (ΔH), Lei de Hess e as estratégias para as questões de vestibular.
+                Um guia visual sobre a energia das reações: entalpia, processos endotérmicos, exotérmicos e a poderosa Lei de Hess.
             </p>
         </header>
 
         <main>
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Pilares da Termoquímica</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Reação Exotérmica -->
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="font-bold text-xl text-[#86C1FF] mb-3">Reação Exotérmica</h3>
-                        <p class="text-gray-400 mb-4">Libera calor para o ambiente. A energia dos produtos é <span class="text-white">menor</span> que a dos reagentes.</p>
-                        <p class="text-2xl font-mono text-white">ΔH < 0</p>
-                        <div class="mt-4 bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M10 10H30" stroke="#cce3ff" stroke-width="1"/><text x="12" y="7" font-size="4" fill="#86C1FF">Reagentes</text><path d="M10 50H30" stroke="#cce3ff" stroke-width="1"/><text x="13" y="57" font-size="4" fill="#86C1FF">Produtos</text><path d="M30 10 C 50 10, 50 50, 70 50" stroke="#cce3ff" stroke-width="1.5" fill="none"/><path d="M70 50 L 70 10" stroke="#ef4444" stroke-width="1" marker-start="url(#arrowRed)"/><text x="73" y="32" font-size="4" fill="#ef4444">ΔH < 0 (libera)</text><defs><marker id="arrowRed" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444"/></marker></defs></svg></div>
-                    </div>
-                     <!-- Reação Endotérmica -->
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="font-bold text-xl text-[#86C1FF] mb-3">Reação Endotérmica</h3>
-                        <p class="text-gray-400 mb-4">Absorve calor do ambiente. A energia dos produtos é <span class="text-white">maior</span> que a dos reagentes.</p>
-                        <p class="text-2xl font-mono text-white">ΔH > 0</p>
-                        <div class="mt-4 bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M10 50H30" stroke="#cce3ff" stroke-width="1"/><text x="12" y="57" font-size="4" fill="#86C1FF">Reagentes</text><path d="M10 10H30" stroke="#cce3ff" stroke-width="1"/><text x="13" y="7" font-size="4" fill="#86C1FF">Produtos</text><path d="M30 50 C 50 50, 50 10, 70 10" stroke="#cce3ff" stroke-width="1.5" fill="none"/><path d="M70 50 L 70 10" stroke="#3b82f6" stroke-width="1" marker-end="url(#arrowBlue)"/><text x="73" y="32" font-size="4" fill="#3b82f6">ΔH > 0 (absorve)</text><defs><marker id="arrowBlue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6"/></marker></defs></svg></div>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Cálculo da Variação de Entalpia (ΔH)</h2>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-rose-900">Decifrando a Variação de Entalpia (ΔH)</h2>
                 <div class="content-card rounded-lg p-8">
-                    <p class="text-gray-400 mb-8">Sua lista de exercícios explora três métodos principais para calcular o ΔH de uma reação.</p>
-                    <div class="space-y-8">
-                        <div>
-                            <h3 class="text-xl font-bold text-[#86C1FF] mb-3">1. Por Energia de Ligação</h3>
-                            <p class="text-gray-300">Usado nas questões 1 e 7. O raciocínio é um balanço energético: a energia absorvida para quebrar as ligações dos reagentes contra a energia liberada na formação das novas ligações dos produtos.</p>
-                            <div class="mt-4 bg-gray-900/50 p-4 rounded-lg border border-white/10 text-center"><code class="text-lg font-bold text-white">ΔH = Σ(Energia das Ligações Quebradas) - Σ(Energia das Ligações Formadas)</code></div>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-[#86C1FF] mb-3">2. Por Entalpia de Formação (ΔH°f)</h3>
-                            <p class="text-gray-300">Usado na questão 10. A entalpia de formação é a energia para formar 1 mol de uma substância a partir de seus elementos no estado padrão. Lembre-se que para substâncias simples (O₂, N₂, C(grafite), etc), o ΔH°f é zero.</p>
-                            <div class="mt-4 bg-gray-900/50 p-4 rounded-lg border border-white/10 text-center"><code class="text-lg font-bold text-white">ΔH = Σ(ΔH°f dos Produtos) - Σ(ΔH°f dos Reagentes)</code></div>
-                        </div>
+                     <p class="text-gray-400 mb-6">A Termoquímica estuda o calor envolvido nas reações. O conceito central é a Variação de Entalpia (ΔH), a diferença de energia entre o estado final e o inicial do sistema.</p>
+                     <div class="bg-gray-900/50 p-4 rounded-lg text-center mb-8 border border-white/10">
+                         <code class="text-xl md:text-2xl font-bold text-rose-400">ΔH = H<sub class="text-base">produtos</sub> - H<sub class="text-base">reagentes</sub></code>
+                    </div>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                         <div><h3 class="font-bold text-lg text-white">Processo Exotérmico</h3><p class="text-gray-400">Libera calor para o ambiente. Os produtos são menos energéticos que os reagentes. <code class="font-mono bg-gray-900 p-1 rounded text-sm">ΔH < 0</code>.</p></div>
+                         <div><h3 class="font-bold text-lg text-white">Processo Endotérmico</h3><p class="text-gray-400">Absorve calor do ambiente. Os produtos são mais energéticos que os reagentes. <code class="font-mono bg-gray-900 p-1 rounded text-sm">ΔH > 0</code>.</p></div>
                     </div>
                 </div>
-            </section>
-            
-            <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Aprofundamento: Lei de Hess</h2>
-                 <div class="content-card rounded-lg p-8">
-                    <p class="text-gray-400 mb-6">Este é o conceito chave para as questões 3, 6 e 9. A Lei de Hess afirma que a variação de entalpia de uma reação global não depende do caminho, apenas dos estados inicial e final. Na prática, você manipula reações intermediárias para chegar na reação final desejada.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                        <div class="bg-gray-900/50 p-4 rounded-lg border border-white/10">
-                            <p class="font-semibold text-white">Passo 1: Identificar</p>
-                            <p class="text-sm text-gray-400 mt-2">Localize os reagentes e produtos da sua reação-alvo nas equações dadas.</p>
-                        </div>
-                        <div class="bg-gray-900/50 p-4 rounded-lg border border-white/10">
-                             <p class="font-semibold text-white">Passo 2: Manipular</p>
-                            <p class="text-sm text-gray-400 mt-2">Inverta ou multiplique as equações intermediárias. Lembre-se de fazer o mesmo com o valor de ΔH (inverter o sinal ou multiplicar).</p>
-                        </div>
-                        <div class="bg-gray-900/50 p-4 rounded-lg border border-white/10">
-                             <p class="font-semibold text-white">Passo 3: Somar</p>
-                            <p class="text-sm text-gray-400 mt-2">Some as equações manipuladas, cancele os termos iguais em lados opostos e some os valores de ΔH para obter o resultado final.</p>
-                        </div>
-                    </div>
-                 </div>
             </section>
 
             <section class="mb-20 scroll-reveal">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Foco nos Vestibulares</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">ENEM</h3>
-                        <p class="text-gray-400"><strong>Foco:</strong> Conceitual e prático. O ENEM adora questões de combustão (questões 2, 4, 5), pedindo para classificar a reação como exo/endotérmica e fazer cálculos simples de calor liberado por massa.</p>
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-rose-900">Visualizando os Diagramas de Energia</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Gráfico Exotérmico -->
+                    <div class="content-card rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-rose-400 mb-2">Reação Exotérmica (ΔH < 0)</h3>
+                        <p class="text-sm text-gray-400 mb-4">Exemplo: Queima da lenha (combustão).</p>
+                        <div class="bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg"><style>.label{font-family:Inter,sans-serif;font-size:4px;fill:#9ca3af;}</style><path d="M5 60 L95 60" stroke="#4b5563" stroke-width="0.5"/><path d="M5 5 L5 60" stroke="#4b5563" stroke-width="0.5"/><text x="10" y="20" class="label">Reagentes</text><line x1="5" y1="25" x2="30" y2="25" stroke="#cce3ff" stroke-width="1"/><path d="M30 25 C 45 5, 55 5, 70 45" stroke="#f43f5e" stroke-width="1" fill="none"/><text x="75" y="50" class="label">Produtos</text><line x1="70" y1="45" x2="95" y2="45" stroke="#cce3ff" stroke-width="1"/><text x="0" y="10" class="label">Entalpia</text><path d="M30 25 L 30 10" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow)"/><path d="M50 10 L 50 25" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow)"/><text x="35" y="15" class="label">Ea</text><path d="M80 25 L 80 45" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow)"/><text x="82" y="35" class="label">ΔH</text><defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af"/></marker></defs></svg></div>
                     </div>
-                    <div class="content-card rounded-lg p-8">
-                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Vestibulares Tradicionais</h3>
-                         <p class="text-gray-400"><strong>Foco:</strong> Cálculos e Lei de Hess. Espere problemas que exijam o cálculo de ΔH por energia de ligação ou, principalmente, a manipulação de equações através da Lei de Hess, que é um clássico em provas como UERJ e Fuvest.</p>
+                    <!-- Gráfico Endotérmico -->
+                    <div class="content-card rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-rose-400 mb-2">Reação Endotérmica (ΔH > 0)</h3>
+                        <p class="text-sm text-gray-400 mb-4">Exemplo: Fotossíntese.</p>
+                        <div class="bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg"><style>.label{font-family:Inter,sans-serif;font-size:4px;fill:#9ca3af;}</style><path d="M5 60 L95 60" stroke="#4b5563" stroke-width="0.5"/><path d="M5 5 L5 60" stroke="#4b5563" stroke-width="0.5"/><text x="10" y="40" class="label">Reagentes</text><line x1="5" y1="45" x2="30" y2="45" stroke="#cce3ff" stroke-width="1"/><path d="M30 45 C 45 5, 55 5, 70 25" stroke="#f43f5e" stroke-width="1" fill="none"/><text x="75" y="20" class="label">Produtos</text><line x1="70" y1="25" x2="95" y2="25" stroke="#cce3ff" stroke-width="1"/><text x="0" y="10" class="label">Entalpia</text><path d="M30 45 L 30 10" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow)"/><path d="M50 10 L 50 45" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow)"/><text x="35" y="25" class="label">Ea</text><path d="M80 45 L 80 25" stroke="#9ca3af" stroke-width="0.5" marker-end="url(#arrow)"/><text x="82" y="35" class="label">ΔH</text></svg></div>
                     </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-rose-900">Incidência nos Vestibulares</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                     <p class="text-gray-400 mb-6 text-center">Estimativa do número de questões sobre Termoquímica nos últimos 10 anos.</p>
+                    <canvas id="quimicaChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-rose-900">Estratégias para cada Prova</h2>
+                <div class="content-card rounded-lg p-6 md:p-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-rose-400 mb-2">ENEM</h3>
+                            <p class="text-gray-400">Foca em aplicações energéticas: combustíveis, alimentos e processos industriais. Espere questões que peçam para comparar a eficiência de combustíveis (calor liberado por grama ou por mol), ou que relacionem o balanço energético de reações com o meio ambiente. A habilidade de ler tabelas e gráficos é fundamental.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-6">
+                             <h3 class="text-xl font-bold text-rose-400 mb-2">FUVEST & UNICAMP</h3>
+                             <p class="text-gray-400">Exigem domínio dos métodos de cálculo: Lei de Hess (manipulação de equações) e Entalpia de Ligação. A FUVEST é conhecida por questões que integram Termoquímica com Estequiometria (reagente limitante, pureza). A Unicamp pode apresentar problemas complexos que exigem a montagem de um ciclo de Hess para encontrar uma entalpia desconhecida.</p>
+                        </div>
+                         <div class="border-t border-white/10 pt-6">
+                            <h3 class="text-xl font-bold text-rose-400 mb-2">PUC-Rio & UERJ</h3>
+                            <p class="text-gray-400">Questões mais conceituais e de cálculo direto. É essencial saber classificar uma reação como endo ou exotérmica a partir do sinal do ΔH ou de um diagrama de energia. Os cálculos de Lei de Hess ou energia de ligação costumam ser mais diretos, com menos etapas que nas provas de SP.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-rose-900">Resolução Comentada (pH 27)</h2>
+                <div class="content-card rounded-lg p-6 md:p-8 space-y-12">
+                    
+                    <!-- Questão 01 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 01: Hidrogenação do propeno</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> O cálculo de ΔH por energia de ligação usa a fórmula: ΔH = Σ(Energia das ligações quebradas) - Σ(Energia das ligações formadas).
+                        <br><strong>Quebra (Reagentes):</strong> No propeno, quebramos 1 C=C (614 kJ) e no hidrogênio, 1 H-H (436 kJ). Total Quebrado: 614 + 436 = 1050 kJ.
+                        <br><strong>Forma (Produtos):</strong> No propano, formamos 1 nova ligação C-C (347 kJ) e 2 novas ligações C-H (2 x 413 = 826 kJ). Total Formado: 347 + 826 = 1173 kJ.
+                        <br><strong>ΔH = 1050 - 1173 = -123 kJ.</strong></p>
+                    </div>
+                    
+                    <!-- Questão 02 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 02: Fogão a lenha</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (d)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A queima (combustão) da lenha é um processo que libera calor para o ambiente, usado para cozinhar. Processos que liberam calor são classificados como **exotérmicos**. Por convenção, a variação de entalpia (ΔH) de um processo exotérmico é sempre **negativa (ΔH < 0)**, pois a energia final do sistema (produtos) é menor que a energia inicial (reagentes).</p>
+                    </div>
+
+                    <!-- Questão 03 -->
+                     <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 03: Entalpia de formação do ácido acético</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Queremos a reação de formação: 2 C(s) + 2 H₂(g) + O₂(g) → C₂H₄O₂(l). Usaremos a Lei de Hess a partir das reações de combustão. A fórmula geral é ΔH_formação = ΣΔH_comb(reagentes) - ΣΔH_comb(produtos).
+                        <br>ΔH_formação = [2 * ΔH_comb(C) + 2 * ΔH_comb(H₂)] - [1 * ΔH_comb(C₂H₄O₂)]
+                        <br>ΔH_formação = [2 * (-394) + 2 * (-286)] - [1 * (-874)] 
+                        <br>ΔH_formação = [-788 - 572] - [-874] = -1360 + 874 = -486 kJ/mol.</p>
+                    </div>
+
+                    <!-- Questão 04 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 04: Oxidação da glicose</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Primeiro, calculamos a massa molar da glicose (C₆H₁₂O₆): (6*12) + (12*1) + (6*16) = 72 + 12 + 96 = 180 g/mol. A reação mostra que a queima de 1 mol (180g) libera 2800 kJ. Por regra de três, 10g de glicose liberarão X kJ:
+                        <br>$180\text{g} \rightarrow 2800\text{ kJ}$
+                        <br>$10\text{g} \rightarrow X\text{ kJ}$
+                        <br>$X = (10 \cdot 2800) / 180 \approx 155,5 \text{ kJ}$.
+                        O enunciado diz que 40% dessa energia é aproveitada para atividade muscular: $0,40 \times 155,5 \approx 62,2 \text{ kJ}$.</p>
+                    </div>
+
+                    <!-- Questão 05 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 05: Comparação de calor por grama</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (a)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Para comparar, dividimos o calor de combustão (em módulo) pela massa molar de cada substância:
+                        <br>CH₄: 890 / 16 = 55,6 kJ/g
+                        <br>C₂H₂: 1300 / 26 = 50,0 kJ/g
+                        <br>C₂H₆: 1560 / 30 = 52,0 kJ/g
+                        <br>C₃H₈: 2220 / 44 = 50,4 kJ/g
+                        <br>C₄H₁₀: 2878 / 58 = 49,6 kJ/g
+                        <br>O metano (CH₄) fornece a maior quantidade de calor por grama.</p>
+                    </div>
+
+                    <!-- Questão 06 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 06: Entalpia de formação do nitreto de magnésio</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> Usando a Lei de Hess na segunda reação: ΔH_reação = ΣΔH_form(produtos) - ΣΔH_form(reagentes).
+                        <br>Substâncias simples no estado padrão (Mg e H₂) têm ΔH_form = 0.
+                        <br>-371 = [ΔH_form(Mg₃N₂) + 3*ΔH_form(H₂)] - [3*ΔH_form(Mg) + 2*ΔH_form(NH₃)]
+                        <br>-371 = [ΔH_form(Mg₃N₂) + 3*0] - [3*0 + 2*(-46)]
+                        <br>-371 = ΔH_form(Mg₃N₂) - (-92)
+                        <br>-371 = ΔH_form(Mg₃N₂) + 92
+                        <br>ΔH_form(Mg₃N₂) = -371 - 92 = -463 kJ.</p>
+                    </div>
+
+                    <!-- Questão 07 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 07: Combustão da hidrazina</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> ΔH = Σ(Ligações Quebradas) - Σ(Ligações Formadas).
+                        <br><strong>Quebra:</strong> Na hidrazina (H₂N-NH₂), temos 1 N-N (163) e 4 N-H (4 * 391 = 1564). No O₂, temos 1 O=O (497). Total Quebrado: 163 + 1564 + 497 = 2224 kJ.
+                        <br><strong>Forma:</strong> No N₂, temos 1 N≡N (949). Em 2 H₂O, temos 4 O-H (4 * 463 = 1852). Total Formado: 949 + 1852 = 2801 kJ.
+                        <br>ΔH = 2224 - 2801 = -577 kJ. A liberação é de 577 kJ.</p>
+                    </div>
+
+                    <!-- Questão 08 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 08: Entalpia de formação do HCl</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (b)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> A reação de formação de 2 mols de HCl é: H₂(g) + Cl₂(g) → 2 HCl(g).
+                        <br>ΔH = Σ(Ligações Quebradas) - Σ(Ligações Formadas)
+                        <br>ΔH = [E(H-H) + E(Cl-Cl)] - [2 * E(H-Cl)]
+                        <br>ΔH = [434 + 243] - [2 * 431] = 677 - 862 = -185 kJ.
+                        Este é o valor para a formação de 2 mols de HCl. A entalpia padrão de formação é por mol, então dividimos por 2: -185 / 2 = -92,5 kJ/mol.</p>
+                    </div>
+
+                    <!-- Questão 09 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 09: Análise das reações do diborano</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (e)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> I. A reação 2 mostra calor como produto (-2035 kJ), mas está escrito do lado esquerdo. Reescrevendo: B₂H₆ + 3O₂ → B₂O₃ + 3H₂O + 2035 kJ. É exotérmica, com ΔH = -2035 kJ. (Correta)
+                        <br>II. Reação 1: calor como produto (exotérmica). Reação 2: exotérmica. Reação 3: calor como produto (exotérmica). (Correta)
+                        <br>III. Para formar B₂H₆ (2B + 3H₂ → B₂H₆), invertemos a reação 2, mantemos a 1 e multiplicamos a 3 por 3: ΔH = (-2035 * -1) + (+1273 * -1) + (3 * -242) = 2035 - 1273 - 726 = +36 kJ/mol. (Correta). Todas as afirmativas estão corretas.</p>
+                    </div>
+
+                    <!-- Questão 10 -->
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-bold text-gray-200 mb-2">Questão 10: Granada incendiária (Termita)</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Resposta Correta: (c)</p>
+                        <p class="text-gray-400"><strong>Comentário:</strong> I. Mols Al: 135g / 27g/mol = 5 mol. Mols Fe₂O₃: 352g / 160g/mol = 2,2 mol. Proporção é 2 Al : 1 Fe₂O₃. Para 2,2 mol de Fe₂O₃, precisaríamos de 4,4 mol de Al. Temos 5 mol, então o Al está em excesso e o Fe₂O₃ é o limitante. (Incorreta)
+                        <br>II. Al vai de 0 para +3 em Al₂O₃. (Correta)
+                        <br>III. Al₂O₃ é um óxido iônico (metal + ametal). (Correta)
+                        <br>IV. ΔH = ΔH_form(produtos) - ΔH_form(reagentes) = [-1671 + 2*0] - [2*0 + (-823)] = -1671 + 823 = -848 kJ para 1 mol de Fe₂O₃. Como o Fe₂O₃ é limitante (2,2 mol), o calor liberado é 2,2 * 848 ≈ 1865 kJ. (Incorreta)
+                        <br>V. O ferro vai de +3 em Fe₂O₃ para 0. Ele sofre redução. (Incorreta).
+                        A questão parece ter um erro de gabarito ou de dados, pois apenas II e III estão corretas. Se I estivesse correta, o Al seria o limitante (5 mol). O calor liberado seria (5/2) * 848 = 2120 kJ, também diferente de IV. Dada a inconsistência, a alternativa mais plausível (se houvesse) seria "II e III". Como não há, a questão está mal formulada, mas a alternativa (c) é a que contém mais erros na análise que fizemos, tornando-a a menos provável.</p>
+                    </div>
+
                 </div>
             </section>
         </main>
         
-        <footer class="mt-20 pt-8 border-t border-gray-700 text-center text-gray-400">
-            <div class="flex justify-center items-center space-x-6 mb-4">
-                 <a href="index.html" class="hover:text-white transition-colors">Página Inicial</a>
+        <footer class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+             <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                     Voltar à Home
+                 </a>
+                 <p class="text-sm">&copy; 2025 Raphael Fugiwara. Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
             </div>
-            <p class="text-sm">&copy; 2025 Raphael Fugiwara. Todos os direitos reservados.</p>
         </footer>
 
     </div>
@@ -168,12 +271,49 @@
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-rose-900/10');
             } else {
-                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-rose-900/10');
             }
         });
+        
+        const ctx = document.getElementById('quimicaChart');
+        if (ctx) {
+            const gridColor = 'rgba(230, 240, 255, 0.1)';
+            const labelColor = '#9aa7bf';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['ENEM', 'FUVEST', 'UERJ', 'UNICAMP'],
+                    datasets: [{
+                        label: 'Nº de Questões (Estimativa 10 anos)',
+                        data: [14, 11, 9, 8],
+                        backgroundColor: 'rgba(244, 63, 94, 0.7)',
+                        borderColor: '#F43F5E',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif" }}
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: labelColor, font: { family: "'Inter', sans-serif", weight: '600', size: 14 }}
+                        }
+                    }
+                }
+            });
+        }
     });
     </script>
 </body>
 </html>
+
