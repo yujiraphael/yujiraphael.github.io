@@ -1,372 +1,237 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark scroll-smooth">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raphael Fugiwara - Central de Estudos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        @keyframes aurora {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        :root {
+            /* Palette (dark default) */
+            --bg-900: #0b1120;
+            --grad-a: rgba(0, 114, 232, 0.15);
+            --grad-b: rgba(0, 68, 158, 0.15);
+            --card: rgba(17, 24, 39, 0.8);
+            --text-primary: #cce3ff;
+            --text-secondary: #86C1FF;
+            --text-common: #d1d5db;
+            --border: rgba(134, 193, 255, 0.1);
+            --shadow: rgba(2, 6, 23, 0.6);
+            --radius: 14px;
+            --glass-blur: 10px;
+            --font-display: 'Poppins', system-ui, sans-serif;
+            --font-base: 'Inter', system-ui, sans-serif;
+            --ease: cubic-bezier(.2, .9, .26, 1);
+            --med: 320ms;
         }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: radial-gradient(circle at top left, rgba(0, 114, 232, 0.15), transparent 40%),
-                        radial-gradient(circle at bottom right, rgba(0, 68, 158, 0.15), transparent 40%);
-            background-size: 300% 300%;
-            animation: aurora 15s ease infinite;
-            z-index: -1;
+        html.light {
+            --bg-900: #f6f8fb;
+            --grad-a: rgba(0, 114, 232, 0.1);
+            --grad-b: rgba(0, 68, 158, 0.1);
+            --card: rgba(255, 255, 255, 0.9);
+            --text-primary: #0b1220;
+            --text-secondary: #0b5bd6;
+            --text-common: #374151;
+            --border: #e0e7ff;
+            --shadow: rgba(17, 24, 39, 0.1);
         }
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0b1120;
-            color: #d1d5db;
+            margin: 0;
+            min-height: 100vh;
+            font-family: var(--font-base);
+            background: radial-gradient(1200px 600px at 10% 10%, var(--grad-a), transparent), radial-gradient(900px 400px at 90% 90%, var(--grad-b), transparent), var(--bg-900);
+            color: var(--text-common);
+            line-height: 1.5;
+            transition: background 400ms var(--ease), color 300ms var(--ease);
         }
-        .subject-card {
-            background-color: rgba(17, 24, 39, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(134, 193, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        header {
+            position: fixed;
+            left: 0; right: 0; top: 0;
+            z-index: 60;
+            backdrop-filter: blur(8px);
+            background: linear-gradient(180deg, rgba(17, 24, 39, 0.1), transparent);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .subject-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: rgba(134, 193, 255, 0.3);
+        html.light header { background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent); border-bottom-color: rgba(0, 0, 0, 0.05); }
+        header .wrap { display: flex; align-items: center; gap: 24px; padding: 18px 32px; }
+        .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .brand .logo {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--text-secondary), var(--text-primary));
+            display: flex; align-items: center; justify-content: center;
+            color: var(--bg-900);
+            font-weight: 700;
+            font-family: var(--font-display);
         }
-        .subject-card .glow {
-            position: absolute;
-            left: 0; top: 0;
-            pointer-events: none;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at var(--x) var(--y), transparent 10%, rgba(134, 193, 255, 0.2) 20%, transparent 21%);
-            opacity: 0;
-            transition: opacity .2s ease;
-        }
-        .subject-card:hover .glow { opacity: 1; }
-
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
-        #main-header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+        .brand h1 { margin: 0; font-family: var(--font-display); font-weight: 700; color: var(--text-primary); font-size: 1.05rem; }
+        nav { margin-left: auto; display: flex; gap: 12px; align-items: center; }
+        nav a { color: var(--text-common); text-decoration: none; padding: 8px 12px; border-radius: 8px; font-weight: 600; }
+        nav a:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.04); }
+        html.light nav a:hover { background: rgba(0, 0, 0, 0.04); }
+        .theme-toggle { background: transparent; border: 0; color: var(--text-common); cursor: pointer; padding: 8px; display: flex; align-items: center; }
         
-        .typewriter-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1.5rem;
-            background-color: #86C1FF;
-            animation: blink 0.7s infinite;
-            margin-left: 4px;
+        main { padding-top: 108px; }
+        h2.section-title { font-family: var(--font-display); color: var(--text-primary); font-size: clamp(24px, 3vw, 36px); margin: 0 0 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 6px 28px var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(var(--glass-blur));
+            transition: transform var(--med) var(--ease), box-shadow var(--med) var(--ease), border-color var(--med) var(--ease);
+            text-decoration: none;
+            color: var(--text-common);
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+        html.light .card { border-color: rgba(0, 0, 0, 0.08); }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 46px var(--shadow); border-color: var(--border); }
+        .card .card-icon { color: var(--text-secondary); margin-bottom: 12px; }
+        .card h3 { margin: 0 0 8px; color: var(--text-primary); font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; }
+        .card p { margin: 0; font-size: 0.95rem; }
+        
+        .status-badge { position: absolute; top: 12px; right: 12px; font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 99px; }
+        .status-badge.disponivel { background-color: rgba(52, 211, 153, 0.1); color: #34d399; }
+        .status-badge.breve { background-color: rgba(251, 191, 36, 0.1); color: #fbbf24; }
+        
+        footer { margin-top: 48px; padding: 34px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        html.light footer { border-top-color: rgba(0, 0, 0, 0.08); }
+        footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        footer p { margin: 0; font-size: 0.9rem; }
+
+        .reveal { opacity: 0; transform: translateY(15px); transition: opacity 420ms var(--ease), transform 420ms var(--ease); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="bg-gray-900">
-
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-[#cce3ff]">Raphael Fugiwara</a>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#painel" class="text-gray-300 hover:text-white transition-colors">Painel</a>
-                <a href="#materias" class="text-gray-300 hover:text-white transition-colors">Matérias</a>
-                <a href="#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre</a>
+<body>
+    <header role="banner">
+        <div class="wrap">
+            <a href="#" class="brand">
+                <div class="logo">RF</div>
+                <h1>Raphael Fugiwara</h1>
+            </a>
+            <nav role="navigation">
+                <a href="#painel">Painel</a>
+                <a href="#materias">Matérias</a>
+                <a href="#sobre">Sobre</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alterar tema">
+                    <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
             </nav>
         </div>
     </header>
 
-    <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
-
-        <!-- HERO SECTION -->
-        <section class="text-center pt-16 pb-24">
-            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mb-4 scroll-reveal">Central de Estudos</h1>
-            <p class="text-xl md:text-2xl text-[#86C1FF] font-light scroll-reveal flex justify-center items-center h-8" style="transition-delay: 150ms;">
-                Uma plataforma com <span id="typewriter" class="font-semibold ml-2"></span><span class="typewriter-cursor"></span>
-            </p>
+    <main>
+        <section id="painel" class="wrap" style="padding-top:120px; padding-bottom: 40px;">
+             <h2 class="section-title reveal">Painel do Estudante</h2>
+             <div class="card reveal" style="padding: 32px;">
+                <h3 style="margin-bottom: 16px;">Calendário de Vestibulares (Ciclo 2025/2026)</h3>
+                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+                    <div>
+                        <p style="color: #f87171; font-weight: 600;">Outubro</p>
+                        <p><strong>12/10</strong> - PUC-Rio (1º Dia: Português/Lit., Redação, Ling. Estrangeira)</p>
+                        <p><strong>19/10</strong> - PUC-Rio (2º Dia: Matemática, Natureza, Humanas)</p>
+                        <p><strong>26/10</strong> - Unicamp (1ª Fase)</p>
+                    </div>
+                    <div>
+                        <p style="color: #fb923c; font-weight: 600;">Novembro</p>
+                        <p><strong>09/11</strong> - ENEM (1º Dia)</p>
+                        <p><strong>16/11</strong> - ENEM (2º Dia)</p>
+                        <p><strong>23/11</strong> - FUVEST/USP (1ª Fase)</p>
+                        <p><strong>30/11</strong> - Unicamp (2ª Fase - Dia 1)</p>
+                    </div>
+                    <div>
+                        <p style="color: #60a5fa; font-weight: 600;">Dezembro</p>
+                        <p><strong>01/12</strong> - Unicamp (2ª Fase - Dia 2)</p>
+                        <p><strong>14/12</strong> - FUVEST/USP (2ª Fase - Dia 1)</p>
+                        <p><strong>15/12</strong> - FUVEST/USP (2ª Fase - Dia 2)</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <main>
-            <!-- PAINEL DO ESTUDANTE -->
-            <section id="painel" class="mb-20">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af] scroll-reveal">Painel do Estudante</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <!-- Calendário -->
-                    <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <h3 class="text-2xl font-semibold text-[#86C1FF] mb-6 flex items-center">
-                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                            Próximas Provas (Ciclo 2025/2026)
-                        </h3>
-                        <div class="space-y-4">
-                            <div class="bg-gray-800 p-4 rounded-lg shadow-md flex items-center border border-transparent hover:border-purple-400/50 transition-colors">
-                                <div class="text-center w-20 mr-4">
-                                    <p class="text-sm text-purple-400 font-bold">OUT</p>
-                                    <p class="text-2xl font-bold text-gray-100">19</p>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-100">PUC-Rio 2026</p>
-                                    <p class="text-sm text-gray-400">Provas de múltipla escolha e discursiva.</p>
-                                </div>
-                            </div>
-                             <div class="bg-gray-800 p-4 rounded-lg shadow-md flex items-center border border-transparent hover:border-red-400/50 transition-colors">
-                                <div class="text-center w-20 mr-4">
-                                    <p class="text-sm text-red-400 font-bold">NOV</p>
-                                    <p class="text-2xl font-bold text-gray-100">02</p>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-100">ENEM 2025 - 1º Dia</p>
-                                    <p class="text-sm text-gray-400">Linguagens, Códigos, Redação e Ciências Humanas.</p>
-                                </div>
-                            </div>
-                             <div class="bg-gray-800 p-4 rounded-lg shadow-md flex items-center border border-transparent hover:border-red-400/50 transition-colors">
-                                <div class="text-center w-20 mr-4">
-                                    <p class="text-sm text-red-400 font-bold">NOV</p>
-                                    <p class="text-2xl font-bold text-gray-100">09</p>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-100">ENEM 2025 - 2º Dia</p>
-                                    <p class="text-sm text-gray-400">Ciências da Natureza e Matemática.</p>
-                                </div>
-                            </div>
-                            <div class="bg-gray-800 p-4 rounded-lg shadow-md flex items-center border border-transparent hover:border-blue-400/50 transition-colors">
-                                <div class="text-center w-20 mr-4">
-                                    <p class="text-sm text-blue-400 font-bold">NOV</p>
-                                    <p class="text-2xl font-bold text-gray-100">23</p>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-100">UNICAMP 2026 - 1ª Fase</p>
-                                    <p class="text-sm text-gray-400">Prova de Conhecimentos Gerais.</p>
-                                </div>
-                            </div>
-                             <div class="bg-gray-800 p-4 rounded-lg shadow-md flex items-center border border-transparent hover:border-green-400/50 transition-colors">
-                                <div class="text-center w-20 mr-4">
-                                    <p class="text-sm text-green-400 font-bold">NOV</p>
-                                    <p class="text-2xl font-bold text-gray-100">30</p>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-100">FUVEST 2026 - 1ª Fase</p>
-                                    <p class="text-sm text-gray-400">Prova de Conhecimentos Gerais.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Feed de Notícias -->
-                    <div class="scroll-reveal" style="transition-delay: 400ms;">
-                        <h3 class="text-2xl font-semibold text-[#86C1FF] mb-6 flex items-center">
-                           <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
-                            Últimas Notícias (Simulado)
-                        </h3>
-                        <div class="space-y-5">
-                            <a href="#" class="block p-4 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700/50 transition-colors">
-                                <p class="font-bold text-gray-100">MEC divulga novas diretrizes para a redação do ENEM 2025.</p>
-                                <p class="text-sm text-gray-400 mt-1">G1 Educação - há 3 horas</p>
-                            </a>
-                            <a href="#" class="block p-4 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700/50 transition-colors">
-                                <p class="font-bold text-gray-100">Unicamp anuncia aumento no número de vagas para cursos de tecnologia.</p>
-                                <p class="text-sm text-gray-400 mt-1">R7 Notícias - há 18 horas</p>
-                            </a>
-                            <a href="#" class="block p-4 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700/50 transition-colors">
-                                <p class="font-bold text-gray-100">FUVEST: veja a lista de obras literárias obrigatórias para 2026.</p>
-                                <p class="text-sm text-gray-400 mt-1">Folha de S.Paulo - ontem</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- NAVEGUE POR MATÉRIAS -->
-            <section id="materias" class="mb-20">
-                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af] scroll-reveal">Navegue por Matérias</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-                    <a href="resumo27_fisica.html" class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse"></div><span class="text-green-300 text-xs font-semibold">Disponível</span></div>
-                        <div class="text-4xl mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#86C1FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547a2 2 0 00-.547 1.806l.477 2.387a6 6 0 00.517 3.86l.158.318a6 6 0 00.517 3.86l2.387.477a2 2 0 001.806-.547a2 2 0 00.547-1.806l-.477-2.387a6 6 0 00-.517-3.86l-.158-.318a6 6 0 00-.517-3.86l-2.387-.477a2 2 0 00-1.806.547a2 2 0 00-.547 1.806l.477 2.387a6 6 0 00.517 3.86l.158.318a6 6 0 00.517 3.86L19.428 15.428z" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Física</h3>
-                        <p class="text-gray-400 flex-grow text-sm">Ondulatória.</p>
-                    </a>
-                    <a href="resumo27_matematica.html" class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal" style="transition-delay: 100ms;">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse"></div><span class="text-green-300 text-xs font-semibold">Disponível</span></div>
-                        <div class="text-4xl mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#86C1FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Matemática</h3>
-                        <p class="text-gray-400 flex-grow text-sm">Funções Trigonométricas.</p>
-                    </a>
-                    <div href="resumo27_quimica.html" class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal" style="transition-delay: 200ms;">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-yellow-400 mr-2"></div><span class="text-yellow-300 text-xs font-semibold">Em Breve</span></div>
-                        <div class="text-4xl mb-4 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547a2 2 0 00-.547 1.806l.477 2.387a6 6 0 00.517 3.86l.158.318a6 6 0 00.517 3.86l2.387.477a2 2 0 001.806-.547a2 2 0 00.547-1.806l-.477-2.387a6 6 0 00-.517-3.86l-.158-.318a6 6 0 00-.517-3.86l-2.387-.477a2 2 0 00-1.806.547a2 2 0 00-.547 1.806l.477 2.387a6 6 0 00.517 3.86l.158.318a6 6 0 00.517 3.86L19.428 15.428z" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF]/50 mb-2">Química</h3>
-                        <p class="text-gray-400/50 flex-grow text-sm">Termoquímica.</p>
-                    </div>
-                    <div href="resumo27_biologia.html" class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal" style="transition-delay: 300ms;">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-yellow-400 mr-2"></div><span class="text-yellow-300 text-xs font-semibold">Em Breve</span></div>
-                        <div class="text-4xl mb-4 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h1a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.884 5.06l.542-1.13a2 2 0 013.148 0l.542 1.13M15 4a2 2 0 012 2v3.055a2 2 0 01-2 2H9a2 2 0 01-2-2V6a2 2 0 012-2h6z" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF]/50 mb-2">Biologia</h3>
-                        <p class="text-gray-400/50 flex-grow text-sm">Reino Plantae e Virologia.</p>
-                    </div>
-                    <div class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal" style="transition-delay: 400ms;">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-yellow-400 mr-2"></div><span class="text-yellow-300 text-xs font-semibold">Em Breve</span></div>
-                        <div class="text-4xl mb-4 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF]/50 mb-2">História</h3>
-                        <p class="text-gray-400/50 flex-grow text-sm">Era Vargas.</p>
-                    </div>
-                    <div class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-yellow-400 mr-2"></div><span class="text-yellow-300 text-xs font-semibold">Em Breve</span></div>
-                        <div class="text-4xl mb-4 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h1a2 2 0 002-2v-1a2 2 0 012-2h1.945M12 12v9m-4-1.253l.217-.434a1 1 0 011.566 0l.217.434m-3.998 0l.217-.434a1 1 0 011.566 0l.217.434m7.996 0l.217-.434a1 1 0 00-1.566 0l-.217.434M12 6.253v.01" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF]/50 mb-2">Geografia</h3>
-                        <p class="text-gray-400/50 flex-grow text-sm">Geopolítica e Blocos.</p>
-                    </div>
-                     <div class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal" style="transition-delay: 100ms;">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-yellow-400 mr-2"></div><span class="text-yellow-300 text-xs font-semibold">Em Breve</span></div>
-                        <div class="text-4xl mb-4 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF]/50 mb-2">Linguagens</h3>
-                        <p class="text-gray-400/50 flex-grow text-sm">Análise Sintática.</p>
-                    </div>
-                    <div class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal" style="transition-delay: 200ms;">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-yellow-400 mr-2"></div><span class="text-yellow-300 text-xs font-semibold">Em Breve</span></div>
-                        <div class="text-4xl mb-4 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF]/50 mb-2">Artes e Literatura</h3>
-                        <p class="text-gray-400/50 flex-grow text-sm">Modernismo.</p>
-                    </div>
-                     <div class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal" style="transition-delay: 300ms;">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-yellow-400 mr-2"></div><span class="text-yellow-300 text-xs font-semibold">Em Breve</span></div>
-                        <div class="text-4xl mb-4 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF]/50 mb-2">Filosofia</h3>
-                        <p class="text-gray-400/50 flex-grow text-sm">Fenomenologia.</p>
-                    </div>
-                     <div class="subject-card rounded-lg p-6 flex flex-col items-center text-center scroll-reveal" style="transition-delay: 400ms;">
-                        <div class="glow"></div>
-                        <div class="flex items-center self-start absolute top-3 right-3"><div class="h-2 w-2 rounded-full bg-yellow-400 mr-2"></div><span class="text-yellow-300 text-xs font-semibold">Em Breve</span></div>
-                        <div class="text-4xl mb-4 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div>
-                        <h3 class="text-xl font-bold text-[#86C1FF]/50 mb-2">Sociologia</h3>
-                        <p class="text-gray-400/50 flex-grow text-sm">Violência Simbólica.</p>
-                    </div>
-                </div>
-            </section>
-
-             <!-- SOBRE ESTE PROJETO -->
-            <section id="sobre" class="mb-16">
-                 <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af] scroll-reveal">Sobre Este Projeto</h2>
-                <div class="bg-gray-800 rounded-lg shadow-lg p-8 md:p-10 scroll-reveal">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                        <div class="md:col-span-2">
-                             <h3 class="text-2xl font-bold text-[#86C1FF] mb-4">Olá, sou Raphael Fugiwara.</h3>
-                             <p class="text-gray-300 leading-relaxed">Um entusiasta de tecnologia com foco em Ciência da Computação, aprofundando conhecimentos em Física e Matemática para criar soluções inovadoras. Este projeto é um reflexo da minha paixão por aprendizado, design e desenvolvimento web, servindo como meu portfólio dinâmico de estudos para vestibulares.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg text-gray-200 mb-3">Tecnologias Utilizadas:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-700 text-gray-200 text-sm font-medium px-3 py-1 rounded-full">HTML5</span>
-                                <span class="bg-gray-700 text-gray-200 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
-                                <span class="bg-gray-700 text-gray-200 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                                <span class="bg-gray-700 text-gray-200 text-sm font-medium px-3 py-1 rounded-full">Chart.js</span>
-                                <span class="bg-gray-700 text-gray-200 text-sm font-medium px-3 py-1 rounded-full">Gemini API</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <footer class="mt-20 pt-8 border-t border-gray-700 text-center text-gray-400">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" aria-label="GitHub" class="hover:text-white transition-colors">
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-                <a href="#" aria-label="LinkedIn" class="hover:text-white transition-colors">
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
+        <section id="materias" class="wrap" style="padding-bottom: 40px;">
+            <h2 class="section-title reveal">Matérias</h2>
+            <div class="cards-grid">
+                <!-- Links atualizados e ícones SVG -->
+                <a href="resumo27_fisica.html" class="card reveal"><div class="status-badge disponivel">Disponível</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Física</h3><p>Ondulatória</p></a>
+                <a href="resumo27_matematica.html" class="card reveal"><div class="status-badge disponivel">Disponível</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div><h3>Matemática</h3><p>Funções Trigonométricas</p></a>
+                <a href="resumo27_biologia.html" class="card reveal"><div class="status-badge disponivel">Disponível</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.9 13.9c-1.4 3.4-5.3 5.4-8.9 4-3.6-1.4-5.6-5.3-4-8.9 1.4-3.6 5.3-5.4 8.9-4 3.6 1.4 5.6 5.3 4 8.9z"/><path d="M12 12c-2 0-3 2-3 2s1 2 3 2 3-2 3-2-1-2-3-2z"/></svg></div><h3>Biologia</h3><p>Ciclos Virais & Reino Plantae</p></a>
+                <a href="resumo27_quimica.html" class="card reveal"><div class="status-badge disponivel">Disponível</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Química</h3><p>Termoquímica</p></a>
+                <a href="resumo27_historia.html" class="card reveal"><div class="status-badge disponivel">Disponível</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><h3>História</h3><p>Era Vargas</p></a>
+                <a href="geografia.html" class="card reveal"><div class="status-badge disponivel">Disponível</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg></div><h3>Geografia</h3><p>Geopolítica e Globalização</p></a>
+                <a href="resumo27_linguagens.html" class="card reveal"><div class="status-badge breve">Em Breve</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div><h3>Linguagens</h3><p>Análise Sintática</p></a>
+                <a href="resumo27_arte.html" class="card reveal"><div class="status-badge breve">Em Breve</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div><h3>Artes e Literatura</h3><p>Modernismo</p></a>
             </div>
-            <p class="text-sm">&copy; 2025 Raphael Fugiwara. Todos os direitos reservados.</p>
-        </footer>
-
-    </div>
+        </section>
+        
+        <section id="sobre" class="wrap">
+             <h2 class="section-title reveal">Sobre</h2>
+             <div class="card reveal">
+                 <h3>Olá, sou Raphael Fugiwara.</h3>
+                 <p>Um entusiasta de tecnologia com foco em Ciência da Computação, aprofundando conhecimentos em Física e Matemática para criar soluções inovadoras. Este projeto é um reflexo da minha paixão por aprendizado, design e desenvolvimento web, servindo como meu portfólio dinâmico de estudos para vestibulares.</p>
+             </div>
+        </section>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="wrap">
+            <p>&copy; 2025 Raphael Fugiwara</p>
+        </div>
+    </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const typewriterElement = document.getElementById('typewriter');
-        if (typewriterElement) {
-            const words = ["resumos visuais.", "tecnologia criativa.", "design inteligente."];
-            let wordIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const iconSun = document.getElementById('icon-sun');
+            const iconMoon = document.getElementById('icon-moon');
+            const htmlEl = document.documentElement;
 
-            function type() {
-                const currentWord = words[wordIndex];
-                let displayText = currentWord.substring(0, charIndex);
-                typewriterElement.textContent = displayText;
-
-                if (!isDeleting) {
-                    charIndex++;
-                    if (charIndex > currentWord.length) {
-                        isDeleting = true;
-                        setTimeout(type, 2000); // Pause at end of word
-                    } else {
-                        setTimeout(type, 120); // Typing speed
-                    }
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    htmlEl.classList.add('light');
+                    if (iconSun) iconSun.style.display = 'block';
+                    if (iconMoon) iconMoon.style.display = 'none';
                 } else {
-                    charIndex--;
-                    if (charIndex === 0) {
-                        isDeleting = false;
-                        wordIndex = (wordIndex + 1) % words.length;
-                        setTimeout(type, 500); // Pause before new word
-                    } else {
-                        setTimeout(type, 60); // Deleting speed
+                    htmlEl.classList.remove('light');
+                    if (iconSun) iconSun.style.display = 'none';
+                    if (iconMoon) iconMoon.style.display = 'block';
+                }
+            }
+            
+            applyTheme(savedTheme);
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = htmlEl.classList.contains('light') ? 'light' : 'dark';
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    localStorage.setItem('theme', newTheme);
+                    applyTheme(newTheme);
+                });
+            }
+
+            const revealEls = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        revealObserver.unobserve(e.target);
                     }
-                }
-            }
-            type();
-        }
-
-        const cards = document.querySelectorAll('.subject-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                card.style.setProperty('--x', `${e.clientX - rect.left}px`);
-                card.style.setProperty('--y', `${e.clientY - rect.top}px`);
-            });
+                })
+            }, { threshold: 0.1 });
+            revealEls.forEach(el => revealObserver.observe(el));
         });
-
-        const revealElements = document.querySelectorAll('.scroll-reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { 
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => observer.observe(el));
-        
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
-            } else {
-                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
-            }
-        });
-    });
     </script>
 </body>
 </html>
