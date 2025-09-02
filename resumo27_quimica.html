@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Química: Termoquímica - Raphael Fugiwara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(0, 114, 232, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(0, 68, 158, 0.15), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 15s ease infinite;
+            z-index: -1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1120;
+            color: #d1d5db;
+        }
+        .content-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(134, 193, 255, 0.1);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        #main-header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-[#cce3ff]">Raphael Fugiwara</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#painel" class="text-gray-300 hover:text-white transition-colors">Painel</a>
+                <a href="index.html#materias" class="text-gray-300 hover:text-white transition-colors">Matérias</a>
+                <a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
+
+        <header class="text-center pt-16 pb-20">
+            <p class="text-lg font-semibold text-[#86C1FF] scroll-reveal">Química</p>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Dominando a Termoquímica</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
+                Um guia essencial sobre a energia das reações, focado em Variação de Entalpia (ΔH), Lei de Hess e as estratégias para as questões de vestibular.
+            </p>
+        </header>
+
+        <main>
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Pilares da Termoquímica</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Reação Exotérmica -->
+                    <div class="content-card rounded-lg p-8">
+                        <h3 class="font-bold text-xl text-[#86C1FF] mb-3">Reação Exotérmica</h3>
+                        <p class="text-gray-400 mb-4">Libera calor para o ambiente. A energia dos produtos é <span class="text-white">menor</span> que a dos reagentes.</p>
+                        <p class="text-2xl font-mono text-white">ΔH < 0</p>
+                        <div class="mt-4 bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M10 10H30" stroke="#cce3ff" stroke-width="1"/><text x="12" y="7" font-size="4" fill="#86C1FF">Reagentes</text><path d="M10 50H30" stroke="#cce3ff" stroke-width="1"/><text x="13" y="57" font-size="4" fill="#86C1FF">Produtos</text><path d="M30 10 C 50 10, 50 50, 70 50" stroke="#cce3ff" stroke-width="1.5" fill="none"/><path d="M70 50 L 70 10" stroke="#ef4444" stroke-width="1" marker-start="url(#arrowRed)"/><text x="73" y="32" font-size="4" fill="#ef4444">ΔH < 0 (libera)</text><defs><marker id="arrowRed" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444"/></marker></defs></svg></div>
+                    </div>
+                     <!-- Reação Endotérmica -->
+                    <div class="content-card rounded-lg p-8">
+                        <h3 class="font-bold text-xl text-[#86C1FF] mb-3">Reação Endotérmica</h3>
+                        <p class="text-gray-400 mb-4">Absorve calor do ambiente. A energia dos produtos é <span class="text-white">maior</span> que a dos reagentes.</p>
+                        <p class="text-2xl font-mono text-white">ΔH > 0</p>
+                        <div class="mt-4 bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M10 50H30" stroke="#cce3ff" stroke-width="1"/><text x="12" y="57" font-size="4" fill="#86C1FF">Reagentes</text><path d="M10 10H30" stroke="#cce3ff" stroke-width="1"/><text x="13" y="7" font-size="4" fill="#86C1FF">Produtos</text><path d="M30 50 C 50 50, 50 10, 70 10" stroke="#cce3ff" stroke-width="1.5" fill="none"/><path d="M70 50 L 70 10" stroke="#3b82f6" stroke-width="1" marker-end="url(#arrowBlue)"/><text x="73" y="32" font-size="4" fill="#3b82f6">ΔH > 0 (absorve)</text><defs><marker id="arrowBlue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6"/></marker></defs></svg></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Cálculo da Variação de Entalpia (ΔH)</h2>
+                <div class="content-card rounded-lg p-8">
+                    <p class="text-gray-400 mb-8">Sua lista de exercícios explora três métodos principais para calcular o ΔH de uma reação.</p>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-[#86C1FF] mb-3">1. Por Energia de Ligação</h3>
+                            <p class="text-gray-300">Usado nas questões 1 e 7. O raciocínio é um balanço energético: a energia absorvida para quebrar as ligações dos reagentes contra a energia liberada na formação das novas ligações dos produtos.</p>
+                            <div class="mt-4 bg-gray-900/50 p-4 rounded-lg border border-white/10 text-center"><code class="text-lg font-bold text-white">ΔH = Σ(Energia das Ligações Quebradas) - Σ(Energia das Ligações Formadas)</code></div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#86C1FF] mb-3">2. Por Entalpia de Formação (ΔH°f)</h3>
+                            <p class="text-gray-300">Usado na questão 10. A entalpia de formação é a energia para formar 1 mol de uma substância a partir de seus elementos no estado padrão. Lembre-se que para substâncias simples (O₂, N₂, C(grafite), etc), o ΔH°f é zero.</p>
+                            <div class="mt-4 bg-gray-900/50 p-4 rounded-lg border border-white/10 text-center"><code class="text-lg font-bold text-white">ΔH = Σ(ΔH°f dos Produtos) - Σ(ΔH°f dos Reagentes)</code></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Aprofundamento: Lei de Hess</h2>
+                 <div class="content-card rounded-lg p-8">
+                    <p class="text-gray-400 mb-6">Este é o conceito chave para as questões 3, 6 e 9. A Lei de Hess afirma que a variação de entalpia de uma reação global não depende do caminho, apenas dos estados inicial e final. Na prática, você manipula reações intermediárias para chegar na reação final desejada.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                        <div class="bg-gray-900/50 p-4 rounded-lg border border-white/10">
+                            <p class="font-semibold text-white">Passo 1: Identificar</p>
+                            <p class="text-sm text-gray-400 mt-2">Localize os reagentes e produtos da sua reação-alvo nas equações dadas.</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-4 rounded-lg border border-white/10">
+                             <p class="font-semibold text-white">Passo 2: Manipular</p>
+                            <p class="text-sm text-gray-400 mt-2">Inverta ou multiplique as equações intermediárias. Lembre-se de fazer o mesmo com o valor de ΔH (inverter o sinal ou multiplicar).</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-4 rounded-lg border border-white/10">
+                             <p class="font-semibold text-white">Passo 3: Somar</p>
+                            <p class="text-sm text-gray-400 mt-2">Some as equações manipuladas, cancele os termos iguais em lados opostos e some os valores de ΔH para obter o resultado final.</p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Foco nos Vestibulares</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="content-card rounded-lg p-8">
+                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">ENEM</h3>
+                        <p class="text-gray-400"><strong>Foco:</strong> Conceitual e prático. O ENEM adora questões de combustão (questões 2, 4, 5), pedindo para classificar a reação como exo/endotérmica e fazer cálculos simples de calor liberado por massa.</p>
+                    </div>
+                    <div class="content-card rounded-lg p-8">
+                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Vestibulares Tradicionais</h3>
+                         <p class="text-gray-400"><strong>Foco:</strong> Cálculos e Lei de Hess. Espere problemas que exijam o cálculo de ΔH por energia de ligação ou, principalmente, a manipulação de equações através da Lei de Hess, que é um clássico em provas como UERJ e Fuvest.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="mt-20 pt-8 border-t border-gray-700 text-center text-gray-400">
+            <div class="flex justify-center items-center space-x-6 mb-4">
+                 <a href="index.html" class="hover:text-white transition-colors">Página Inicial</a>
+            </div>
+            <p class="text-sm">&copy; 2025 Raphael Fugiwara. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+            } else {
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
