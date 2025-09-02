@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemática: Funções Trigonométricas - Raphael Fugiwara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(0, 114, 232, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(0, 68, 158, 0.15), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 15s ease infinite;
+            z-index: -1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1120;
+            color: #d1d5db;
+        }
+        .content-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(134, 193, 255, 0.1);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        #main-header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-[#cce3ff]">Raphael Fugiwara</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#painel" class="text-gray-300 hover:text-white transition-colors">Painel</a>
+                <a href="index.html#materias" class="text-gray-300 hover:text-white transition-colors">Matérias</a>
+                <a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-8 pt-24 text-gray-300">
+
+        <header class="text-center pt-16 pb-20">
+            <p class="text-lg font-semibold text-[#86C1FF] scroll-reveal">Matemática</p>
+            <h1 class="text-5xl md:text-7xl font-black text-[#cce3ff] mt-2 scroll-reveal" style="transition-delay: 150ms;">Dominando Funções Trigonométricas</h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 mt-4 scroll-reveal" style="transition-delay: 300ms;">
+                Um guia visual para decifrar os parâmetros, transformações e aplicações de senoides e cossenoides nos vestibulares.
+            </p>
+        </header>
+
+        <main>
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Decifrando a Função Completa</h2>
+                <div class="content-card rounded-lg p-8">
+                     <p class="text-gray-400 mb-6">A maioria dos problemas de vestibular usa uma forma geral da função trigonométrica. Entender o que cada parâmetro faz é a chave para resolver as questões.</p>
+                     <div class="bg-gray-900/50 p-4 rounded-lg text-center mb-8 border border-white/10">
+                        <code class="text-xl md:text-2xl font-bold text-[#86C1FF]">f(x) = A + B ⋅ sen(C ⋅ x + D)</code>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div><h3 class="font-bold text-lg text-white">A: Deslocamento Vertical</h3><p class="text-gray-400">Move o gráfico para cima (A > 0) ou para baixo (A < 0). É a "nova linha média" da onda.</p></div>
+                        <div><h3 class="font-bold text-lg text-white">B: Amplitude</h3><p class="text-gray-400">Determina a "altura" da onda a partir da linha média. A amplitude é sempre |B|.</p></div>
+                        <div><h3 class="font-bold text-lg text-white">C: Período</h3><p class="text-gray-400">Altera a frequência. O período (P) é calculado por <code class="font-mono bg-gray-900 p-1 rounded text-sm">P = 2π / |C|</code>.</p></div>
+                        <div><h3 class="font-bold text-lg text-white">D: Deslocamento Horizontal</h3><p class="text-gray-400">Move o gráfico para a esquerda ou direita (defasagem).</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Visualizando as Transformações Gráficas</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Gráfico Amplitude -->
+                    <div class="content-card rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Amplitude: f(x) = 2sen(x)</h3>
+                        <p class="text-sm text-gray-400 mb-4">O parâmetro 'B' estica o gráfico verticalmente.</p>
+                        <div class="bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="-10 -60 220 120" xmlns="http://www.w3.org/2000/svg"><g transform="translate(10,0)"><line x1="0" y1="0" x2="200" y2="0" stroke="#4b5563" stroke-width="0.5"/><line x1="0" y1="-50" x2="0" y2="50" stroke="#4b5563" stroke-width="0.5"/><path d="M0,0 C26.6, -53.3, 53.3,-53.3, 80,0 S133.3,53.3,160,0" stroke="#4b5563" stroke-dasharray="3" stroke-width="1" fill="none"/><path d="M0,0 C26.6, -106.6, 53.3,-106.6, 80,0 S133.3,106.6,160,0" stroke="#86C1FF" stroke-width="1.5" fill="none"/><text x="165" y="5" font-size="6" fill="#9ca3af">x</text><text x="5" y="-50" font-size="6" fill="#9ca3af">f(x)</text><text x="75" y="-30" font-size="6" fill="#cce3ff">2</text><text x="75" y="35" font-size="6" fill="#cce3ff">-2</text><text x="80" y="10" font-size="6" fill="#9ca3af">π</text></g></svg></div>
+                    </div>
+                    <!-- Gráfico Período -->
+                    <div class="content-card rounded-lg p-6">
+                         <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Período: f(x) = sen(2x)</h3>
+                        <p class="text-sm text-gray-400 mb-4">O parâmetro 'C' comprime o gráfico horizontalmente.</p>
+                        <div class="bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="-10 -60 220 120" xmlns="http://www.w3.org/2000/svg"><g transform="translate(10,0)"><line x1="0" y1="0" x2="200" y2="0" stroke="#4b5563" stroke-width="0.5"/><line x1="0" y1="-50" x2="0" y2="50" stroke="#4b5563" stroke-width="0.5"/><path d="M0,0 C26.6, -53.3, 53.3,-53.3, 80,0 S133.3,53.3,160,0" stroke="#4b5563" stroke-dasharray="3" stroke-width="1" fill="none"/><path d="M0,0 C13.3, -53.3, 26.6, -53.3, 40,0 S66.6, 53.3, 80,0 S106.6,-53.3,120,0 S146.6,53.3,160,0" stroke="#86C1FF" stroke-width="1.5" fill="none"/><text x="165" y="5" font-size="6" fill="#9ca3af">x</text><text x="5" y="-50" font-size="6" fill="#9ca3af">f(x)</text><text x="80" y="10" font-size="6" fill="#9ca3af">π</text><text x="160" y="10" font-size="6" fill="#9ca3af">2π</text></g></svg></div>
+                    </div>
+                    <!-- Gráfico Deslocamento Vertical -->
+                    <div class="content-card rounded-lg p-6">
+                         <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Desl. Vertical: f(x) = sen(x) + 1</h3>
+                        <p class="text-sm text-gray-400 mb-4">O parâmetro 'A' move o gráfico para cima ou para baixo.</p>
+                        <div class="bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="-10 -60 220 120" xmlns="http://www.w3.org/2000/svg"><g transform="translate(10,0)"><line x1="0" y1="0" x2="200" y2="0" stroke="#4b5563" stroke-width="0.5"/><line x1="0" y1="-50" x2="0" y2="50" stroke="#4b5563" stroke-width="0.5"/><line x1="0" y1="-25" x2="200" y2="-25" stroke="#4b5563" stroke-dasharray="3" stroke-width="1"/><path d="M0,-25 C26.6,-78.3, 53.3,-78.3, 80,-25 S133.3,28.3,160,-25" stroke="#86C1FF" stroke-width="1.5" fill="none"/><text x="165" y="5" font-size="6" fill="#9ca3af">x</text><text x="5" y="-50" font-size="6" fill="#9ca3af">f(x)</text><text x="5" y="-22" font-size="6" fill="#cce3ff">1</text><text x="80" y="10" font-size="6" fill="#9ca3af">π</text></g></svg></div>
+                    </div>
+                    <!-- Gráfico Deslocamento Horizontal -->
+                    <div class="content-card rounded-lg p-6">
+                         <h3 class="text-xl font-bold text-[#86C1FF] mb-2">Desl. Horizontal: f(x) = sen(x - π/2)</h3>
+                        <p class="text-sm text-gray-400 mb-4">O parâmetro 'D' move o gráfico para os lados.</p>
+                        <div class="bg-gray-900/50 p-2 rounded-lg border border-white/10"><svg viewBox="-10 -60 220 120" xmlns="http://www.w3.org/2000/svg"><g transform="translate(10,0)"><line x1="0" y1="0" x2="200" y2="0" stroke="#4b5563" stroke-width="0.5"/><line x1="0" y1="-50" x2="0" y2="50" stroke="#4b5563" stroke-width="0.5"/><path d="M0,0 C26.6,-53.3, 53.3,-53.3, 80,0 S133.3,53.3,160,0" stroke="#4b5563" stroke-dasharray="3" stroke-width="1" fill="none"/><path d="M40,0 C66.6, -53.3, 93.3,-53.3, 120,0 S173.3,53.3,200,0" stroke="#86C1FF" stroke-width="1.5" fill="none"/><text x="205" y="5" font-size="6" fill="#9ca3af">x</text><text x="5" y="-50" font-size="6" fill="#9ca3af">f(x)</text><text x="40" y="10" font-size="6" fill="#9ca3af">π/2</text><text x="120" y="10" font-size="6" fill="#9ca3af">3π/2</text></g></svg></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 scroll-reveal">
+                <h2 class="text-3xl font-bold text-[#cce3ff] mb-8 pb-2 border-b-2 border-[#1e40af]">Estratégias de Resolução</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="content-card rounded-lg p-8">
+                        <h3 class="text-xl font-bold text-[#86C1FF] mb-3">Encontrando Máximos e Mínimos</h3>
+                        <p class="text-gray-400 mb-4">Para achar o valor máximo, use <code class="font-mono text-sm">sen/cos = 1</code>. Para o mínimo, use <code class="font-mono text-sm">sen/cos = -1</code>.</p>
+                        <p class="text-gray-400">Para saber **quando** ocorre, iguale o argumento da função a <code class="font-mono text-sm">π/2</code> (máx. do seno) ou <code class="font-mono text-sm">π</code> (mín. do cosseno).</p>
+                    </div>
+                    <div class="content-card rounded-lg p-8">
+                        <h3 class="text-xl font-bold text-[#86C1FF] mb-3">Modelando um Problema</h3>
+                        <p class="text-gray-400 mb-4">"Traduza" o enunciado: A altura média de algo é o **deslocamento vertical (A)**. A variação a partir da média é a **amplitude (B)**. O tempo para um ciclo completo define o **período (P)**, que permite achar **C**.</p>
+                    </div>
+                    <div class="content-card rounded-lg p-8">
+                        <h3 class="text-xl font-bold text-[#86C1FF] mb-3">Cancelamento de Ruído (Defasagem)</h3>
+                        <p class="text-gray-400">Para cancelar uma onda <code class="font-mono text-sm">y = B⋅sen(Cx)</code>, é preciso gerar uma onda oposta, <code class="font-mono text-sm">-y</code>. Lembre-se da identidade: <code class="font-mono text-sm">-sen(θ) = sen(θ + π)</code>. Basta somar <code class="font-mono text-sm">π</code> ao argumento.</p>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+        <footer class="mt-20 pt-8 border-t border-gray-700 text-center text-gray-400">
+            <div class="flex justify-center items-center space-x-6 mb-4">
+                <a href="index.html" class="hover:text-white transition-colors">Página Inicial</a>
+            </div>
+            <p class="text-sm">&copy; 2025 Raphael Fugiwara. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+            } else {
+                header.classList.remove('bg-gray-900/80', 'shadow-lg', 'shadow-blue-900/10');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
+
