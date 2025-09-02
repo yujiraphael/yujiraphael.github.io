@@ -252,7 +252,8 @@
             const iconMoon = document.getElementById('icon-moon');
             const htmlEl = document.documentElement;
 
-            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            // Sempre começa no modo dark, a menos que o usuário já tenha escolhido light
+            const savedTheme = localStorage.getItem('theme') || 'dark';
             
             function applyTheme(theme) {
                 if (theme === 'light') {
