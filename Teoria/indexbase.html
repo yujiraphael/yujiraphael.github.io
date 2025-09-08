@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matemática — AuroraDS | Raphael Fugiwara</title>
+  <meta name="description" content="Hub de estudo de Matemática — resumos, exercícios e recursos pH.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- MathJax (colocar antes do CSS para garantir carregamento) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/aurorads.css">
+
+  <!-- Instrução: substitua placeholders abaixo -->
+  <!--
+    EDIT THIS FILE: replace TITLE, DESCRIPTION, and section links.
+    Use this template to create other hubs: copy folder /materias/{slug}/index.html and update placeholders.
+  -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <header role="banner" class="site-header">
+    <div class="wrap">
+      <a href="/" class="brand" aria-label="Ir para a página inicial">
+        <div class="logo">RF</div>
+        <h1 class="brand-title">Raphael Fugiwara</h1>
+      </a>
+      <nav aria-label="breadcrumb" class="breadcrumb" id="breadcrumb">Home › Matemática</nav>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <section class="wrap hero">
+      <h2 class="kicker">Guia de Estudo</h2>
+      <h1 class="page-title">Matemática</h1>
+      <p class="lead">Hub estratégico para dominar conceitos, fórmulas e técnicas essenciais para vestibulares.</p>
+      <p><a class="btn" href="/resolucoes/index.html">Arquivo de Resoluções &rarr;</a></p>
+    </section>
+
+    <section class="wrap quadrants">
+      <h2 class="section-title">Quadrantes de Estudo</h2>
+      <div class="grid">
+        <!-- Card exemplo: Fundamentos -->
+        <article class="card card--topic" aria-labelledby="fundamentos">
+          <div class="card-icon" aria-hidden="true">
+            <!-- SVG icon (currentColor) -->
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </div>
+          <h3 id="fundamentos">Fundamentos</h3>
+          <ul>
+            <li><a href="/materias/matematica/algebral.html"><span class="badge-priority priority-high">⚡</span> Álgebra — <span class="mini">Resumo rápido • 8 min</span></a></li>
+            <li><a href="/materias/matematica/funcoes.html"><span class="badge-priority priority-high">⚡</span> Funções — <span class="mini">Gráficos e análise • 10 min</span></a></li>
+            <li><a href="/materias/matematica/progressao.html"><span class="badge-priority priority-std">✅</span> PA/PG — <span class="mini">Fórmulas essenciais • 6 min</span></a></li>
+          </ul>
+        </article>
+
+        <!-- repeat other cards (Geometria, Análise, Avançados) -->
+      </div>
+    </section>
+
+    <section class="wrap resources">
+      <h2 class="section-title">Recursos Recentes</h2>
+      <div id="recent-cards" class="cards-grid">
+        <!-- cards serão injetados via JS a partir de /assets/data/seed.json -->
+        <noscript>Ative o JavaScript para carregar os recursos recentes.</noscript>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <a href="/">Página Inicial</a> · <a href="/resolucoes/">Arquivo de Resoluções</a>
+      </nav>
+      <p>&copy; 2025 Raphael Fugiwara — AuroraDS</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
