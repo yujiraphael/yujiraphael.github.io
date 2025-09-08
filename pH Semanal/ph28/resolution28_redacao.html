@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redação pH 28 - Raphael Fugiwara (AuroraDS)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg-900: #0b1120;
+            --color-card-bg: rgba(17, 24, 39, 0.75);
+            --color-fg-100: #E6F0FF;
+            --color-muted-60: #9aa7bf;
+            --color-border: rgba(244, 63, 94, 0.1); /* Accent Rose */
+            --color-accent-base: #f43f5e;
+            --font-ui: 'Inter', system-ui, sans-serif;
+            --font-serif: 'Source Serif 4', serif;
+            --shadow-elevation1: 0 4px 14px rgba(5, 10, 20, 0.36);
+            --shadow-elevation2: 0 10px 40px rgba(3, 6, 12, 0.5);
+            --space-6: 24px; --space-8: 32px; --space-12: 48px;
+            --ease-standard: cubic-bezier(0.2, 0.9, 0.26, 1);
+            --duration-medium: 520ms;
+            --radius: 12px;
+            --glass-blur: 12px;
+        }
+        @keyframes aurora { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(244, 63, 94, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(150, 20, 50, 0.1), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 20s ease infinite;
+            z-index: -1;
+        }
+        body { margin: 0; min-height: 100vh; font-family: var(--font-ui); background-color: var(--color-bg-900); color: var(--color-muted-60); line-height: 1.5; }
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--space-8); }
+        header { position: fixed; left: 0; right: 0; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(11, 17, 32, 0.5); border-bottom: 1px solid var(--color-border); }
+        header .wrap { display: flex; align-items: center; padding: 16px var(--space-8); }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand .logo { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #6de0ff, #7affc6, #ff8cd6); display: flex; align-items: center; justify-content: center; color: var(--color-bg-900); font-weight: 700; font-family: var(--font-serif); }
+        .brand h1 { margin: 0; font-family: var(--font-serif); font-weight: 700; color: var(--color-fg-100); font-size: 1.1rem; }
+        main { padding-top: calc(75px + var(--space-12)); }
+        h1.page-title { font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(40px, 5vw, 64px); line-height: 1.1; margin: 0; }
+        h2.section-title { font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(28px, 3vw, 36px); margin: 0 0 var(--space-8); padding-bottom: 16px; border-bottom: 1px solid var(--color-border); }
+        .card { background: var(--color-card-bg); border-radius: var(--radius); padding: var(--space-6); box-shadow: var(--shadow-elevation1); border: 1px solid var(--color-border); backdrop-filter: blur(var(--glass-blur)); }
+        .card h3 { margin: 0 0 8px; color: var(--color-fg-100); font-family: var(--font-serif); font-weight: 600; font-size: 1.25rem; }
+        .card p { margin: 0; font-size: 0.9rem; }
+        .reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-standard); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        footer { margin-top: 48px; padding: 32px 0; border-top: 1px solid var(--color-border); text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+        .highlight { padding: 2px 4px; border-radius: 4px; font-weight: 600; }
+    </style>
+</head>
+<body class="dark">
+    <header role="banner"><div class="wrap"><a href="../../index.html" class="brand"><div class="logo">RF</div><h1>Raphael Fugiwara</h1></a></div></header>
+    <main>
+        <section class="wrap" style="padding-bottom: var(--space-12);">
+            <div style="text-align: center;">
+                <p class="reveal" style="color: var(--color-accent-base); font-weight: 600;">Resolução pH 28</p>
+                <h1 class="page-title reveal" data-stagger="1">Redação</h1>
+                <p class="reveal" data-stagger="2" style="font-size: 1.25rem; color: var(--color-muted-60); max-width: 60ch; margin: 16px auto 0;">Análise da Proposta: "Consequências da busca por padrões de beleza idealizados".</p>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h2 class="section-title reveal">Briefing Estratégico do Tema</h2>
+            <div class="card reveal" data-stagger="1">
+                <div style="display: grid; grid-template-columns: 1fr; md:grid-template-columns: 2fr 1fr; gap: var(--space-8);">
+                    <div>
+                        <h3>Eixos de Discussão Possíveis</h3>
+                        <p>1. **Saúde Pública:** Abordar a patologização dos corpos (transtornos alimentares, dismorfia corporal) como consequência direta da pressão estética.</p>
+                        <p style="margin-top: 12px;">2. **Controle Social e Econômico:** Discutir como a "Indústria da Beleza" e a mídia lucram com a insatisfação, perpetuando um ciclo de consumo e controle simbólico.</p>
+                    </div>
+                    <div style="align-self: start;">
+                        <h3>Na Ponta da Língua</h3>
+                        <p><code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Patologização</code>, <code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Indústria Cultural</code>, <code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Violência Simbólica</code>, <code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Literacia Midiática</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="wrap">
+            <h2 class="section-title reveal">Redação Modelo Comentada</h2>
+            <div class="card reveal" data-stagger="1" style="line-height: 1.7;">
+                <h3>Introdução</h3>
+                <p>No livro "O Mito da Beleza", a jornalista Naomi Wolf disserta sobre como os padrões estéticos são construções sociais utilizadas como ferramentas de controle. De forma análoga, na contemporaneidade brasileira, a busca por um ideal de beleza inatingível, massificado pela mídia e pelas redes sociais, transcende a esfera da escolha individual e se consolida como um problema de saúde pública. Nesse contexto, as consequências dessa busca se manifestam tanto na patologização dos corpos quanto na perpetuação de uma lógica de consumo que lucra com a insegurança.</p>
+                
+                <h3 style="margin-top: var(--space-6);">Desenvolvimento 1</h3>
+                <p><span class="highlight" style="background: rgba(129, 140, 248, 0.2); color: #a5b4fc;">[Tópico Frasal]</span> Em primeira análise, é imperativo notar como a indústria cultural, conceito da Escola de Frankfurt, atua como um potente vetor na mercantilização da aparência. <span class="highlight" style="background: rgba(244, 63, 94, 0.2); color: #fda4af;">[Repertório + Argumentação]</span> Sob a ótica de Adorno e Horkheimer, a mídia transforma a cultura em mercadoria, e com a beleza não é diferente: cria-se um ideal — branco, magro e jovem — que é incessantemente vendido como sinônimo de felicidade. Essa padronização, veiculada em filmes, publicidades e, mais recentemente, em algoritmos de redes sociais, gera um ciclo de insatisfação corporal, no qual os indivíduos são levados a buscar procedimentos e produtos em uma tentativa de se adequar a um modelo que não representa a diversidade real da população. <span class="highlight" style="background: rgba(34, 211, 238, 0.2); color: #67e8f9;">[Conclusão do Parágrafo]</span> Dessa forma, a busca por esse ideal se torna não uma escolha, mas uma consequência de uma pressão simbólica que lucra com a insegurança coletiva.</p>
+
+                <h3 style="margin-top: var(--space-6);">Desenvolvimento 2</h3>
+                <p><span class="highlight" style="background: rgba(129, 140, 248, 0.2); color: #a5b4fc;">[Tópico Frasal]</span> Ademais, as consequências dessa busca extrapolam o campo simbólico e atingem diretamente a saúde física e mental da população. <span class="highlight" style="background: rgba(244, 63, 94, 0.2); color: #fda4af;">[Repertório + Argumentação]</span> A Organização Mundial da Saúde (OMS) já reconhece transtornos como a anorexia e a bulimia como graves doenças psiquiátricas, frequentemente desencadeadas pela obsessão com um peso corporal tido como ideal. A dismorfia corporal, potencializada por filtros de realidade aumentada em aplicativos, leva jovens a uma percepção distorcida de si mesmos, gerando quadros de ansiedade e depressão. <span class="highlight" style="background: rgba(34, 211, 238, 0.2); color: #67e8f9;">[Conclusão do Parágrafo]</span> Fica evidente, portanto, que a idealização estética não é inofensiva, mas sim um gatilho para a patologização da vida cotidiana, com custos sociais e individuais imensuráveis.</p>
+
+                <h3 style="margin-top: var(--space-6);">Conclusão</h3>
+                <p>Portanto, é crucial mitigar as consequências da busca por padrões de beleza idealizados. Para tanto, cabe <span class="highlight" style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7;">[Agente]</span> ao Ministério da Educação, em parceria com o Ministério da Saúde, <span class="highlight" style="background: rgba(244, 63, 94, 0.2); color: #fda4af;">[Ação]</span> promover a literacia midiática e a conscientização sobre saúde mental nas escolas. <span class="highlight" style="background: rgba(251, 191, 36, 0.2); color: #fcd34d;">[Meio]</span> Isso deve ser feito por meio da inclusão de oficinas no currículo do Ensino Médio, ministradas por psicólogos e comunicadores, que ensinem os jovens a identificar a manipulação em imagens publicitárias e a discutir abertamente os impactos dos algoritmos na autoestima. <span class="highlight" style="background: rgba(59, 130, 246, 0.2); color: #93c5fd;">[Finalidade]</span> O objetivo é formar cidadãos com senso crítico apurado, capazes de consumir conteúdo de forma saudável e de valorizar a diversidade de corpos. <span class="highlight" style="background: rgba(139, 92, 246, 0.2); color: #c4b5fd;">[Detalhamento]</span> Essas oficinas, por exemplo, poderiam analisar campanhas publicitárias reais e desconstruir o uso de edições de imagem. Assim, o ideal de beleza deixará de ser um mito opressor para dar lugar a uma autoimagem mais real e saudável.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Navegação</p><a href="../../index.html" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Página Inicial</a><a href="../index.html" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Arquivo de Resoluções</a></div>
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Áreas</p><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Matemática</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências da Natureza</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências Humanas</a></div>
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Sobre</p><a href="../../index.html#sobre" style="color: var(--color-muted-60); display: block; margin-top: 8px;">O Projeto</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Contato</a></div>
+        </div>
+        <div class="wrap" style="padding-top: 32px; text-align: center;"><p style="font-size: 0.9rem;">&copy; 2025 Raphael Fugiwara - AuroraDS Layout</p></div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealEls = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const delay = (e.target.dataset.stagger || 0) * 60;
+                        setTimeout(() => { e.target.classList.add('in'); }, delay);
+                        revealObserver.unobserve(e.target);
+                    }
+                })
+            }, { threshold: 0.1 });
+            let staggerIndex = 0;
+            revealEls.forEach(el => {
+                el.dataset.stagger = staggerIndex++;
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
+

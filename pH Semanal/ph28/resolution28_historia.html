@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História pH 28 - Raphael Fugiwara (AuroraDS)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg-900: #0b1120;
+            --color-card-bg: rgba(17, 24, 39, 0.75);
+            --color-fg-100: #E6F0FF;
+            --color-muted-60: #9aa7bf;
+            --color-border: rgba(245, 158, 11, 0.1); /* Accent Amber */
+            --color-accent-base: #f59e0b;
+            --font-ui: 'Inter', system-ui, sans-serif;
+            --font-serif: 'Source Serif 4', serif;
+            --shadow-elevation1: 0 4px 14px rgba(5, 10, 20, 0.36);
+            --shadow-elevation2: 0 10px 40px rgba(3, 6, 12, 0.5);
+            --space-6: 24px; --space-8: 32px; --space-12: 48px;
+            --ease-standard: cubic-bezier(0.2, 0.9, 0.26, 1);
+            --duration-medium: 520ms;
+            --radius: 12px;
+            --glass-blur: 12px;
+        }
+        @keyframes aurora { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.08), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.08), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 20s ease infinite;
+            z-index: -1;
+        }
+        body { margin: 0; min-height: 100vh; font-family: var(--font-ui); background-color: var(--color-bg-900); color: var(--color-muted-60); line-height: 1.5; }
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--space-8); }
+        header { position: fixed; left: 0; right: 0; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(11, 17, 32, 0.5); border-bottom: 1px solid var(--color-border); }
+        header .wrap { display: flex; align-items: center; padding: 16px var(--space-8); }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand .logo { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #6de0ff, #7affc6, #ff8cd6); display: flex; align-items: center; justify-content: center; color: var(--color-bg-900); font-weight: 700; font-family: var(--font-serif); }
+        .brand h1 { margin: 0; font-family: var(--font-serif); font-weight: 700; color: var(--color-fg-100); font-size: 1.1rem; }
+        main { padding-top: calc(75px + var(--space-12)); }
+        h1.page-title { font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(40px, 5vw, 64px); line-height: 1.1; margin: 0; }
+        h2.section-title { font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(28px, 3vw, 36px); margin: 0 0 var(--space-8); padding-bottom: 16px; border-bottom: 1px solid var(--color-border); }
+        .card { background: var(--color-card-bg); border-radius: var(--radius); padding: var(--space-6); box-shadow: var(--shadow-elevation1); border: 1px solid var(--color-border); backdrop-filter: blur(var(--glass-blur)); }
+        .card h3 { margin: 0 0 8px; color: var(--color-fg-100); font-family: var(--font-serif); font-weight: 600; font-size: 1.25rem; }
+        .card p { margin: 0; font-size: 0.9rem; }
+        .reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-standard); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        footer { margin-top: 48px; padding: 32px 0; border-top: 1px solid var(--color-border); text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+    </style>
+</head>
+<body class="dark">
+    <header role="banner"><div class="wrap"><a href="../../index.html" class="brand"><div class="logo">RF</div><h1>Raphael Fugiwara</h1></a></div></header>
+    <main>
+        <section class="wrap" style="padding-bottom: var(--space-12);">
+            <div style="text-align: center;">
+                <p class="reveal" style="color: var(--color-accent-base); font-weight: 600;">Resolução pH 28</p>
+                <h1 class="page-title reveal" data-stagger="1">História</h1>
+                <p class="reveal" data-stagger="2" style="font-size: 1.25rem; color: var(--color-muted-60); max-width: 60ch; margin: 16px auto 0;">Análise da Era Vargas (1930-1945).</p>
+            </div>
+        </section>
+
+        <section class="wrap">
+             <h2 class="section-title reveal">Linha do Tempo Visual da Era Vargas</h2>
+            <div class="card reveal" data-stagger="1" style="padding: var(--space-8);">
+                 <div style="background: #1f2937; padding: var(--space-6); border-radius: var(--radius); border: 1px solid var(--color-border);">
+                    <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+                        <style>.label{font-family:var(--font-serif); font-size:12px; fill:var(--color-fg-100); font-weight: 600;} .sublabel{font-size:10px; fill:var(--color-muted-60);} .year{font-size:10px; fill:var(--color-accent-base); font-weight: bold;}</style>
+                        <!-- Fases -->
+                        <rect x="50" y="40" width="233" height="120" rx="8" fill="rgba(245, 158, 11, 0.05)"/>
+                        <rect x="283" y="40" width="234" height="120" rx="8" fill="rgba(245, 158, 11, 0.1)"/>
+                        <rect x="517" y="40" width="233" height="120" rx="8" fill="rgba(245, 158, 11, 0.15)"/>
+                        <text x="166" y="30" text-anchor="middle" class="label">Governo Provisório</text>
+                        <text x="400" y="30" text-anchor="middle" class="label">Governo Constitucional</text>
+                        <text x="634" y="30" text-anchor="middle" class="label">Estado Novo</text>
+                        
+                        <!-- Eixo do Tempo -->
+                        <line x1="50" y1="100" x2="750" y2="100" stroke="#4b5563" stroke-width="2"/>
+                        
+                        <!-- Eventos -->
+                        <g transform="translate(80, 100)">
+                            <circle r="5" fill="var(--color-accent-base)"/>
+                            <line y2="-20" stroke="var(--color-accent-base)" stroke-width="1.5"/>
+                            <text y="-30" text-anchor="middle" class="year">1930</text>
+                            <text y="-42" text-anchor="middle" class="sublabel">Revolução de 30</text>
+                        </g>
+                         <g transform="translate(200, 100)">
+                            <circle r="5" fill="var(--color-accent-base)"/>
+                            <line y2="20" stroke="var(--color-accent-base)" stroke-width="1.5"/>
+                            <text y="35" text-anchor="middle" class="year">1932</text>
+                            <text y="47" text-anchor="middle" class="sublabel">Rev. Constitucionalista</text>
+                        </g>
+                        <g transform="translate(350, 100)">
+                            <circle r="5" fill="var(--color-accent-base)"/>
+                            <line y2="-20" stroke="var(--color-accent-base)" stroke-width="1.5"/>
+                            <text y="-30" text-anchor="middle" class="year">1934</text>
+                            <text y="-42" text-anchor="middle" class="sublabel">Nova Constituição</text>
+                        </g>
+                        <g transform="translate(450, 100)">
+                            <circle r="5" fill="var(--color-accent-base)"/>
+                            <line y2="20" stroke="var(--color-accent-base)" stroke-width="1.5"/>
+                            <text y="35" text-anchor="middle" class="year">1935</text>
+                            <text y="47" text-anchor="middle" class="sublabel">Intentona Comunista</text>
+                        </g>
+                        <g transform="translate(580, 100)">
+                            <circle r="5" fill="var(--color-accent-base)"/>
+                            <line y2="-20" stroke="var(--color-accent-base)" stroke-width="1.5"/>
+                            <text y="-30" text-anchor="middle" class="year">1937</text>
+                            <text y="-42" text-anchor="middle" class="sublabel">Plano Cohen / Golpe</text>
+                        </g>
+                         <g transform="translate(720, 100)">
+                            <circle r="5" fill="var(--color-accent-base)"/>
+                            <line y2="20" stroke="var(--color-accent-base)" stroke-width="1.5"/>
+                            <text y="35" text-anchor="middle" class="year">1945</text>
+                            <text y="47" text-anchor="middle" class="sublabel">Fim do Estado Novo</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h2 class="section-title reveal">Análise das Questões (1-10)</h2>
+            <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-6);">
+                <div class="card reveal" data-stagger="1"><p><strong>Questão 01:</strong> A novidade do comício em praça pública mostra a estratégia de Vargas de buscar o apoio direto das massas, uma característica do populismo. **Gabarito: A**.</p></div>
+                <div class="card reveal" data-stagger="2"><p><strong>Questão 02:</strong> O texto evidencia a dualidade do trabalhismo varguista: concessão de benefícios, mas com forte controle estatal sobre os sindicatos (peleguismo). **Gabarito: C**.</p></div>
+                <div class="card reveal" data-stagger="3"><p><strong>Questão 03:</strong> A política industrial de Vargas combinava a modernização da produção (taylorismo) com a centralização e o controle sobre a organização dos trabalhadores. **Gabarito: A**.</p></div>
+                <div class="card reveal" data-stagger="4"><p><strong>Questão 04:</strong> A propaganda do Estado Novo, como o Cine Jornal, buscava associar a imagem de Vargas à modernidade e ao progresso, legitimando seu regime autoritário. **Gabarito: E**.</p></div>
+                <div class="card reveal" data-stagger="5"><p><strong>Questão 05 (Análise Profunda):** A Exposição do Estado Novo foi uma grande ação do **DIP (Departamento de Imprensa e Propaganda)** para construir uma memória positiva do governo Vargas e legitimar o golpe de 1937 perante a população. **Gabarito: B**.</p></div>
+                <div class="card reveal" data-stagger="6"><p><strong>Questão 06:</strong> Os artigos da Constituição de 1937 mostram uma concentração de poder no Executivo e um Legislativo com poderes limitados, indicando a ausência de uma separação de poderes efetiva. **Gabarito: B**.</p></div>
+                <div class="card reveal" data-stagger="7"><p><strong>Questão 07:</strong> O discurso de Vargas justifica o golpe do Estado Novo como uma necessidade para restaurar a ordem e a paz, associando a nova orientação política à estabilidade nacional. **Gabarito: B**.</p></div>
+                <div class="card reveal" data-stagger="8"><p><strong>Questão 08:</strong> O nacionalismo de Vargas era pragmático. Ele nacionalizou setores estratégicos, mas também negociou com capitais estrangeiros (como no acordo com os EUA para a CSN), mostrando flexibilidade. **Gabarito: B**.</p></div>
+                <div class="card reveal" data-stagger="9"><p><strong>Questão 09 (Análise Profunda):** A repressão ao comunismo, especialmente após a **Intentona Comunista de 1935**, foi usada como justificativa para o aumento do autoritarismo estatal e a supressão de liberdades, culminando no golpe do Estado Novo. **Gabarito: E**.</p></div>
+                <div class="card reveal" data-stagger="10"><p><strong>Questão 10:</strong> A propaganda integralista se opunha tanto ao liberalismo dos "banqueiros internacionais" quanto ao sistema político tradicional ("políticos profissionais"), caracterizando-se como nacionalista e antisistema. **Gabarito: A**.</p></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Navegação</p><a href="../../index.html" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Página Inicial</a><a href="../index.html" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Arquivo de Resoluções</a></div>
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Áreas</p><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Matemática</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências da Natureza</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências Humanas</a></div>
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Sobre</p><a href="../../index.html#sobre" style="color: var(--color-muted-60); display: block; margin-top: 8px;">O Projeto</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Contato</a></div>
+        </div>
+        <div class="wrap" style="padding-top: 32px; text-align: center;"><p style="font-size: 0.9rem;">&copy; 2025 Raphael Fugiwara - AuroraDS Layout</p></div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealEls = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const delay = (e.target.dataset.stagger || 0) * 60;
+                        setTimeout(() => { e.target.classList.add('in'); }, delay);
+                        revealObserver.unobserve(e.target);
+                    }
+                })
+            }, { threshold: 0.1 });
+            let staggerIndex = 0;
+            revealEls.forEach(el => {
+                el.dataset.stagger = staggerIndex++;
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
+

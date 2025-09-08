@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arquivo de Resoluções - Raphael Fugiwara (AuroraDS)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
             --font-serif: 'Source Serif 4', serif;
             --shadow-elevation1: 0 4px 14px rgba(5, 10, 20, 0.36);
             --shadow-elevation2: 0 10px 40px rgba(3, 6, 12, 0.5);
-            --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
+            --space-6: 24px; --space-8: 32px; --space-12: 48px;
             --ease-standard: cubic-bezier(0.2, 0.9, 0.26, 1);
             --duration-medium: 520ms;
             --radius: 12px;
@@ -53,10 +53,12 @@
         .card p { margin: 0; font-size: 0.9rem; }
         .reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-standard); }
         .reveal.in { opacity: 1; transform: translateY(0); }
-        .search-bar { background: var(--color-card-bg); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 12px 16px; margin: 24px 0 48px; }
+        .search-bar { background: var(--color-card-bg); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 12px 16px; margin: 24px 0 48px; display: flex; align-items: center; gap: 12px; }
         .search-input { width: 100%; background: transparent; border: none; color: var(--color-fg-100); outline: none; }
         footer { margin-top: 48px; padding: 32px 0; border-top: 1px solid var(--color-border); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+        .footer-grid a { color: var(--color-muted-60); text-decoration: none; display: block; margin-top: 4px; }
+        .footer-grid a:hover { color: var(--color-fg-100); }
     </style>
 </head>
 <body class="dark">
@@ -71,19 +73,20 @@
             </div>
             <div class="reveal" style="margin-top: 48px;">
                 <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     <input type="text" id="search-input" class="search-input" placeholder="Pesquisar por semana (ex: pH 27)...">
                 </div>
             </div>
             <div class="cards-grid">
-                <a href="semana28.html" class="card reveal week-card" data-stagger="1" style="grid-column: 1 / -1; md:grid-column: span 2; border-color: var(--color-accent-green-base);">
+                <a href="ph28/index.html" class="card reveal week-card" data-stagger="1" style="grid-column: 1 / -1; border-color: var(--color-accent-green-base);">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <h3 style="color: var(--color-accent-green-base);">Semana pH 28</h3>
                         <span style="font-size: 1.5rem;">🔥</span>
                     </div>
                     <p>Foco em Cinética Química, Fenômenos Ondulatórios e o Realismo Político de Maquiavel.</p>
                 </a>
-                <a href="semana27.html" class="card reveal week-card" data-stagger="2">
-                    <h3>Semana pH 27</h3>
+                <a href="ph27/index.html" class="card reveal week-card" data-stagger="2">
+                    <h3 style="display: flex; align-items: center; gap: 8px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6de0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Semana pH 27</h3>
                     <p>Análise de Ondulatória, Era Vargas, Termoquímica, e mais.</p>
                 </a>
                 <div class="card reveal week-card" data-stagger="3" style="opacity: 0.6;"><h3>Semana pH 26</h3><p>Resoluções em breve.</p></div>
@@ -95,19 +98,19 @@
         <div class="wrap footer-grid">
             <div>
                 <p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Navegação</p>
-                <a href="../index.html" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Página Inicial</a>
-                <a href="../#guias" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Guias de Estudo</a>
+                <a href="../index.html">Página Inicial</a>
+                <a href="../#guias">Guias de Estudo</a>
             </div>
             <div>
                 <p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Áreas</p>
-                <a href="#" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Matemática</a>
-                <a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências da Natureza</a>
-                <a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências Humanas</a>
+                <a href="#">Matemática</a>
+                <a href="#">Ciências da Natureza</a>
+                <a href="#">Ciências Humanas</a>
             </div>
              <div>
                 <p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Sobre</p>
-                <a href="../index.html#sobre" style="color: var(--color-muted-60); display: block; margin-top: 8px;">O Projeto</a>
-                <a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Contato</a>
+                <a href="../index.html#sobre">O Projeto</a>
+                <a href="#">Contato</a>
             </div>
         </div>
         <div class="wrap" style="padding-top: 32px; text-align: center;"><p style="font-size: 0.9rem;">&copy; 2025 Raphael Fugiwara - AuroraDS Layout</p></div>
@@ -118,11 +121,11 @@
             const weekCards = document.querySelectorAll('.week-card');
 
             searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
+                const searchTerm = e.target.value.toLowerCase().replace('ph', '').trim();
                 weekCards.forEach(card => {
                     const title = card.querySelector('h3').textContent.toLowerCase();
                     if (title.includes(searchTerm)) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
                     }

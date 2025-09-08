@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Química pH 28 - Raphael Fugiwara (AuroraDS)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg-900: #0b1120;
+            --color-card-bg: rgba(17, 24, 39, 0.75);
+            --color-fg-100: #E6F0FF;
+            --color-muted-60: #9aa7bf;
+            --color-border: rgba(255, 140, 214, 0.1); /* Accent Pink */
+            --color-accent-base: #ff8cd6;
+            --font-ui: 'Inter', system-ui, sans-serif;
+            --font-serif: 'Source Serif 4', serif;
+            --shadow-elevation1: 0 4px 14px rgba(5, 10, 20, 0.36);
+            --shadow-elevation2: 0 10px 40px rgba(3, 6, 12, 0.5);
+            --space-6: 24px; --space-8: 32px; --space-12: 48px;
+            --ease-standard: cubic-bezier(0.2, 0.9, 0.26, 1);
+            --duration-medium: 520ms;
+            --radius: 12px;
+            --glass-blur: 12px;
+        }
+        @keyframes aurora { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at top left, rgba(255, 140, 214, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(150, 80, 180, 0.1), transparent 40%);
+            background-size: 300% 300%;
+            animation: aurora 20s ease infinite;
+            z-index: -1;
+        }
+        body { margin: 0; min-height: 100vh; font-family: var(--font-ui); background-color: var(--color-bg-900); color: var(--color-muted-60); line-height: 1.5; }
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--space-8); }
+        header { position: fixed; left: 0; right: 0; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(11, 17, 32, 0.5); border-bottom: 1px solid var(--color-border); }
+        header .wrap { display: flex; align-items: center; padding: 16px var(--space-8); }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand .logo { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #6de0ff, #7affc6, #ff8cd6); display: flex; align-items: center; justify-content: center; color: var(--color-bg-900); font-weight: 700; font-family: var(--font-serif); }
+        .brand h1 { margin: 0; font-family: var(--font-serif); font-weight: 700; color: var(--color-fg-100); font-size: 1.1rem; }
+        main { padding-top: calc(75px + var(--space-12)); }
+        h1.page-title { font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(40px, 5vw, 64px); line-height: 1.1; margin: 0; }
+        h2.section-title { font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(28px, 3vw, 36px); margin: 0 0 var(--space-8); padding-bottom: 16px; border-bottom: 1px solid var(--color-border); }
+        .card { background: var(--color-card-bg); border-radius: var(--radius); padding: var(--space-6); box-shadow: var(--shadow-elevation1); border: 1px solid var(--color-border); backdrop-filter: blur(var(--glass-blur)); }
+        .card h3 { margin: 0 0 8px; color: var(--color-fg-100); font-family: var(--font-serif); font-weight: 600; font-size: 1.25rem; }
+        .card p { margin: 0; font-size: 0.9rem; }
+        .reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-standard); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        footer { margin-top: 48px; padding: 32px 0; border-top: 1px solid var(--color-border); text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+    </style>
+</head>
+<body class="dark">
+    <header role="banner"><div class="wrap"><a href="../../index.html" class="brand"><div class="logo">RF</div><h1>Raphael Fugiwara</h1></a></div></header>
+    <main>
+        <section class="wrap" style="padding-bottom: var(--space-12);">
+            <div style="text-align: center;">
+                <p class="reveal" style="color: var(--color-accent-base); font-weight: 600;">Resolução pH 28</p>
+                <h1 class="page-title reveal" data-stagger="1">Química</h1>
+                <p class="reveal" data-stagger="2" style="font-size: 1.25rem; color: var(--color-muted-60); max-width: 60ch; margin: 16px auto 0;">Análise de Cinética Química.</p>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h2 class="section-title reveal">Na Ponta da Língua</h2>
+            <div class="card reveal" data-stagger="1">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-8);">
+                    <div><h3>Conceitos Essenciais</h3><p>A velocidade de uma reação depende da frequência e da energia das colisões entre as moléculas. Fatores como **temperatura**, **concentração**, **superfície de contato** e **catalisadores** alteram essa velocidade ao modificar as condições das colisões.</p></div>
+                    <div><h3>Palavras-Chave</h3><p><code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Energia de Ativação</code>, <code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Teoria das Colisões</code>, <code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Lei da Velocidade</code>, <code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Catalisador</code>, <code style="background: #2b2f3a; padding: 2px 6px; border-radius: 4px;">Ordem da Reação</code>.</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="wrap">
+            <h2 class="section-title reveal">Diagrama: Energia de Ativação</h2>
+            <div class="card reveal" data-stagger="1">
+                 <div style="background: #1f2937; padding: var(--space-6); border-radius: var(--radius); border: 1px solid var(--color-border); text-align: center;">
+                    <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                        <style>.label{font-family:var(--font-serif); font-size:6px; fill:var(--color-fg-100); font-weight: 600;}</style>
+                        <path d="M10 80 H40" stroke="#cce3ff" stroke-width="1"/><text x="12" y="77" font-size="5" fill="#86C1FF">Reagentes</text>
+                        <path d="M160 60 H190" stroke="#cce3ff" stroke-width="1"/><text x="163" y="57" font-size="5" fill="#86C1FF">Produtos</text>
+                        <!-- Caminho sem catalisador -->
+                        <path d="M40 80 C 80 80, 80 20, 120 20 S 160 20, 160 60" stroke="var(--color-accent-base)" stroke-width="2" fill="none"/>
+                        <path d="M100 80 V 20" stroke="#cce3ff" stroke-width="0.5" stroke-dasharray="2"/><text x="102" y="50" font-size="5" fill="#cce3ff">Ea</text>
+                        <!-- Caminho com catalisador -->
+                        <path d="M40 80 C 80 80, 80 40, 120 40 S 160 40, 160 60" stroke="#6de0ff" stroke-width="1.5" fill="none" stroke-dasharray="3"/>
+                         <path d="M110 80 V 40" stroke="#6de0ff" stroke-width="0.5" stroke-dasharray="2"/><text x="112" y="60" font-size="5" fill="#6de0ff">Ea (cat.)</text>
+                    </svg>
+                    <p style="font-size: 0.8rem; margin-top: 8px;">Um **catalisador** (linha pontilhada) cria um caminho alternativo com menor **Energia de Ativação (Ea)**, acelerando a reação.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h2 class="section-title reveal">Análise das Questões (1-10)</h2>
+            <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-6);">
+                <div class="card reveal" data-stagger="1"><p><strong>Questão 01:</strong> A eficiência do fármaco é maior quando a troca é mais lenta. A linha vermelha sólida mostra a concentração do fármaco original decaindo mais lentamente que as outras. **Gabarito: D**.</p></div>
+                <div class="card reveal" data-stagger="2"><p><strong>Questão 02:</strong> O oxigênio atômico (O) é produzido na etapa 1 e consumido na etapa 2, não aparecendo na reação global. Ele é um intermediário instável. **Gabarito: A**.</p></div>
+                <div class="card reveal" data-stagger="3"><p><strong>Questão 03 (Análise Profunda):** A lei da velocidade é \(v = k[CCl_3CHO][C_6H_5Cl]^2\). Se duplicamos (aumento de 100%) a concentração de \(C_6H_5Cl\), o impacto na velocidade é \(2^2 = 4\). Se também duplicamos a de \(CCl_3CHO\), o impacto é \(2^1\). O efeito total é \(4 \times 2 = 8\). Nenhuma alternativa corresponde, exceto se considerarmos apenas a duplicação de \(C_6H_5Cl\), que quadruplica a velocidade. **Gabarito: E** (com ressalvas sobre o enunciado).</p></div>
+                <div class="card reveal" data-stagger="4"><p><strong>Questão 04:</strong> Para a maior rapidez, buscamos os fatores que mais aceleram a reação: maior superfície de contato (palha de aço), maior concentração (6 mol/L) e maior temperatura (50°C). O Grupo 4 combina todos. **Gabarito: A**.</p></div>
+                <div class="card reveal" data-stagger="5"><p><strong>Questão 05:</strong> Ingerir líquidos dilui o suco gástrico, causando uma **diminuição** da velocidade. Mastigar bem **aumenta** a superfície de contato do alimento, causando um **aumento** da velocidade. **Gabarito: C**.</p></div>
+                <div class="card reveal" data-stagger="6"><p><strong>Questão 06:</strong> No tempo \(t=10\)s, a concentração de A cai de 4 para 2 mol/L. Δ[A] = -2 mol/L. Como a estequiometria é A → 2B, a velocidade de formação de B é o dobro da de consumo de A, com sinal trocado. V_B = 2 * (|-2| / 10) = 0,40 mol L⁻¹s⁻¹. **Gabarito: D**.</p></div>
+                <div class="card reveal" data-stagger="7"><p><strong>Questão 07 (Análise Profunda):** A lei da velocidade é \(v = k[NO_2]^x\). Pelos dados, quando [NO₂] = 0,2 mol/L, v = 0,02 mol/L·s. Logo, \(0,02 = k(0,2)^2 \Rightarrow 0,02 = k(0,04) \Rightarrow k = 0,5\) L/mol·s. A reação é de segunda ordem (x=2), pois a velocidade aumenta quadraticamente com a concentração. **Gabarito: C**.</p></div>
+                <div class="card reveal" data-stagger="8"><p><strong>Questão 08:</strong> Comparando exp. 1 e 2, dobrar [O₃] dobra a velocidade (y=1). Comparando exp. 2 e 3, dividir [NO₂] por 2 divide a velocidade por 2 (x=1). A ordem global é x + y = 1 + 1 = 2. **Gabarito: E**.</p></div>
+                <div class="card reveal" data-stagger="9"><p><strong>Questão 09:</strong> Analisando os experimentos, a reação é de ordem 1 para C₂₀H₃₀O₂, ordem 2 para H₂O₂ e ordem 0 para O₂. Usando os dados do exp. 1 na lei de velocidade, \(1,5 \times 10^{-3} = k(0,1)^1(0,1)^2(0,1)^0 \Rightarrow k = 1,5\). **Gabarito: E**.</p></div>
+                <div class="card reveal" data-stagger="10"><p><strong>Questão 10:</strong> Análise correta dos fatores: II (superfície de contato), III (oxirredução), e V (teoria ácido-base). **Gabarito: C**.</p></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Navegação</p><a href="../../index.html" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Página Inicial</a><a href="../index.html" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Arquivo de Resoluções</a></div>
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Áreas</p><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Matemática</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências da Natureza</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências Humanas</a></div>
+             <div><p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Sobre</p><a href="../../index.html#sobre" style="color: var(--color-muted-60); display: block; margin-top: 8px;">O Projeto</a><a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Contato</a></div>
+        </div>
+        <div class="wrap" style="padding-top: 32px; text-align: center;"><p style="font-size: 0.9rem;">&copy; 2025 Raphael Fugiwara - AuroraDS Layout</p></div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealEls = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const delay = (e.target.dataset.stagger || 0) * 60;
+                        setTimeout(() => { e.target.classList.add('in'); }, delay);
+                        revealObserver.unobserve(e.target);
+                    }
+                })
+            }, { threshold: 0.1 });
+            let staggerIndex = 0;
+            revealEls.forEach(el => {
+                el.dataset.stagger = staggerIndex++;
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
