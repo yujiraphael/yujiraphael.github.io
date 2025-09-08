@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Arquivo de Resoluções - Raphael Fugiwara (AuroraDS)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Design System: AuroraDS v1.0.0 */
+            --color-bg-900: #0b1120;
+            --color-card-bg: rgba(17, 24, 39, 0.75);
+            --color-fg-100: #E6F0FF;
+            --color-muted-60: #9aa7bf;
+            --color-border: rgba(230, 240, 255, 0.1);
+            --color-accent-blue-base: #6de0ff;
+            --color-accent-green-base: #7affc6;
+            --color-accent-pink-base: #ff8cd6;
+            --font-ui: 'Inter', system-ui, sans-serif;
+            --font-serif: 'Source Serif 4', serif;
+            --shadow-elevation1: 0 4px 14px rgba(5, 10, 20, 0.36);
+            --shadow-elevation2: 0 10px 40px rgba(3, 6, 12, 0.5);
+            --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
+            --ease-standard: cubic-bezier(0.2, 0.9, 0.26, 1);
+            --duration-medium: 520ms;
+            --radius: 12px;
+            --glass-blur: 12px;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0; min-height: 100vh; font-family: var(--font-ui);
+            background: linear-gradient(135deg, rgba(109, 224, 255, 0.05) 0%, rgba(27, 38, 64, 0.05) 100%), var(--color-bg-900);
+            color: var(--color-muted-60); line-height: 1.5;
+        }
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--space-8); }
+        header {
+            position: fixed; left: 0; right: 0; top: 0; z-index: 100;
+            backdrop-filter: blur(8px); background: rgba(11, 17, 32, 0.5);
+            border-bottom: 1px solid var(--color-border);
+        }
+        header .wrap { display: flex; align-items: center; padding: 16px var(--space-8); }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand .logo { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #6de0ff, #7affc6, #ff8cd6); display: flex; align-items: center; justify-content: center; color: var(--color-bg-900); font-weight: 700; font-family: var(--font-serif); }
+        .brand h1 { margin: 0; font-family: var(--font-serif); font-weight: 700; color: var(--color-fg-100); font-size: 1.1rem; }
+        main { padding-top: calc(75px + var(--space-12)); }
+        h1.page-title { font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(40px, 5vw, 64px); line-height: 1.1; margin: 0; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); }
+        .card { background: var(--color-card-bg); border-radius: var(--radius); padding: var(--space-6); box-shadow: var(--shadow-elevation1); border: 1px solid var(--color-border); backdrop-filter: blur(var(--glass-blur)); transition: transform 360ms var(--ease-standard), box-shadow 360ms var(--ease-standard); text-decoration: none; color: var(--color-muted-60); }
+        .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-elevation2); }
+        .card h3 { margin: 0 0 8px; color: var(--color-fg-100); font-family: var(--font-serif); font-weight: 600; font-size: 1.25rem; }
+        .card p { margin: 0; font-size: 0.9rem; }
+        .reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-standard); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        .search-bar { background: var(--color-card-bg); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 12px 16px; margin: 24px 0 48px; }
+        .search-input { width: 100%; background: transparent; border: none; color: var(--color-fg-100); outline: none; }
+        footer { margin-top: 48px; padding: 32px 0; border-top: 1px solid var(--color-border); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+    </style>
+</head>
+<body class="dark">
+    <header role="banner">
+        <div class="wrap"><a href="../index.html" class="brand"><div class="logo">RF</div><h1>Raphael Fugiwara</h1></a></div>
+    </header>
+    <main>
+        <section class="wrap">
+            <div class="reveal" style="text-align: center;">
+                <h1 class="page-title">Arquivo de Resoluções Semanais</h1>
+                <p style="font-size: 1.1rem; color: var(--color-muted-60); max-width: 60ch; margin: 16px auto 0;">Aqui você encontra todas as resoluções semanais do cursinho pH. Clique em uma semana para acessar os exercícios resolvidos e explicações detalhadas.</p>
+            </div>
+            <div class="reveal" style="margin-top: 48px;">
+                <div class="search-bar">
+                    <input type="text" id="search-input" class="search-input" placeholder="Pesquisar por semana (ex: pH 27)...">
+                </div>
+            </div>
+            <div class="cards-grid">
+                <a href="semana28.html" class="card reveal week-card" data-stagger="1" style="grid-column: 1 / -1; md:grid-column: span 2; border-color: var(--color-accent-green-base);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="color: var(--color-accent-green-base);">Semana pH 28</h3>
+                        <span style="font-size: 1.5rem;">🔥</span>
+                    </div>
+                    <p>Foco em Cinética Química, Fenômenos Ondulatórios e o Realismo Político de Maquiavel.</p>
+                </a>
+                <a href="semana27.html" class="card reveal week-card" data-stagger="2">
+                    <h3>Semana pH 27</h3>
+                    <p>Análise de Ondulatória, Era Vargas, Termoquímica, e mais.</p>
+                </a>
+                <div class="card reveal week-card" data-stagger="3" style="opacity: 0.6;"><h3>Semana pH 26</h3><p>Resoluções em breve.</p></div>
+                <div class="card reveal week-card" data-stagger="4" style="opacity: 0.6;"><h3>Semana pH 25</h3><p>Resoluções em breve.</p></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+            <div>
+                <p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Navegação</p>
+                <a href="../index.html" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Página Inicial</a>
+                <a href="../#guias" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Guias de Estudo</a>
+            </div>
+            <div>
+                <p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Áreas</p>
+                <a href="#" style="color: var(--color-muted-60); display: block; margin-top: 8px;">Matemática</a>
+                <a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências da Natureza</a>
+                <a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Ciências Humanas</a>
+            </div>
+             <div>
+                <p style="font-family: var(--font-serif); color: var(--color-fg-100); font-weight: 600;">Sobre</p>
+                <a href="../index.html#sobre" style="color: var(--color-muted-60); display: block; margin-top: 8px;">O Projeto</a>
+                <a href="#" style="color: var(--color-muted-60); display: block; margin-top: 4px;">Contato</a>
+            </div>
+        </div>
+        <div class="wrap" style="padding-top: 32px; text-align: center;"><p style="font-size: 0.9rem;">&copy; 2025 Raphael Fugiwara - AuroraDS Layout</p></div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            const weekCards = document.querySelectorAll('.week-card');
+
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                weekCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            const revealEls = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const delay = (e.target.dataset.stagger || 0) * 60;
+                        setTimeout(() => { e.target.classList.add('in'); }, delay);
+                        revealObserver.unobserve(e.target);
+                    }
+                })
+            }, { threshold: 0.1 });
+            let staggerIndex = 0;
+            revealEls.forEach(el => {
+                el.dataset.stagger = staggerIndex++;
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
+

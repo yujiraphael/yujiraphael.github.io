@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,285 +9,244 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Design System: AuroraDS v1.0.0 */
-            /* Tokens from design-system.json */
-
-            /* Color Tokens (Dark Theme) */
             --color-bg-900: #0b1120;
             --color-bg-800: #111827;
-            --color-card-bg: rgba(17, 24, 39, 0.75); /* bg-800 with transparency */
+            --color-card-bg: rgba(17, 24, 39, 0.75);
             --color-fg-100: #E6F0FF;
             --color-muted-60: #9aa7bf;
             --color-border: rgba(230, 240, 255, 0.1);
-            
-            /* Accent Colors */
             --color-accent-blue-base: #6de0ff;
             --color-accent-green-base: #7affc6;
             --color-accent-pink-base: #ff8cd6;
-            --color-accent-bio-base: #9F7AEA;
-            --color-accent-math-base: #4FD1C5;
-
-            /* Font Tokens */
-            --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            --color-accent-purple-base: #9F7AEA;
+            --color-accent-teal-base: #4FD1C5;
+            --font-ui: 'Inter', system-ui, sans-serif;
             --font-serif: 'Source Serif 4', serif;
-            --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco;
-
-            /* Typography Tokens */
-            --line-height-display: 1.05;
-            --line-height-titles: 1.15;
-            --line-height-body: 1.5;
-            --max-chars: 75ch;
-            
-            /* Shadow Tokens */
             --shadow-elevation1: 0 4px 14px rgba(5, 10, 20, 0.36);
             --shadow-elevation2: 0 10px 40px rgba(3, 6, 12, 0.5);
-
-            /* Spacing Tokens (Scale) */
-            --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
-            --space-4: 16px; --space-5: 20px; --space-6: 24px;
-            --space-8: 32px; --space-10: 40px;--space-12: 48px;
-
-            /* Motion Tokens */
+            --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
             --ease-standard: cubic-bezier(0.2, 0.9, 0.26, 1);
-            --duration-small: 360ms;
             --duration-medium: 520ms;
-
-            /* Other */
             --radius: 12px;
             --glass-blur: 12px;
         }
-
-        html.light {
-            --color-bg-900: #f5f9ff;
-            --color-bg-800: #ffffff;
-            --color-card-bg: rgba(255, 255, 255, 0.8);
-            --color-fg-100: #0b1120;
-            --color-muted-60: #5a677e;
-            --color-border: rgba(11, 17, 32, 0.1);
-            
-            --shadow-elevation1: 0 4px 14px rgba(5, 10, 20, 0.08);
-            --shadow-elevation2: 0 10px 40px rgba(3, 6, 12, 0.12);
-        }
-
         *, *::before, *::after { box-sizing: border-box; }
-
         body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: var(--font-ui);
-            background: linear-gradient(135deg, rgba(109, 224, 255, 0.05) 0%, rgba(27, 38, 64, 0.05) 40%, rgba(39, 50, 81, 0.05) 100%), var(--color-bg-900); /* Simplified Aurora Gradient */
-            color: var(--color-muted-60);
-            line-height: var(--line-height-body);
-            transition: background 400ms var(--ease-standard), color 300ms var(--ease-standard);
+            margin: 0; min-height: 100vh; font-family: var(--font-ui);
+            background: linear-gradient(135deg, rgba(109, 224, 255, 0.05) 0%, rgba(27, 38, 64, 0.05) 100%), var(--color-bg-900);
+            color: var(--color-muted-60); line-height: 1.5;
         }
-
         .wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--space-8); }
-
         header {
             position: fixed; left: 0; right: 0; top: 0; z-index: 100;
-            backdrop-filter: blur(8px);
-            background: linear-gradient(180deg, rgba(17, 24, 39, 0.1), transparent);
+            backdrop-filter: blur(8px); background: rgba(11, 17, 32, 0.5);
             border-bottom: 1px solid var(--color-border);
-            transition: background 300ms ease, border-color 300ms ease;
         }
-        html.light header { background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent); }
-        header .wrap { display: flex; align-items: center; gap: var(--space-6); padding: var(--space-4) var(--space-8); }
-        .brand { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+        header .wrap { display: flex; align-items: center; padding: var(--space-4) var(--space-8); }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand .logo {
-            width: 40px; height: 40px;
-            border-radius: 10px;
-            background: linear-gradient(90deg, var(--color-accent-blue-base) 0%, var(--color-accent-green-base) 30%, var(--color-accent-pink-base) 100%);
+            width: 40px; height: 40px; border-radius: 10px;
+            background: linear-gradient(90deg, var(--color-accent-blue-base), var(--color-accent-green-base), var(--color-accent-pink-base));
             display: flex; align-items: center; justify-content: center;
-            color: var(--color-bg-900);
-            font-weight: 700; font-family: var(--font-serif);
+            color: var(--color-bg-900); font-weight: 700; font-family: var(--font-serif);
         }
         .brand h1 { margin: 0; font-family: var(--font-serif); font-weight: 700; color: var(--color-fg-100); font-size: 1.1rem; }
-        nav { margin-left: auto; display: flex; gap: var(--space-2); align-items: center; }
-        nav a { color: var(--color-muted-60); text-decoration: none; padding: var(--space-2) var(--space-3); border-radius: 8px; font-weight: 600; font-size: 0.95rem; }
-        nav a:hover { color: var(--color-fg-100); background: rgba(255, 255, 255, 0.04); }
-        html.light nav a:hover { background: rgba(0, 0, 0, 0.04); }
-        .theme-toggle { background: transparent; border: 0; color: var(--color-muted-60); cursor: pointer; padding: var(--space-2); display: flex; align-items: center; }
-        
-        main { padding-top: calc(75px + var(--space-10)); }
+        nav { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+        nav .desktop-nav a { color: var(--color-muted-60); text-decoration: none; padding: 8px 12px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; }
+        nav .desktop-nav a:hover { color: var(--color-fg-100); }
+        .action-button { background: transparent; border: 1px solid var(--color-border); color: var(--color-muted-60); cursor: pointer; padding: 8px; display: flex; align-items: center; border-radius: 8px; }
+        .action-button:hover { color: var(--color-fg-100); border-color: var(--color-accent-blue-base); }
+        .mobile-toggle { display: none; }
+        @media (max-width: 768px) { .desktop-nav { display: none; } .mobile-toggle { display: flex; } }
+        main { padding-top: calc(75px + var(--space-12)); }
         section { padding-bottom: var(--space-12); }
-
-        h2.section-title { 
-            font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(28px, 3vw, 36px); 
-            margin: 0 0 var(--space-8); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); 
-            line-height: var(--line-height-titles);
-        }
-        
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); }
-        
+        h2.section-title { font-family: var(--font-serif); color: var(--color-fg-100); font-size: clamp(28px, 3vw, 36px); margin: 0 0 var(--space-8); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); }
         .card {
-            background: var(--color-card-bg);
-            border-radius: var(--radius);
-            padding: var(--space-6);
-            box-shadow: var(--shadow-elevation1);
-            border: 1px solid var(--color-border);
+            background: var(--color-card-bg); border-radius: var(--radius); padding: var(--space-6);
+            box-shadow: var(--shadow-elevation1); border: 1px solid var(--color-border);
             backdrop-filter: blur(var(--glass-blur));
-            transition: transform var(--duration-small) var(--ease-standard), box-shadow var(--duration-small) var(--ease-standard), border-color var(--duration-small) var(--ease-standard);
-            text-decoration: none;
-            color: var(--color-muted-60);
-            display: flex; flex-direction: column; position: relative;
+            transition: transform 360ms var(--ease-standard), box-shadow 360ms var(--ease-standard);
+            text-decoration: none; color: var(--color-muted-60); display: flex; flex-direction: column; position: relative;
         }
-        .card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: var(--shadow-elevation2); 
-            border-color: rgba(111, 224, 255, 0.3);
-        }
-        .card .card-icon { color: var(--color-fg-100); margin-bottom: var(--space-3); }
-        .card h3 { 
-            margin: 0 0 var(--space-2); color: var(--color-fg-100); font-family: var(--font-serif); 
-            font-weight: 600; font-size: 1.25rem; line-height: var(--line-height-titles);
-        }
-        .card p { margin: 0; font-size: 0.9rem; max-width: var(--max-chars); }
-        
-        .status-badge { position: absolute; top: 12px; right: 12px; font-size: 0.75rem; font-weight: 600; padding: var(--space-1) 10px; border-radius: 99px; }
-        .status-badge.disponivel { background-color: rgba(122, 255, 198, 0.1); color: var(--color-accent-green-base); }
-        .status-badge.breve { background-color: rgba(251, 191, 36, 0.1); color: #fbbf24; }
-        
+        .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-elevation2); }
+        .card .card-icon { color: var(--color-fg-100); margin-bottom: 12px; }
+        .card h3 { margin: 0 0 8px; color: var(--color-fg-100); font-family: var(--font-serif); font-weight: 600; font-size: 1.25rem; }
+        .card p { margin: 0; font-size: 0.9rem; flex-grow: 1; }
+        .status-badge { position: absolute; top: 12px; right: 12px; font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 99px; background-color: rgba(122, 255, 198, 0.1); color: var(--color-accent-green-base); }
         footer { margin-top: var(--space-8); padding: var(--space-8) 0; border-top: 1px solid var(--color-border); }
-        footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4); }
-        footer p { margin: 0; font-size: 0.9rem; }
-
-        /* Motion: fadeUp variant from design-system.json */
-        .reveal {
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-standard);
-        }
+        .reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--duration-medium) var(--ease-standard), transform var(--duration-medium) var(--ease-standard); }
         .reveal.in { opacity: 1; transform: translateY(0); }
+
+        /* --- Search Modal & Sidebar --- */
+        .overlay { position: fixed; inset: 0; z-index: 190; background: rgba(0,0,0,0.5); opacity: 0; transition: opacity 300ms ease; pointer-events: none; }
+        .overlay.is-visible { opacity: 1; pointer-events: auto; }
+        .search-modal {
+            position: fixed; top: 20%; left: 50%; transform: translate(-50%, -50px);
+            z-index: 200; width: 90%; max-width: 600px;
+            background: var(--color-card-bg); border: 1px solid var(--color-border);
+            border-radius: var(--radius); box-shadow: var(--shadow-elevation2);
+            backdrop-filter: blur(var(--glass-blur));
+            opacity: 0; transition: opacity 300ms ease, transform 300ms ease; pointer-events: none;
+        }
+        .search-modal.is-visible { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+        .search-input { width: 100%; background: transparent; border: none; color: var(--color-fg-100); font-size: 1.2rem; padding: var(--space-6); outline: none; }
+        
+        .sidebar {
+            position: fixed; top: 0; left: 0; bottom: 0; z-index: 200;
+            width: 280px; background: var(--color-card-bg);
+            border-right: 1px solid var(--color-border); backdrop-filter: blur(var(--glass-blur));
+            transform: translateX(-100%); transition: transform 360ms var(--ease-standard);
+        }
+        .sidebar.is-open { transform: translateX(0); }
+        .sidebar nav { display: flex; flex-direction: column; padding: var(--space-8); gap: var(--space-4); }
     </style>
 </head>
-<body>
+<body class="dark">
     <header role="banner">
         <div class="wrap">
-            <a href="index.html" class="brand">
-                <div class="logo">RF</div>
-                <h1>Raphael Fugiwara</h1>
-            </a>
+            <a href="index.html" class="brand"><div class="logo">RF</div><h1>Raphael Fugiwara</h1></a>
             <nav role="navigation">
-                <a href="#painel">Painel</a>
-                <a href="#materias">Matérias</a>
-                <a href="#sobre">Sobre</a>
-                <button id="theme-toggle" class="theme-toggle" aria-label="Alterar tema">
-                    <svg id="icon-sun" xmlns="http://www.w.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <div class="desktop-nav">
+                    <a href="#guias">Guias</a>
+                    <a href="#resolucoes">Resoluções</a>
+                    <a href="#sobre">Sobre</a>
+                </div>
+                <button id="search-open-btn" class="action-button" aria-label="Abrir pesquisa">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                <button id="menu-open-btn" class="action-button mobile-toggle" aria-label="Abrir menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="painel" class="wrap">
-            <h2 class="section-title reveal">Painel do Estudante</h2>
-            <div class="card reveal" style="padding: var(--space-8);">
-                <h3 style="margin-bottom: var(--space-4);">Calendário de Vestibulares (Ciclo 2025/2026)</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6);">
+        <section class="wrap" style="padding-top: calc(75px + var(--space-12)); text-align: center;">
+            <h1 class="reveal" style="font-family: var(--font-serif); font-size: clamp(40px, 5vw, 64px); color: var(--color-fg-100); line-height: 1.1; margin-bottom: 16px;">Central de Estudos pH</h1>
+            <p class="reveal" style="font-size: 1.25rem; color: var(--color-muted-60); max-width: 60ch; margin: 0 auto;">Uma plataforma de revisão e aprofundamento para o material semanal do curso pH, com foco nos vestibulares mais exigentes.</p>
+        </section>
+
+        <!-- Todas as seções de conteúdo aqui -->
+        <section id="guias" class="wrap">
+            <h2 class="section-title reveal">Guias de Estudo & Fórmulas</h2>
+            <div class="cards-grid">
+                <!-- Cards das 12 matérias aqui -->
+                <a href="#" class="card reveal" data-stagger="1"><div class="card-icon" style="color: var(--color-accent-teal-base)">(...)</div><h3>Matemática</h3><p>Teoria, fórmulas e dicas.</p></a>
+                <a href="#" class="card reveal" data-stagger="2"><div class="card-icon" style="color: var(--color-accent-blue-base)">(...)</div><h3>Física</h3><p>Conceitos fundamentais.</p></a>
+                <a href="#" class="card reveal" data-stagger="3"><div class="card-icon" style="color: var(--color-accent-pink-base)">(...)</div><h3>Química</h3><p>Reações e Leis da Matéria.</p></a>
+                <a href="#" class="card reveal" data-stagger="4"><div class="card-icon" style="color: var(--color-accent-purple-base)">(...)</div><h3>Biologia</h3><p>A Ciência da Vida.</p></a>
+                <a href="#" class="card reveal" data-stagger="5"><div class="card-icon">(...)</div><h3>História</h3><p>Análise de processos e eventos.</p></a>
+                <a href="#" class="card reveal" data-stagger="6"><div class="card-icon">(...)</div><h3>Geografia</h3><p>Geopolítica e dinâmicas espaciais.</p></a>
+                <a href="#" class="card reveal" data-stagger="7"><div class="card-icon">(...)</div><h3>Filosofia</h3><p>Grandes pensadores e teorias.</p></a>
+                <a href="#" class="card reveal" data-stagger="8"><div class="card-icon">(...)</div><h3>Sociologia</h3><p>Análise da sociedade e suas estruturas.</p></a>
+                <a href="#" class="card reveal" data-stagger="9"><div class="card-icon">(...)</div><h3>Linguagens</h3><p>Gramática e análise sintática.</p></a>
+                <a href="#" class="card reveal" data-stagger="10"><div class="card-icon">(...)</div><h3>Artes e Literatura</h3><p>Movimentos e obras canônicas.</p></a>
+                <a href="#" class="card reveal" data-stagger="11"><div class="card-icon">(...)</div><h3>Inglês</h3><p>Interpretação e vocabulário.</p></a>
+                <a href="#" class="card reveal" data-stagger="12"><div class="card-icon">(...)</div><h3>Redação</h3><p>Argumentação e repertório.</p></a>
+            </div>
+        </section>
+        <section id="resolucoes" class="wrap">
+             <h2 class="section-title reveal">Resoluções de pH Semanal</h2>
+             <div class="cards-grid">
+                 <a href="#" class="card reveal" data-stagger="1"><div class="status-badge disponivel">pH 27</div><h3>Resolução Completa</h3><p>Análise comentada de todas as questões.</p></a>
+             </div>
+        </section>
+        <section id="complementares" class="wrap">
+             <h2 class="section-title reveal">Listas Complementares</h2>
+             <div class="cards-grid">
+                <div class="card reveal" data-stagger="1" style="opacity: 0.6;"><h3 style="color: var(--color-muted-60);">Aprofundamento</h3><p>Listas com foco em 2ª fase e temas específicos.</p></div>
+             </div>
+        </section>
+        <section id="simulados" class="wrap">
+             <h2 class="section-title reveal">Simulados e Gabaritos</h2>
+             <div class="cards-grid">
+                <div class="card reveal" data-stagger="1" style="opacity: 0.6;"><h3 style="color: var(--color-muted-60);">Provas Anteriores</h3><p>Simulados dos principais vestibulares com gabarito.</p></div>
+             </div>
+        </section>
+        <section id="sobre" class="wrap">
+             <h2 class="section-title reveal">Sobre</h2>
+             <div class="card reveal">
+                <div style="display: grid; grid-template-columns: 1fr; md:grid-template-columns: 2fr 1fr; gap: var(--space-8); align-items: center;">
                     <div>
-                        <p style="color: #f87171; font-weight: 600;">Outubro</p>
-                        <p><strong>12/10</strong> - PUC-Rio (1º Dia)</p>
-                        <p><strong>19/10</strong> - PUC-Rio (2º Dia)</p>
-                        <p><strong>26/10</strong> - Unicamp (1ª Fase)</p>
+                        <h3>Manifesto do Projeto</h3>
+                        <p style="max-width: 75ch;">Este projeto nasceu da intersecção de duas paixões: a busca pela excelência nos vestibulares mais competitivos e a crença de que a tecnologia pode transformar o aprendizado. Como futuro cientista da computação, com foco em Matemática e Física, construí esta plataforma não apenas como um repositório, mas como um sistema de estudo inteligente, onde cada linha de código e cada elemento de design segue os princípios do <strong>AuroraDS</strong> — um Design System que criei para garantir uma experiência de usuário coesa, intuitiva e de classe mundial.</p>
                     </div>
-                    <div>
-                        <p style="color: #fb923c; font-weight: 600;">Novembro</p>
-                        <p><strong>09/11</strong> - ENEM (1º Dia)</p>
-                        <p><strong>16/11</strong> - ENEM (2º Dia)</p>
-                        <p><strong>23/11</strong> - FUVEST/USP (1ª Fase)</p>
-                        <p><strong>30/11</strong> - Unicamp (2ª Fase - Dia 1)</p>
-                    </div>
-                    <div>
-                        <p style="color: #60a5fa; font-weight: 600;">Dezembro</p>
-                        <p><strong>01/12</strong> - Unicamp (2ª Fase - Dia 2)</p>
-                        <p><strong>14/12</strong> - FUVEST/USP (2ª Fase - Dia 1)</p>
-                        <p><strong>15/12</strong> - FUVEST/USP (2ª Fase - Dia 2)</p>
+                    <div class="card-icon" style="text-align: center;">
+                        <svg width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto; color: var(--color-accent-blue-base);"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="var(--color-accent-blue-base)" /><stop offset="100%" stop-color="var(--color-accent-green-base)" /></linearGradient></defs><path d="M50 2 A 48 48 0 0 1 50 98 A 48 48 0 0 1 50 2" stroke="url(#grad1)" stroke-width="2" fill="none" stroke-dasharray="301.6" stroke-dashoffset="301.6" style="animation: draw 2s ease-out forwards 0.5s;"></path><text x="50" y="58" text-anchor="middle" font-family="var(--font-serif)" font-size="28" font-weight="700" fill="var(--color-fg-100)" opacity="0" style="animation: fadeIn 1s ease-out forwards 1.5s;">RF</text></svg>
+                        <style>@keyframes draw{to{stroke-dashoffset:0;}} @keyframes fadeIn{to{opacity:1;}}</style>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="materias" class="wrap">
-            <h2 class="section-title reveal">Matérias (pH 27)</h2>
-            <div class="cards-grid">
-                
-                <a href="resumo27_biologia.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon" style="color: var(--color-accent-bio-base)"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.9 13.9c-1.4 3.4-5.3 5.4-8.9 4-3.6-1.4-5.6-5.3-4-8.9 1.4-3.6 5.3-5.4 8.9-4 3.6 1.4 5.6 5.3 4 8.9z"/><path d="M12 12c-2 0-3 2-3 2s1 2 3 2 3-2 3-2-1-2-3-2z"/></svg></div><h3>Biologia</h3><p>Reino Plantae e Ciclo Viral.</p></a>
-                <a href="resumo27_matematica.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon" style="color: var(--color-accent-math-base)"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div><h3>Matemática</h3><p>Funções Trigonométricas.</p></a>
-                <a href="resumo27_fisica.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Física</h3><p>Introdução à Ondulatória.</p></a>
-                <a href="resumo27_quimica.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Química</h3><p>Termoquímica e Lei de Hess.</p></a>
-                <a href="resumo27_historia.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><h3>História</h3><p>Era Vargas e Estado Novo.</p></a>
-                <a href="resumo27_geografia.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg></div><h3>Geografia</h3><p>União Europeia e Geopolítica Asiática.</p></a>
-                <a href="resumo27_filosofia.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></div><h3>Filosofia</h3><p>Fenomenologia e Merleau-Ponty.</p></a>
-                <a href="resumo27_sociologia.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><h3>Sociologia</h3><p>Violência Simbólica e Desigualdades.</p></a>
-                <a href="resumo27_linguagens.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div><h3>Linguagens</h3><p>Análise Sintática: Sujeito.</p></a>
-                <a href="resumo27_arte.html" class="card reveal"><div class="status-badge disponivel">10 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div><h3>Artes e Literatura</h3><p>Modernismo - Primeira Fase.</p></a>
-                <a href="resumo27_ingles.html" class="card reveal"><div class="status-badge disponivel">5 Questões</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m12 5 3.5 3.5"></path><path d="m14 10.5 5.5 5.5"></path></svg></div><h3>Inglês</h3><p>Interpretação e Análise Textual.</p></a>
-                <a href="resumo27_redacao.html" class="card reveal"><div class="status-badge disponivel">10 + Proposta</div><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v10"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M12 18h-1a2 2 0 1 1 0-4h1"></path><path d="M18 14v4"></path></svg></div><h3>Redação</h3><p>Análise de Gêneros e Argumentação.</p></a>
-
-            </div>
-        </section>
-        
-        <section id="sobre" class="wrap">
-            <h2 class="section-title reveal">Sobre</h2>
-            <div class="card reveal">
-                <h3>Olá, sou Raphael Fugiwara.</h3>
-                <p style="max-width: var(--max-chars);">Um entusiasta de tecnologia com foco em Ciência da Computação, aprofundando conhecimentos em Física e Matemática para criar soluções inovadoras. Este projeto é um reflexo da minha paixão por aprendizado, design e desenvolvimento web, servindo como meu portfólio dinâmico de estudos para vestibulares, agora reconstruído com base nos princípios do meu próprio Design System, o AuroraDS.</p>
-            </div>
+             </div>
         </section>
     </main>
     
     <footer class="site-footer">
         <div class="wrap">
             <p>&copy; 2025 Raphael Fugiwara - AuroraDS Layout</p>
-            <p>Direitos Autorais protegidos pela Lei nº 9.610/98.</p>
         </div>
     </footer>
+    
+    <!-- Elementos Interativos -->
+    <div id="page-overlay" class="overlay"></div>
+    
+    <div id="search-modal" class="search-modal">
+        <input type="text" class="search-input" placeholder="Pesquisar por matéria ou tópico...">
+    </div>
+    
+    <aside id="sidebar" class="sidebar">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-6);">
+            <h3 style="color: var(--color-fg-100); font-family: var(--font-serif);">Menu</h3>
+            <button id="menu-close-btn" class="action-button" aria-label="Fechar menu">&times;</button>
+        </div>
+        <nav><a href="#guias">Guias</a><a href="#resolucoes">Resoluções</a><a href="#sobre">Sobre</a></nav>
+    </aside>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Theme Toggle Logic
-            const themeToggle = document.getElementById('theme-toggle');
-            const iconSun = document.getElementById('icon-sun');
-            const iconMoon = document.getElementById('icon-moon');
-            const htmlEl = document.documentElement;
-
-            // Sempre começa no modo dark, a menos que o usuário já tenha escolhido light
-            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const $ = (selector) => document.querySelector(selector);
             
-            function applyTheme(theme) {
-                if (theme === 'light') {
-                    htmlEl.classList.add('light');
-                    if (iconSun) iconSun.style.display = 'block';
-                    if (iconMoon) iconMoon.style.display = 'none';
-                } else {
-                    htmlEl.classList.remove('light');
-                    if (iconSun) iconSun.style.display = 'none';
-                    if (iconMoon) iconMoon.style.display = 'block';
-                }
-            }
-            
-            applyTheme(savedTheme);
+            // --- Interactivity Logic ---
+            const searchOpenBtn = $('#search-open-btn');
+            const menuOpenBtn = $('#menu-open-btn');
+            const menuCloseBtn = $('#menu-close-btn');
+            const searchModal = $('#search-modal');
+            const sidebar = $('#sidebar');
+            const overlay = $('#page-overlay');
 
-            if (themeToggle) {
-                themeToggle.addEventListener('click', () => {
-                    const currentTheme = htmlEl.classList.contains('light') ? 'light' : 'dark';
-                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                    localStorage.setItem('theme', newTheme);
-                    applyTheme(newTheme);
-                });
-            }
+            const openSearch = () => {
+                overlay.classList.add('is-visible');
+                searchModal.classList.add('is-visible');
+            };
+            const closeSearch = () => {
+                overlay.classList.remove('is-visible');
+                searchModal.classList.remove('is-visible');
+            };
+            const openMenu = () => {
+                overlay.classList.add('is-visible');
+                sidebar.classList.add('is-open');
+            };
+            const closeMenu = () => {
+                overlay.classList.remove('is-visible');
+                sidebar.classList.remove('is-open');
+            };
 
-            // Reveal Animation Logic (fadeUp + stagger)
+            searchOpenBtn.addEventListener('click', openSearch);
+            menuOpenBtn.addEventListener('click', openMenu);
+            menuCloseBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', () => {
+                closeSearch();
+                closeMenu();
+            });
+
+            // --- Reveal Animation Logic ---
             const revealEls = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
                     if (e.isIntersecting) {
-                        // Apply stagger based on `staggeredList` token idea
-                        const delay = (e.target.dataset.stagger || 0) * 60; // 0.06s from token
-                        setTimeout(() => {
-                           e.target.classList.add('in');
-                        }, delay);
+                        const delay = (e.target.dataset.stagger || 0) * 60;
+                        setTimeout(() => { e.target.classList.add('in'); }, delay);
                         revealObserver.unobserve(e.target);
                     }
                 })
